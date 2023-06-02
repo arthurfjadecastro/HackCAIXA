@@ -1,0 +1,69 @@
+.slick-list {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: linear-gradient(to right, #005CA9, #54BBAB);
+}
+
+body {
+    overflow: hidden;
+}
+
+#root>div>div.MuiBox-root.css-ihs1h>div>div>div>div>div>div.slick-slide.slick-active.slick-current>div>div {
+    height: 100vh;
+    display: flex !important;
+    align-items: center;
+    width: 100vw !important;
+    /* justify-content: space-around; */
+}
+
+
+.slick-slide {
+    /* display: grid !important; */
+    /* justify-content: end; */
+    /* align-items: center; */
+    height: 100vh;
+}
+
+#root>div>div.MuiBox-root.css-ihs1h>div>div.slick-slider.slick-initialized>div>div>div>div>div {
+    display: flex !important;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+/* Media query para dispositivos móveis */
+@media only screen and (max-width: 1028px) {
+
+    #root>div>div.MuiBox-root.css-ihs1h>header>div {
+        flex-direction: column;
+        margin: 16px;
+    }
+
+    /* Primeiro seletor */
+    #root>div>div.MuiBox-root.css-ihs1h>div>div.slick-slider.slick-initialized>div>div>div>div>div {
+        flex-direction: column;
+    }
+
+    /* Segundo seletor */
+    #root>div>div.MuiBox-root.css-ihs1h>div>div.slick-slider.slick-initialized>div>div>div>div>div>img {
+        margin-right: 0 !important;
+        height: 219px !important;
+
+    }
+
+    #root>div>div.MuiBox-root.css-ihs1h>div>div.slick-slider.slick-initialized>div>div>div>div>div>img {
+        margin-left: 40px !important;
+    }
+
+    #root>div>div.MuiBox-root.css-ihs1h>div>div.slick-slider.slick-initialized>div>div>div>div>div>h6>img {
+        height: 64px;
+        margin-top: 16px;
+    }
+}
+
+#root>div>div.MuiBox-root.css-ihs1h>div>div.slick-slider.slick-initialized>div>div>div>div {
+    height: 100%;
+}
