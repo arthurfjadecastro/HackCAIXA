@@ -2,12 +2,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import React from "react";
 import { TitleText } from "./Resources";
+import {Cpf} from "../../Inputs";
+// import UniformTextField from "../../Inputs/InputCPF";
 
 
 function FirstPage() {
- 
-  
-
   return (
     <>
       <Grid
@@ -24,7 +23,7 @@ function FirstPage() {
         </Grid>
         <Grid item>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
-            Body
+            <Cpf/>
           </Typography>
         </Grid>
         <Grid item>
