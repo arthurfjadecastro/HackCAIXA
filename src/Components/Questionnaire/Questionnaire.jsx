@@ -1,11 +1,11 @@
 import React from "react";
-// import {
-//   FirstPage,
-//   SecondPage,
-//   ThirdPage,
-//   FourthPage,
-//   FifthPage,
-// } from "./Pages";
+import {
+  FirstPage,
+  SecondPage,
+  ThirdPage,
+  FourthPage,
+  FifthPage,
+} from "./Pages";
 import { RenderIf } from "../Utils";
 
 const Questionnaire = ({
@@ -14,28 +14,19 @@ const Questionnaire = ({
   return (
     <>
       <RenderIf predicate={page === 1}>
-        <h1>1</h1>
-        {/* <FirstPage theme={theme} /> */}
+        <FirstPage/>
       </RenderIf>
       <RenderIf predicate={page === 2}>
-      <h1>2</h1>
-        {/* <SecondPage handleNextPage={handleNextPage} /> */}
+        <SecondPage/>
       </RenderIf>
       <RenderIf predicate={page === 3}>
-      <h1>3</h1>
-        {/* <ThirdPage handleNextPage={handleNextPage} /> */}
+        <ThirdPage/>
       </RenderIf>
       <RenderIf predicate={page === 4}>
-      <h1>4</h1>
-        {/* <FourthPage handleNextPage={handleNextPage} theme={theme} /> */}
+        <FourthPage/>
       </RenderIf>
       <RenderIf predicate={page === 5}>
-      <h1>5</h1>
-        {/* <FifthPage
-          handleChangePage={handleChangePage}
-          state={registeringState}
-          dispatch={registeringDispatch}
-        /> */}
+        <FifthPage/>
       </RenderIf>
     </>
   );
