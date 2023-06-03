@@ -49,7 +49,7 @@ function SimulateDialog({isOpen, setClose}) {
             </Button>
           </Toolbar>
         </AppBar>
-        <Box>
+        <Box style={{display: "flex", height: "100%", padding: 45}}>
           <Questionnaire page={page}/>
         </Box>
       </Dialog>
