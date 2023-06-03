@@ -9,6 +9,8 @@ const ColorButton = styled(Button)(({ theme }) => ({
     boxShadow: "0px 3px 3px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 8px rgba(0, 0, 0, 0.2)",
     borderRadius: 20,
     color: "black",
+    borderColor: "black",
+    border: 1,
     // backgroundColor: purple[500],
     '&:hover': {
       backgroundColor: purple[700],

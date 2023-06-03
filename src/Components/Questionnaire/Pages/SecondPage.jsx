@@ -1,12 +1,48 @@
+import { Box, Grid, Paper, Typography } from "@mui/material";
+import { styled } from '@mui/material/styles';
 import React from "react";
+import { TitleText } from "./Resources";
+import {CellPhoneNumber, Cpf} from "../../Inputs";
+import {ButtonCEF, ButtonSimulateOther} from "../../Buttons";
+// import UniformTextField from "../../Inputs/InputCPF";
 
 
-const SecondPage = ({}) => {
+function SecondPage() {
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
   return (
     <>
-      <h1>Second Page</h1>
-    </>
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-between"
+        alignItems="center"
+        spacin={4}
+      >
+        <Grid item>
+          <TitleText>
+            De quanto você precisa?
+          </TitleText>
+        </Grid>
+        <Grid item>
+          <Item>
+            <Cpf/>
+          </Item>
+        </Grid>
+        <Grid item>
+        <Item>
+          <ButtonCEF/>
+        </Item>
+        </Grid>
+      </Grid>
+     </>
   );
-};
+}
 
 export default SecondPage;

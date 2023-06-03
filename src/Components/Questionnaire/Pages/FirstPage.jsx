@@ -39,8 +39,14 @@ function FirstPage() {
           </Item>
         </Grid>
         <Grid item>
+        <Item>
           <ButtonCEF/>
+
+        </Item>
+        <Item>
+          
           <ButtonSimulateOther/>
+        </Item>
         </Grid>
       </Grid>
      </>
