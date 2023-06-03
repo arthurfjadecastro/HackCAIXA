@@ -1,12 +1,20 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import React from "react";
 import { TitleText } from "./Resources";
-import {Cpf} from "../../Inputs";
+import {CellPhoneNumber, Cpf} from "../../Inputs";
 // import UniformTextField from "../../Inputs/InputCPF";
 
 
 function FirstPage() {
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
   return (
     <>
       <Grid
@@ -22,9 +30,14 @@ function FirstPage() {
           </TitleText>
         </Grid>
         <Grid item>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
+          <Item>
+
             <Cpf/>
-          </Typography>
+          </Item>
+          <Item>
+
+            <CellPhoneNumber/>
+          </Item>
         </Grid>
         <Grid item>
           Fotter Buttons
