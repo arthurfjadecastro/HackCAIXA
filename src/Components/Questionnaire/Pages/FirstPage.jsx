@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import React from "react";
 import { TitleText } from "./Resources";
 import {CellPhoneNumber, Cpf} from "../../Inputs";
+import {ButtonCEF, ButtonSimulateOther} from "../../Buttons";
 // import UniformTextField from "../../Inputs/InputCPF";
 
 
@@ -22,7 +23,7 @@ function FirstPage() {
         direction="column"
         justifyContent="space-between"
         alignItems="center"
-        spacint={4}
+        spacin={4}
       >
         <Grid item>
           <TitleText>
@@ -31,16 +32,15 @@ function FirstPage() {
         </Grid>
         <Grid item>
           <Item>
-
             <Cpf/>
           </Item>
           <Item>
-
             <CellPhoneNumber/>
           </Item>
         </Grid>
         <Grid item>
-          Fotter Buttons
+          <ButtonCEF/>
+          <ButtonSimulateOther/>
         </Grid>
       </Grid>
      </>
