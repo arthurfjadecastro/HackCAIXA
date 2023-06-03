@@ -35,7 +35,6 @@ function Home() {
 
 
   const query = useMatchesSmartphone()
-  // console.log(query)
   return (
     <>
       <Box sx={{ flexGrow: 1 }} mx="auto" maxWidth="100%" style={{ width: "100%", overflow: "hidden", marginTop: 0 }}>

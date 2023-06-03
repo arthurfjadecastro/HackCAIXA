@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import ListItemText from '@mui/material/ListItemText';
@@ -11,14 +12,16 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
+import { Box } from '@mui/material';
+import { Questionnaire } from '../Questionnaire';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function SimulateDialog({isOpen, setClose}) {
-  console.log(isOpen)
-
+  const [page, setPage] = useState(1);
+  console.log(page)
 
   return (
     <div>
@@ -41,23 +44,14 @@ function SimulateDialog({isOpen, setClose}) {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               SimuladorCred CAIXA
             </Typography>
-            <Button autoFocus color="inherit" onClick={() => setClose(false)}>
+            <Button autoFocus color="inherit" onClick={() => setPage(page + 1)}>
               continuar
             </Button>
           </Toolbar>
         </AppBar>
-        <List>
-          <ListItem button>
-            <ListItemText primary="Phone ringtone" secondary="Titania" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary="Default notification ringtone"
-              secondary="Tethys"
-            />
-          </ListItem>
-        </List>
+        <Box>
+          <Questionnaire page={page}/>
+        </Box>
       </Dialog>
     </div>
   );
