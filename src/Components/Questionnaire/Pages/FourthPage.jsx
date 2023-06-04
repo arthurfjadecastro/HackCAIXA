@@ -1,5 +1,20 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Grid, Paper,styled } from "@mui/material";
+import { TitleText } from "./Resources";
+import { ButtonCEF, ButtonSimulateOther } from "../../Buttons";
+
+
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
+
 
 
 const FourthPage = ({}) => {
@@ -20,9 +35,37 @@ const FourthPage = ({}) => {
 
   return (
     <>
-      <h1>Fourth Page</h1>
+        <Grid
+        container
+        direction="column"
+        justifyContent="space-between"
+        alignItems="center"
+        spacin={4}
+      >
+        <Grid item>
+          <TitleText>
+            Agora escolha a modalidade que cabe em seu bolso
+          </TitleText>
+        </Grid>
+        <Grid item>
+          <Item>
+          {/* <Monetary/> */}
+          </Item>
+        </Grid>
+        <Grid item>
+        <Item>
+          <ButtonCEF/>
+          <ButtonSimulateOther/>
+        </Item>
+        </Grid>
+      </Grid>
     </>
   );
 };
 
 export default FourthPage;
+
+
+
+
+

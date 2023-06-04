@@ -1,24 +1,23 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
-import { styled } from '@mui/material/styles';
 import React from "react";
+import { Monetary } from "../../Inputs";
+import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
-import {CellPhoneNumber, Cpf} from "../../Inputs";
-import {ButtonCEF, ButtonSimulateOther} from "../../Buttons";
-// import UniformTextField from "../../Inputs/InputCPF";
+import { ButtonCEF } from "../../Buttons";
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 
-function SecondPage() {
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+const ThirdPage = ({}) => {
   return (
     <>
-      <Grid
+    <Grid
         container
         direction="column"
         justifyContent="space-between"
@@ -32,7 +31,7 @@ function SecondPage() {
         </Grid>
         <Grid item>
           <Item>
-            <Cpf/>
+          <Monetary/>
           </Item>
         </Grid>
         <Grid item>
@@ -41,8 +40,8 @@ function SecondPage() {
         </Item>
         </Grid>
       </Grid>
-     </>
+    </>
   );
-}
+};
 
-export default SecondPage;
+export default ThirdPage;

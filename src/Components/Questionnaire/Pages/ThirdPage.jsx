@@ -26,12 +26,12 @@ const ThirdPage = ({}) => {
       >
         <Grid item>
           <TitleText>
-            De quanto você precisa?
+            Em quantas vezes gostaria de pagar?
           </TitleText>
         </Grid>
         <Grid item>
           <Item>
-          <Monetary/>
+          {/* <Monetary/> */}
           </Item>
         </Grid>
         <Grid item>

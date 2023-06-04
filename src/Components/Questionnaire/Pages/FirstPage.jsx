@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { TitleText } from "./Resources";
 import {CellPhoneNumber, Cpf} from "../../Inputs";
@@ -44,8 +44,7 @@ function FirstPage() {
 
         </Item>
         <Item>
-          
-          <ButtonSimulateOther/>
+          <ButtonCEF/>
         </Item>
         </Grid>
       </Grid>
