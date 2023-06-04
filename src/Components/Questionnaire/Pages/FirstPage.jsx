@@ -1,9 +1,11 @@
+import React, { useEffect, useState } from "react";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import React from "react";
 import { TitleText } from "./Resources";
 import {CellPhoneNumber, Cpf} from "../../Inputs";
 import {ButtonCEF, ButtonSimulateOther} from "../../Buttons";
+import api from "../../../services/api";
+import axios from "axios";
 // import UniformTextField from "../../Inputs/InputCPF";
 
 
