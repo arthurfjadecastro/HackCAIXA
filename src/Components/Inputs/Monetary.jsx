@@ -81,4 +81,6 @@ const Monetary = ({
   );
 };
 
-export default (props) => <NonEmptyValidator {...props} Children={Monetary} />;
+// export default (props) => <NonEmptyValidator {...props} Children={Monetary} />;
+
+export default Monetary;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useOnKeyUp  from "../../../Hooks/useOnKeyUp";
+import useOnKeyUp  from "../../Questionnaire/Pages/useOnKeyUp";
 
 const MaskDecorator = (props) => {
   React.Children.only(props.children);

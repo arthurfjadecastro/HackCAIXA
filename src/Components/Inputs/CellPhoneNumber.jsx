@@ -10,7 +10,7 @@ import UniformTextField from "./UniformTextField";
 
 const MASK_CELPHONE = "(99) 9 9999-9999";
 
-const Cpf = ({}) => {
+const CellPhoneNumber = ({}) => {
   
   return (
     <React.Fragment>
@@ -26,6 +26,6 @@ const Cpf = ({}) => {
   );
 };
 
-// const Foo = (props) => <CpfValidator {...props} Children={Cpf} />;
+// const Foo = (props) => <CellPhoneNumberValidator {...props} Children={Cpf} />;
 // export default (props) => <NonEmptyValidator {...props} Children={Foo} />;
-export default Cpf;
+export default CellPhoneNumber;
