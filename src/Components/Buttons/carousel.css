@@ -1,0 +1,9 @@
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Divide em 4 colunas de largura igual */
+    gap: 10px; /* Espaçamento entre os botões */
+  }
+  
+  .options-button {
+    /* Estilos dos botões */
+  }

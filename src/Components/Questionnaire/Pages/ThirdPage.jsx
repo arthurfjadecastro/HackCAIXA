@@ -2,7 +2,7 @@ import React from "react";
 import { Monetary } from "../../Inputs";
 import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
-import { ButtonCEF } from "../../Buttons";
+import { ButtonCEF, Carousel } from "../../Buttons";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,7 +31,7 @@ const ThirdPage = ({}) => {
         </Grid>
         <Grid item>
           <Item>
-          {/* <Monetary/> */}
+          <Carousel/>
           </Item>
         </Grid>
         <Grid item>
