@@ -6,6 +6,7 @@ import {CellPhoneNumber, Cpf} from "../../Inputs";
 import {ButtonCEF, ButtonSimulateOther} from "../../Buttons";
 import api from "../../../services/api";
 import axios from "axios";
+import Monetary from "../../Inputs/Monetary";
 // import UniformTextField from "../../Inputs/InputCPF";
 
 
@@ -37,7 +38,7 @@ function FirstPage() {
             <Cpf/>
           </Item>
           <Item>
-            <CellPhoneNumber/>
+            <Monetary/>
           </Item>
         </Grid>
         <Grid item>
