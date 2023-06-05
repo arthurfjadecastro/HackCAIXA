@@ -7,8 +7,8 @@ const Frame = ({value,initialInstallment, valueFirstInitialInstallment,lastInsta
       <div className="text-container">
         <p>{value}</p>
         <p>{initialInstallment}ª prestação - R$ {valueFirstInitialInstallment}</p>
-        <p>Última prestação R$ {lastInstallment}</p>
-        <p>Parcelas {installments}</p>
+        <p>Última prestação - R$ {lastInstallment}</p>
+        <p>Parcelas - {installments}x</p>
       </div>
     </div>
   );

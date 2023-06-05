@@ -65,6 +65,8 @@ function SimulateDialog({isOpen, setClose}) {
 useEffect(() => {
   setPage(1)
   dispatch(resetState());
+  // setEtlData(null)
+  // setResponse(null)
 },[isOpen === false])
 
 useEffect(() => {
@@ -75,8 +77,7 @@ useEffect(() => {
   setEtlData(iterableData)
 },[response])
 
-console.log("dados tratados")
-console.log(ETLData)
+
 
 
 
