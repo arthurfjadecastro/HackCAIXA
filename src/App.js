@@ -26,48 +26,86 @@ function Home() {
     infinite: true,
     speed: 2500,
     slidesToShow: 1,
-    // slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    fade: true
-    // centerMode: true,
+    fade: true,
   };
 
 
-  const query = useMatchesSmartphone()
+  const isMobile = useMatchesSmartphone()
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} mx="auto" maxWidth="100%" style={{ width: "100%", overflow: "hidden", marginTop: 0 }}>
-        <AppBar position="absolute" style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
-          <Toolbar style={{ minHeight: "65px !important" }}>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
-            <Button variant="outlined" onClick={() => setIsOpenDialog(true)}>
-              Simular
-            </Button>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Box mx="auto" maxWidth="100%" style={{ width: "100%", overflow: "hidden" }}>
-          <Slider pauseOnHover={false} {...settings} style={{ width: "100%", padding: 0, flex: 1, display: "flex" }}> 
-             <div style={{ padding: 0, display: "flex", flexDirection: "row" }}>
-              <img src="/Images/logo1.png" alt="Slide 2" style={{ height: "auto", marginRight: "32px", objectFit: "cover", width: "100%", maxWidth: 1280 }} />
-            </div>
-            <div style={{ padding: 0, display: "flex", flexDirection: "row" }}>
-              <img src="/Images/fundo24.png" alt="Slide 2" style={{ height: "auto", marginRight: "32px", objectFit: "cover", width: "100%" }} />
-            </div>
-          </Slider>
+    <Box sx={{ flexGrow: 1 }} mx="auto" maxWidth="100%" style={{ width: "100%", overflow: "hidden", marginTop: 0 }}>
+      <AppBar position="absolute" style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
+      <Toolbar style={{ minHeight: "65px !important" }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: "flex" }}>
+          <Grid
+            flexDirection={isMobile ? "column" : "row"}
+            container
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Grid item>
+              <Typography variant="h6" component="div">
+                SimulaCred CAIXA
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Button variant="outlined" sx={{
+        background: '#F39200',
+        color: 'white',
+        borderRadius: '8px',
+        padding: '8px 16px',
+        fontWeight: 'bold',
+        fontSize: '16px',
+        '&:hover': {
+          background: '#FFA726',
+        },
+      }} onClick={() => setIsOpenDialog(true)}>
+                Simular
+              </Button>
+            </Grid>
+          </Grid>
+        </Typography>
+      </Toolbar>
+    </AppBar>
+      <Box sx={{ flexGrow: 1, mt: 2 }}>
+        <Slider pauseOnHover={false} {...settings}>
+        <div>
+        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ background: settings.gradientColor, p: 2 }}>
+              <Typography style={{fontSize: isMobile ? 22 : 36}} className="classText" textAlign="center" variant="body1" component="div">
+                Experimente o Aplicativo CAIXA e aproveite a praticidade de solicitar <span className="orange-text">crédito rápido</span>.
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <img src="/img/logo1.png" alt="Slide 2" style={{ height: 'auto', objectFit: 'cover', maxWidth: "60%" }} />
+            </Box>
+          </Grid>
+        </Grid>
+      </div>
           <div>
+            <Grid container style={{height: isMobile ? "50%" : "100%"}} justifyContent="center" alignItems="center">
+              <Grid item xs={12} md={6} style={{ background: settings.gradientColor }}>
+                <Typography style={{fontSize: isMobile ? 22 : 36}} className="classText" textAlign="center" variant="body1" component="div">
+                  Solicite seu crédito na CAIXA com <span className="orange-text"> facilidade e segurança</span>.
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={6} style={{ display: "flex", justifyContent: "center" }}>
+                <img src="/img/logo3.svg" alt="Slide 2" style={{ height: 'auto',width: "100%", objectFit: 'cover', maxWidth: "60%" }} />
+              </Grid>
+            </Grid>
           </div>
-        </Box>
+        </Slider>
       </Box>
-      <Box sx={{ position: "fixed", bottom: 0, width: "100%", background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
-            <h1>footer</h1>
-        <Box p={3} style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}>
-          <h1>footer</h1> 
-        </Box>
-      </Box>
-      <SimulateDialog isOpen={isOpenDialog} setClose={setIsOpenDialog} />
-    </>
+    </Box>
+    <SimulateDialog isOpen={isOpenDialog} setClose={setIsOpenDialog} />
+  </>
+  
   );
 }
 

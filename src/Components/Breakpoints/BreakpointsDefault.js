@@ -1,6 +1,6 @@
 const BreakpointsDefault = {
-  "mobile": "(max-width:959px)",
-  "desktop": "(min-width: 960px)",
+  "mobile": "(max-width:600px)",
+  "desktop": "(min-width: 601px)",
 };
 
 export default BreakpointsDefault;
