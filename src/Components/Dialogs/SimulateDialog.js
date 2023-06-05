@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useReducer, useState } from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import ListItemText from '@mui/material/ListItemText';
@@ -19,8 +18,60 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
+const initialState = {
+  cpf: "",
+  phoneNumber: "",
+  monetaryValue: "",
+  installments: ""
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "cpf":
+      return { ...state, cpf: action.payload };
+    case "phoneNumber":
+      return { ...state, phoneNumber: action.payload };
+    case "monetaryValue":
+      return { ...state, monetaryValue: action.payload };
+    case "installments":
+      return { ...state, installments: action.payload };
+    case "resetState":
+      return initialState;
+    default:
+      return state;
+  }
+};
+
+
+
+
 function SimulateDialog({isOpen, setClose}) {
+
+
+  
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const [page, setPage] = useState(1);
+  // const [reset, setReset] = useState(false)
+  const resetState = () => ({
+    type: "resetState",
+  });
+
+useEffect(() => {
+  setPage(1)
+  dispatch(resetState());
+},[isOpen === false])
+
+  // if(reset){
+  //   dispatch({
+  //     cpf: "",
+  //     phoneNumber: "",
+  //     monetaryValue: "",
+  //     installments: ""
+  //   })
+  // }
+
 
   const handlePageChange = () => {
     if (page === 4) {
@@ -67,7 +118,7 @@ function SimulateDialog({isOpen, setClose}) {
           </Toolbar>
         </AppBar>
         <Box style={{display: "flex", height: "100%", padding: 45}}>
-          <Questionnaire handleBack={handleBack} handlePageChange={handlePageChange} page={page}/>
+          <Questionnaire state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
         </Box>
       </Dialog>
     </div>

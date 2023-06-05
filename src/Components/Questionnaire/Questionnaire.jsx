@@ -8,37 +8,18 @@ import {
 } from "./Pages";
 import { RenderIf } from "../Utils";
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "cpf":
-      return { ...state, cpf: action.payload };
-    case "phoneNumber":
-      return { ...state, phoneNumber: action.payload };
-    case "monetaryValue":
-      return { ...state, monetaryValue: action.payload };
-    case "installments":
-      return { ...state, installments: action.payload };
-    default:
-      return state;
-  }
-};
 
 
 const Questionnaire = ({
   page,
   handlePageChange,
-  handleBack
+  handleBack,
+  reset,
+  state,
+  dispatch
 }) => {
-  const initialState = {
-    cpf: "",
-    phoneNumber: "",
-    monetaryValue: "",
-    installments: ""
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log("state")
-  console.log(state)
+
   return (
     <>
       <RenderIf predicate={page === 1}>
