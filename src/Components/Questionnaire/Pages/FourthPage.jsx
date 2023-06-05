@@ -25,6 +25,7 @@ const FourthPage = ({handleBack, ETLData,handlePageChange, dispatch}) => {
     }
   }
 
+  const titleInfo = activeButton === "PRICE" ?  "Ideal para quem busca parcelas fixas e planejamento financeiro." : "Ideal para quem busca previsibilidade nas parcelas."
   console.log(activeButton)
 
 
@@ -43,7 +44,7 @@ const FourthPage = ({handleBack, ETLData,handlePageChange, dispatch}) => {
         </Grid>
         <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
-          <TooltipInfo/>
+          <TooltipInfo titleInfo={titleInfo}/>
           <ButtonGroup activeButton={activeButton} handleType={handleType}/> 
           <RenderIf predicate={activeButton === "PRICE"}>
             <LoanDetails

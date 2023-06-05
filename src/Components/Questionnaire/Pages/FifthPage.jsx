@@ -8,22 +8,7 @@ import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 
 const FifthPage = ({setClose,ETLData, state}) => {
-  // const [lastInstallment, setLastInstallment] = useState({numero: "", valorJuros: "", valorPrestacao: ""});
-
   
-  // useEffect(() => {
-  //   if (Array.isArray(ETLData.PRICE) && ETLData.PRICE.length > 0) {
-  //     const ultimoElemento = ETLData.PRICE[ETLData.PRICE.length - 1];
-  //     const numero = ultimoElemento.numero;
-  //     const valorJuros = ultimoElemento.valorJuros
-  //     const valorPrestacao = ultimoElemento.valorPrestacao
-  //     setLastInstallment({numero, valorJuros, valorPrestacao})
-  //     // Faça o que precisa com o número
-  //   } else {
-  //     // Trate o caso em que o array ETLData.PRICE está vazio ou indefinido
-  //   }
-  
-  // }, [ETLData.PRICE.length > 0]);
 
   return (
     <>
