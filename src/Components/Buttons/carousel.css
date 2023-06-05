@@ -4,6 +4,10 @@
     gap: 10px; /* Espaçamento entre os botões */
   }
   
-  .options-button {
-    /* Estilos dos botões */
+  .active {
+    /* Estilos para o botão ativo */
+    background-color: #005CA9;
+    /* Exemplo de cor de fundo azul */
+    color: white; /* Exemplo de cor do texto branco */
+    /* Outros estilos desejados */
   }

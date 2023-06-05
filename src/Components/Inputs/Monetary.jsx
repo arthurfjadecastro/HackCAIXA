@@ -38,8 +38,8 @@ const Monetary = ({ helperText, onBlur, value, onChange, type}) => {
               maxLength={16}
               // fractionSize={2}
               thousandSeparator={"."}
-              decimalScale={2}
-              fixedDecimalScale={true}
+              // decimalScale={2}
+              // fixedDecimalScale={true}
             />
           </MonetaryMaskDecorator>
     </React.Fragment>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './carousel.css';
 
-const Carousel = () => {
+const Carousel = ({state, dispatch}) => {
   const [selectedOption, setSelectedOption] = useState(1);
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
+    dispatch({ type: 'installments', payload: option }); // Exemplo de ação para atualizar o estado das parcelas
   };
 
   const renderOptions = () => {

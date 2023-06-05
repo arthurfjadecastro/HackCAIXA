@@ -7,7 +7,7 @@ import Item from "../../Frames/Item";
 
 
 
-const ThirdPage = ({}) => {
+const ThirdPage = ({state, dispatch}) => {
   return (
     <>
     <Grid
@@ -15,7 +15,6 @@ const ThirdPage = ({}) => {
         direction="column"
         justifyContent="space-between"
         alignItems="center"
-        spacin={4}
       >
         <Grid item>
           <TitleText>
@@ -24,7 +23,7 @@ const ThirdPage = ({}) => {
         </Grid>
         <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
-          <Carousel/>
+          <Carousel state={state} dispatch={dispatch}/>
           </Item>
         </Grid>
         <Grid item>
