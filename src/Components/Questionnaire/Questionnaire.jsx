@@ -27,7 +27,6 @@ const reducer = (state, action) => {
 const Questionnaire = ({
   page,
 }) => {
-  // const [state, dispatch] = useReducer(reducer, {cpf: 0, phoneNumber: "",monetaryValue: "",installments: ""})
   const initialState = {
     cpf: "",
     phoneNumber: "",
@@ -44,16 +43,16 @@ const Questionnaire = ({
         <FirstPage state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 2}>
-        <SecondPage/>
+        <SecondPage state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 3}>
-        <ThirdPage/>
+        <ThirdPage state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 4}>
-        <FourthPage/>
+        <FourthPage state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 5}>
-        <FifthPage/>
+        <FifthPage state={state} dispatch={dispatch}/>
       </RenderIf>
     </>
   );

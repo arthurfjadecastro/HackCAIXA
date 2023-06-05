@@ -1,86 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NonEmptyValidator } from "./Validations";
-import { handleKeyPress } from "./Events";
 import MonetaryMaskDecorator from "./Masks/MonetaryMaskDecorator";
 import UniformTextField from "./UniformTextField";
 
-const Monetary = ({
-  name,
-  label,
-  value,
-  defaultValue,
-  onChange,
-  readOnly,
-  formId,
-  type,
-  onBlur,
-  helperText,
-  key,
-  disabled,
-  multiline,
-  autoComplete,
-  isUnderline,
-  variant,
-  shrink,
-  marginZero,
-  maxLength,
-  error,
-  autoFocus,
-  onKeyPress,
-  removePrefix,
-  removePrefixPlaceholder,
-  fontSize,
-  textAlign,
-  theme: overrideTheme,
-}) => {
+const Monetary = ({ helperText, onBlur, value, onChange, type}) => {
+  const [textValueByHelperText, setValue] = useState("");
+  console.log(value)
+  useEffect(() => {
+    const numericValue = parseInt(value.replace(/[^0-9.-]+/g, "").replace(".", ""), 10); // Remova o ponto antes de converter o valor
+
+
+
+
+    console.log(numericValue)
+    if (numericValue < 200 || numericValue > 10000) {
+      setValue("Valor deve estar entre R$ 200,00 e R$ 10.000,00");
+    } else {
+      setValue("");
+    }
+  }, [value]);
+
   return (
     <React.Fragment>
           <MonetaryMaskDecorator onChange={onChange}>
             <UniformTextField
-              autoFocus={autoFocus}
-              error={error}
-              maxLength={maxLength}
-              marginZero={marginZero}
               value={value}
-              multiline={multiline}
-              InputLabelProps={{
-                shrink: shrink,
-              }}
-              inputProps={{
-                maxLength: maxLength,
-                style: { fontSize: fontSize, textAlign: textAlign },
-              }}
               InputProps={{
-                onKeyPress: onKeyPress && handleKeyPress(onKeyPress),
-                disabled: disabled,
-                readOnly: readOnly,
-                disableUnderline: isUnderline,
                 onBlur: onBlur,
               }}
-              variant={variant}
-              fractionSize={2}
+              variant="standard"
+              allowNegative={false}
+              placeholder="R$ 00.000"
+              label={"Valor Solicitado"}
+              helperText={textValueByHelperText ? textValueByHelperText : helperText}
+              error={textValueByHelperText ? textValueByHelperText : helperText}
+              type={type}
+              maxLength={16}
+              // fractionSize={2}
               thousandSeparator={"."}
-              decimalSeparator={","}
               decimalScale={2}
               fixedDecimalScale={true}
-              prefix={(!removePrefix && "R$") || " "}
-              autoComplete={autoComplete}
-              allowNegative={false}
-              placeholder={
-                (!removePrefixPlaceholder && "R$ 00.000,00") || "00.000,00"
-              }
-              label={label}
-              helperText={helperText}
-              type={type}
-              defaultValue={defaultValue}
-              name={name}
-              key={key}
             />
           </MonetaryMaskDecorator>
     </React.Fragment>
   );
 };
 
-// export default (props) => <NonEmptyValidator {...props} Children={Monetary} />;
+export default (props) => <NonEmptyValidator {...props} Children={Monetary} />;
 
-export default Monetary;

@@ -8,7 +8,8 @@ import Item from "../../Frames/Item";
 
 
 
-const ThirdPage = ({}) => {
+const ThirdPage = ({state, dispatch}) => {
+  
   return (
     <>
     <Grid
@@ -25,7 +26,10 @@ const ThirdPage = ({}) => {
         </Grid>
         <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
-          <Monetary/>
+          <Monetary
+            value={state.monetaryValue}
+            onChange={(event) => dispatch({ type: "monetaryValue", payload: event.target.value })}
+          />
           </Item>
         </Grid>
         <Grid item>
