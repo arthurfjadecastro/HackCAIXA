@@ -45,6 +45,7 @@ useEffect(() => {
         <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
           <Monetary
+           
             value={state.monetaryValue}
             onChange={(event) => dispatch({ type: "monetaryValue", payload: event.target.value })}
           />

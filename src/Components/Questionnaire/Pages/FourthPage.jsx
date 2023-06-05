@@ -7,6 +7,7 @@ import { Frame, FramePaper, LoanDetails } from "../../Frames";
 import TooltipInfo from "../../Frames/TooltipInfo";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
+import FullScreenLoading from "./Resources/FullScreenLoading";
 
 
 
@@ -27,7 +28,12 @@ const FourthPage = ({handleBack, ETLData,handlePageChange, dispatch}) => {
 
   const titleInfo = activeButton === "PRICE" ?  "Ideal para quem busca parcelas fixas e planejamento financeiro." : "Ideal para quem busca previsibilidade nas parcelas."
   console.log(activeButton)
+  
+  if(ETLData.PRICE === undefined || ETLData.PRICE === null) {
+    return <FullScreenLoading />;
+  }
 
+ 
 
   return (
     <>
@@ -47,20 +53,25 @@ const FourthPage = ({handleBack, ETLData,handlePageChange, dispatch}) => {
           <TooltipInfo titleInfo={titleInfo}/>
           <ButtonGroup activeButton={activeButton} handleType={handleType}/> 
           <RenderIf predicate={activeButton === "PRICE"}>
-            <LoanDetails
-                interesetAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.valorJuros : null}
-                installmentAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.valorPrestacao : null}
-                numberInstallment={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.numero : null}
-            />
-            <LoanDetails interesetAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].valorJuros: null} installmentAmount={          ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].valorPrestacao : null} numberInstallment={ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].numero : null}/>
+            <RenderIf predicate={ETLData && ETLData.PRICE}>
+              <LoanDetails
+                  interesetAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.valorJuros : null}
+                  installmentAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.valorPrestacao : null}
+                  numberInstallment={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.numero : null}
+              />
+              <LoanDetails interesetAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].valorJuros: null} installmentAmount={          ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].valorPrestacao : null} numberInstallment={ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].numero : null}/>
+            </RenderIf>
           </RenderIf> 
           <RenderIf predicate={activeButton === "SAC"}>
+          <RenderIf predicate={ETLData && ETLData.SAC}>
+
             <LoanDetails
                 interesetAmount={ETLData && ETLData.SAC ? ETLData.SAC[0]?.valorJuros : null}
                 installmentAmount={ETLData && ETLData.SAC ? ETLData.SAC[0]?.valorPrestacao : null}
                 numberInstallment={ETLData && ETLData.SAC ? ETLData.SAC[0]?.numero : null}
             />
             <LoanDetails interesetAmount={ETLData && ETLData.SAC ? ETLData.SAC[ETLData.SAC.length - 1].valorJuros: null} installmentAmount={          ETLData && ETLData.SAC ? ETLData.SAC[ETLData.SAC.length - 1].valorPrestacao : null} numberInstallment={ETLData && ETLData.SAC ? ETLData.SAC[ETLData.SAC.length - 1].numero : null}/>
+          </RenderIf>
           </RenderIf> 
           </Item>
         </Grid>

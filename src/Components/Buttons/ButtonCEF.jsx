@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, styled } from "@mui/material";
 import { purple } from "@mui/material/colors";
 
@@ -19,14 +19,39 @@ const ColorButton = styled(Button)(({ theme }) => ({
   }));
 
 
-const ButtonCEF = ({handlePageChange,isContinueButtonEnabled,buttonTitle}) => {
-  
+
+
+const ButtonCEF = ({handlePageChange,isContinueButtonEnabled,buttonTitle, page, setClose}) => {
+
+  const handleClick = () => {
+    if (page === 5) {
+      setClose(false);
+    } else {
+      handlePageChange();
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && isContinueButtonEnabled) {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleClick, handleKeyDown, isContinueButtonEnabled]);
+
+
   return (
     <React.Fragment>
-        <ColorButton onClick={handlePageChange}  disabled={!isContinueButtonEnabled}>
-            {buttonTitle}
-        </ColorButton>    
-    </React.Fragment>
+    <ColorButton onClick={handleClick} disabled={!isContinueButtonEnabled}>
+      {buttonTitle}
+    </ColorButton>
+  </React.Fragment>
   );
 };
 

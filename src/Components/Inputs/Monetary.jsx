@@ -22,6 +22,7 @@ const Monetary = ({ helperText, onBlur, value, onChange, type}) => {
     <React.Fragment>
           <MonetaryMaskDecorator onChange={onChange}>
             <UniformTextField
+              autoFocus
               value={value}
               InputProps={{
                 onBlur: onBlur,

@@ -7,7 +7,7 @@ import { Frame, FramePaper } from "../../Frames";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 
-const FifthPage = ({setClose,ETLData, state}) => {
+const FifthPage = ({setClose,ETLData, state, page}) => {
   
 
   return (
@@ -46,7 +46,7 @@ const FifthPage = ({setClose,ETLData, state}) => {
         </Grid>
         <Grid item>
         <Item>
-        <ButtonCEF buttonTitle={"Concluir"} isContinueButtonEnabled={true} handlePageChange={() => setClose(false)} />
+        <ButtonCEF page={page} setClose={setClose} buttonTitle={"Concluir"} isContinueButtonEnabled={true} handlePageChange={setClose} />
         </Item>
         </Grid>
       </Grid>
