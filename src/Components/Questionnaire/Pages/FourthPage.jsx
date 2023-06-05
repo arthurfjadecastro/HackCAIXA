@@ -3,7 +3,8 @@ import axios from "axios";
 import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
 import { ButtonCEF, ButtonGroup, ButtonSimulateOther } from "../../Buttons";
-import { Frame, FramePaper } from "../../Frames";
+import { Frame, FramePaper, LoanDetails } from "../../Frames";
+import TooltipInfo from "../../Frames/TooltipInfo";
 
 
 
@@ -50,7 +51,10 @@ const FourthPage = ({}) => {
         </Grid>
         <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
+          <TooltipInfo/>
           <ButtonGroup/> 
+          <LoanDetails/>
+          <LoanDetails/>
           </Item>
         </Grid>
         <Grid item>
