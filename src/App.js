@@ -18,6 +18,9 @@ import {SimulateDialog} from "./Components/Dialogs"
 
 
 
+
+
+
 function Home() { 
   const [isOpenDialog, setIsOpenDialog] = useState(false);
   const settings = {
@@ -76,13 +79,13 @@ function Home() {
           <Grid item xs={12} md={6}>
             <Box sx={{ background: settings.gradientColor, p: 2 }}>
               <Typography style={{fontSize: isMobile ? 22 : 36}} className="classText" textAlign="center" variant="body1" component="div">
-                Experimente o Aplicativo CAIXA e aproveite a praticidade de solicitar <span className="orange-text">crédito rápido</span>.
+                Experimente o Aplicativo CAIXA e aproveite o <span className="orange-text">crédito rápido</span>.
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} md={6}>
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-              <img src="/img/logo1.png" alt="Slide 2" style={{ height: 'auto', objectFit: 'cover', maxWidth: "60%" }} />
+              <img src="/img/logo1.png" alt="Slide 2" style={{ height: 'auto', objectFit: 'cover', maxWidth: "40%" }} />
             </Box>
           </Grid>
         </Grid>
@@ -100,7 +103,24 @@ function Home() {
             </Grid>
           </div>
         </Slider>
+        <Box
+      sx={{
+        p: 2,
+        textAlign: "center",
+        backgroundColor: "transparent",
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        color: "white"
+      }}
+    >
+      <Typography variant="body2" color="white">
+        C150713 | Arthur de Castro
+      </Typography>
+    </Box>
       </Box>
+      
     </Box>
     <SimulateDialog isOpen={isOpenDialog} setClose={setIsOpenDialog} />
   </>

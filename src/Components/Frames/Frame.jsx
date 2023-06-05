@@ -1,14 +1,14 @@
 import React from 'react';
 import './frame.css';
 
-const Frame = ({value,initialInstallment, valueFirstInitialInstallment,lastInstallment, installments}) => {
+const Frame = ({ value, initialInstallment, valueFirstInitialInstallment, lastInstallment, installments }) => {
   return (
     <div className="frame">
       <div className="text-container">
-        <p>{value}</p>
-        <p>{initialInstallment}ª prestação - R$ {valueFirstInitialInstallment}</p>
-        <p>Última prestação - R$ {lastInstallment}</p>
-        <p>Parcelas - {installments}x</p>
+        <p className="value">{value}</p>
+        <p className="installment">1ª prestação - R$ {valueFirstInitialInstallment}</p>
+        <p className="last-installment">Última prestação - R$ {lastInstallment}</p>
+        <p className="installments">Parcelas - {installments}x</p>
       </div>
     </div>
   );

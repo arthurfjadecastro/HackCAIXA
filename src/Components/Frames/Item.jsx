@@ -7,7 +7,13 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    boxShadow:"none"
+    boxShadow:"none",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    // width: "100%",
+    // maxWidth: "400px",
   }));
 
 export default Item;
