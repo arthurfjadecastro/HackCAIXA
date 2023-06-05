@@ -1,4 +1,4 @@
-import { useState, useEffect, DependencyList, EffectCallback } from 'react';
+import { useState, useEffect, DependencyList, EffectCallback } from "react";
 
 const useDelayedEffect = (
   effect: EffectCallback,

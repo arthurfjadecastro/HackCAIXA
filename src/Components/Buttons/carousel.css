@@ -1,13 +1,16 @@
 .options-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Divide em 4 colunas de largura igual */
-    gap: 10px; /* Espaçamento entre os botões */
-  }
-  
-  .active {
-    /* Estilos para o botão ativo */
-    background: #F39200 !important;
-    /* Exemplo de cor de fundo azul */
-    color: white; /* Exemplo de cor do texto branco */
-    /* Outros estilos desejados */
-  }
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* Divide em 4 colunas de largura igual */
+  gap: 10px; /* Espaçamento entre os botões */
+}
+
+.active {
+  /* Estilos para o botão ativo */
+  background: #f39200 !important;
+  /* Exemplo de cor de fundo azul */
+  color: white; /* Exemplo de cor do texto branco */
+  /* Outros estilos desejados */
+}

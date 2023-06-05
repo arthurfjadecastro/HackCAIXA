@@ -3,11 +3,10 @@ import { Typography, Tooltip, IconButton } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import "./TooltipInfo.css"; // Importe o arquivo CSS
 
-
 const TextWithInfo = ({ text, tooltipText }) => {
   return (
     <Tooltip title={tooltipText}>
-      <IconButton disableFocusRipple disableTouchRipple  aria-label="info">
+      <IconButton disableFocusRipple disableTouchRipple aria-label="info">
         <Typography>{text}</Typography>
         <InfoIcon />
       </IconButton>
@@ -15,13 +14,10 @@ const TextWithInfo = ({ text, tooltipText }) => {
   );
 };
 
-const TooltipInfo = ({titleInfo}) => {
+const TooltipInfo = ({ titleInfo }) => {
   return (
     <>
-      <TextWithInfo
-        text="Informações"
-        tooltipText={titleInfo}
-      />
+      <TextWithInfo text="Informações" tooltipText={titleInfo} />
       {/* Resto do seu código */}
     </>
   );

@@ -1,5 +1,5 @@
-import { HookParams, Neutralizable, useFiredHook } from 'react-control-hooks';
-import useRequest from './useRequest';
+import { HookParams, Neutralizable, useFiredHook } from "react-control-hooks";
+import useRequest from "./useRequest";
 
 const useArgfulFiredRequest = <P extends HookParams, R>(
   requestFunction: (args: P) => Promise<R>

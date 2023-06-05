@@ -1,9 +1,9 @@
-import useQueryParams from './useQueryParams';
-import { useParams } from 'react-router-dom';
-import useQueryStateParam from './useQueryStateParam';
-import Property from './Types/Property';
-import { SimpleObject, Url } from './Types';
-import { useEffect, useState } from 'react';
+import useQueryParams from "./useQueryParams";
+import { useParams } from "react-router-dom";
+import useQueryStateParam from "./useQueryStateParam";
+import Property from "./Types/Property";
+import { SimpleObject, Url } from "./Types";
+import { useEffect, useState } from "react";
 
 const useUrl = (): Url => {
   const queryParams = useQueryParams();
@@ -20,20 +20,18 @@ const useUrl = (): Url => {
   const setQuery = (prop: Property) => {
     const [key, value] = prop;
     if (key.trim().length === 0) throw new Error("'key' can't be empty");
-    if (typeof value === 'string' && value.trim().length === 0)
+    if (typeof value === "string" && value.trim().length === 0)
       throw new Error("'value' can't be empty");
     queryParams.set([key, value]);
   };
 
   const emit = (eventName: string, eventKey?: string) => {
-    const differentiator = Math.random()
-      .toString(36)
-      .substring(7);
+    const differentiator = Math.random().toString(36).substring(7);
     if (eventKey === undefined) {
-      setQuery(['event', `${eventName};${differentiator}`]);
+      setQuery(["event", `${eventName};${differentiator}`]);
       return;
     }
-    setQuery(['event', `${eventName}.${eventKey};${differentiator}`]);
+    setQuery(["event", `${eventName}.${eventKey};${differentiator}`]);
   };
 
   const deleteQuery = (key: string) => {
@@ -43,14 +41,14 @@ const useUrl = (): Url => {
 
   const setQueryIfUndefined = ([key, value]: Property) => {
     if (key.trim().length === 0) throw new Error("'key' can't be empty");
-    if (typeof value === 'string' && value.trim().length === 0)
+    if (typeof value === "string" && value.trim().length === 0)
       throw new Error("'value' can't be empty");
     queryParams.setIfUndefined([key, value]);
   };
 
   const setQueryIfNotUndefined = ([key, value]: Property) => {
     if (key.trim().length === 0) throw new Error("'key' can't be empty");
-    if (typeof value === 'string' && value.trim().length === 0)
+    if (typeof value === "string" && value.trim().length === 0)
       throw new Error("'value' can't be empty");
     queryParams.setIfNotUndefined([key, value]);
   };

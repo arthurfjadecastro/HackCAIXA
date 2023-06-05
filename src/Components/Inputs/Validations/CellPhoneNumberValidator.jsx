@@ -1,5 +1,5 @@
 import React from "react";
-import {isPhoneNumber} from "./Base"
+import { isPhoneNumber } from "./Base";
 import ByTimeValidator from "./Base/ByTimeValidator";
 
 const TEXT_PRESENT_ERROR = "Inválido, informe um número válido";

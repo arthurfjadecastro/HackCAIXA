@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { HookParams, Neutralizable } from 'react-control-hooks';
+import { useEffect, useMemo, useState } from "react";
+import { HookParams, Neutralizable } from "react-control-hooks";
 
 const useRequest = <P extends HookParams, R>(
   args:
@@ -38,7 +38,7 @@ const useRequest = <P extends HookParams, R>(
   const [count, setCount] = useState(0);
   const refetch = useMemo(
     () => () => {
-      setCount(prev => prev + 1);
+      setCount((prev) => prev + 1);
     },
     []
   );
@@ -55,14 +55,14 @@ const useRequest = <P extends HookParams, R>(
         ? (requestFunction as () => Promise<R>)()
         : requestFunction(requestBody as P);
     request()
-      .then(response =>
+      .then((response) =>
         setResponse(({ error }) => ({
           result: response,
           error,
           isLoading: false,
         }))
       )
-      .catch(error =>
+      .catch((error) =>
         setResponse(({ result }) => ({ result, error, isLoading: false }))
       );
   }, [JSON.stringify(args.requestBody), count]);

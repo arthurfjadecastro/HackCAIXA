@@ -1,18 +1,18 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import { Box } from '@mui/material';
-import { Questionnaire } from '../Questionnaire';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import ListItemText from "@mui/material/ListItemText";
+import ListItem from "@mui/material/ListItem";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
+import { Box } from "@mui/material";
+import { Questionnaire } from "../Questionnaire";
 import axios from "axios";
 import { useMatchesSmartphone } from "../Breakpoints";
 
@@ -20,13 +20,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
 const initialState = {
   cpf: "",
   phoneNumber: "",
   monetaryValue: "",
   installments: "",
-  typeInstallments: "PRICE"
+  typeInstallments: "PRICE",
 };
 
 const reducer = (state, action) => {
@@ -39,8 +38,8 @@ const reducer = (state, action) => {
       return { ...state, monetaryValue: action.payload };
     case "installments":
       return { ...state, installments: action.payload };
-      case "typeInstallments":
-        return { ...state, typeInstallments: action.payload };
+    case "typeInstallments":
+      return { ...state, typeInstallments: action.payload };
     case "resetState":
       return initialState;
     default:
@@ -48,16 +47,11 @@ const reducer = (state, action) => {
   }
 };
 
-
-
-
-function SimulateDialog({isOpen, setClose}) {
-
+function SimulateDialog({ isOpen, setClose }) {
   const [response, setResponse] = useState();
   const [ETLData, setEtlData] = useState();
-  
-  const iterableData = {};
 
+  const iterableData = {};
 
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(1);
@@ -66,48 +60,48 @@ function SimulateDialog({isOpen, setClose}) {
     type: "resetState",
   });
 
-useEffect(() => {
-  setPage(1)
-  dispatch(resetState());
-  // setEtlData(null)
-  // setResponse(null)
-},[isOpen === false])
+  useEffect(() => {
+    setPage(1);
+    dispatch(resetState());
+    // setEtlData(null)
+    // setResponse(null)
+  }, [isOpen === false]);
 
-useEffect(() => {
-  if(response !== null && response !== undefined)
-  response.resultadoSimulacao.forEach(item => {
-    iterableData[item.tipo] = item.parcelas;
-  });
-  setEtlData(iterableData)
-},[response])
+  useEffect(() => {
+    if (response !== null && response !== undefined)
+      response.resultadoSimulacao.forEach((item) => {
+        iterableData[item.tipo] = item.parcelas;
+      });
+    setEtlData(iterableData);
+  }, [response]);
 
-
-
-const isMobile = useMatchesSmartphone()
+  const isMobile = useMatchesSmartphone();
 
   const handlePageChange = () => {
-
     if (page === 3) {
-      const numericValue = parseInt(state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""), 10);
-      axios.post("https://apphackaixades.azurewebsites.net/api/Simulacao",{
-      valorDesejado: numericValue,
-      prazo: state.installments
-      })
-      .then((response) => setResponse(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
+      const numericValue = parseInt(
+        state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
+        10
+      );
+      axios
+        .post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
+          valorDesejado: numericValue,
+          prazo: state.installments,
+        })
+        .then((response) => setResponse(response.data))
+        .catch((err) => {
+          console.error("ops! ocorreu um erro" + err);
+        });
     }
 
     setPage(page + 1);
   };
 
-
   const handleBack = () => {
-   setPage(page - 1);
+    setPage(page - 1);
   };
 
-console.log(state)
+  console.log(state);
 
   return (
     <div>
@@ -117,7 +111,7 @@ console.log(state)
         onClose={() => setClose(false)}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative', backgroundColor: "#005CA9" }}>
+        <AppBar sx={{ position: "relative", backgroundColor: "#005CA9" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -132,8 +126,23 @@ console.log(state)
             </Typography>
           </Toolbar>
         </AppBar>
-        <Box style={{display: "flex", height: "100%", padding: isMobile ? 16 : 45, justifyContent: "center"}}>
-          <Questionnaire setClose={setClose} ETLData={ETLData} state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
+        <Box
+          style={{
+            display: "flex",
+            height: "100%",
+            padding: isMobile ? 16 : 45,
+            justifyContent: "center",
+          }}
+        >
+          <Questionnaire
+            setClose={setClose}
+            ETLData={ETLData}
+            state={state}
+            handleBack={handleBack}
+            handlePageChange={handlePageChange}
+            page={page}
+            dispatch={dispatch}
+          />
         </Box>
       </Dialog>
     </div>

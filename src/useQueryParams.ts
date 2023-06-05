@@ -1,9 +1,9 @@
-import { useHistory } from 'react-router-dom';
-import queryString from 'query-string';
-import { useState, useEffect } from 'react';
-import Property from './Types/Property';
-import QueryParams from './Types/QueryParams';
-import { isProperties, isProperty } from './Types';
+import { useHistory } from "react-router-dom";
+import queryString from "query-string";
+import { useState, useEffect } from "react";
+import Property from "./Types/Property";
+import QueryParams from "./Types/QueryParams";
+import { isProperties, isProperty } from "./Types";
 
 const useQueryParams = () => {
   const history = useHistory();
@@ -16,7 +16,7 @@ const useQueryParams = () => {
     if (value === undefined) {
       const withoutParam = { ...currentParams, [name]: undefined };
       const isTheLastParam =
-        Object.values(withoutParam).filter(value => value !== undefined)
+        Object.values(withoutParam).filter((value) => value !== undefined)
           .length === 0;
       if (isTheLastParam) {
         history.replace(window.location.pathname);

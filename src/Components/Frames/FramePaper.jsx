@@ -11,7 +11,7 @@ const Frame = styled(Paper)(({ theme }) => ({
   alignItems: "center",
   minWidth: 200,
   maxWidth: 400,
-  marginBottom: 16
+  marginBottom: 16,
 }));
 
 const Logo = styled("img")({
@@ -35,21 +35,21 @@ const ButtonIcon = styled(ArrowForwardIcon)({
 });
 
 const handleOpenAppiOs = () => {
-  window.open('https://apps.apple.com/br/app/caixa/id490813624', '_blank');
+  window.open("https://apps.apple.com/br/app/caixa/id490813624", "_blank");
 };
 
 const handleOpenAppAndroid = () => {
-  window.open('https://play.google.com/store/apps/details?id=br.com.gabba.Caixa&hl=pt_BR', '_blank');
+  window.open(
+    "https://play.google.com/store/apps/details?id=br.com.gabba.Caixa&hl=pt_BR",
+    "_blank"
+  );
 };
 
-  
 const handleWhatsApp = () => {
-  window.open('https://api.whatsapp.com/send?phone=8001040104', '_blank');
+  window.open("https://api.whatsapp.com/send?phone=8001040104", "_blank");
 };
 
-
-
-const CustomFrame = ({img, text, link, textButton}) => {
+const CustomFrame = ({ img, text, link, textButton }) => {
   return (
     <Frame>
       <Logo src={img} alt="Logo CAIXA" />
@@ -58,23 +58,34 @@ const CustomFrame = ({img, text, link, textButton}) => {
       </FrameContent>
       <RenderIf predicate={img === "/img/logocaixa.png"}>
         <Grid container direction={"row"} justifyContent={"right"}>
-          <Grid onClick={handleOpenAppiOs} item style={{marginRight: 24, cursor: "pointer"}}>
-          <img style={{width: 36, height: 36}} src={"/img/app-store.png"}></img>
+          <Grid
+            onClick={handleOpenAppiOs}
+            item
+            style={{ marginRight: 24, cursor: "pointer" }}
+          >
+            <img
+              style={{ width: 36, height: 36 }}
+              src={"/img/app-store.png"}
+            ></img>
           </Grid>
-          <Grid item  style={{cursor: "pointer"}}onClick={handleOpenAppAndroid}>
-        <img style={{width: 36, height: 36}} src={"/img/google-play.png"}></img>
+          <Grid
+            item
+            style={{ cursor: "pointer" }}
+            onClick={handleOpenAppAndroid}
+          >
+            <img
+              style={{ width: 36, height: 36 }}
+              src={"/img/google-play.png"}
+            ></img>
           </Grid>
         </Grid>
-        <Typography style={{color: "black"}}>
-          {textButton}
-            </Typography>
-      
+        <Typography style={{ color: "black" }}>{textButton}</Typography>
       </RenderIf>
       <RenderIf predicate={img === "/img/whatsappicon.png"}>
-      <Button onClick={handleWhatsApp} variant="outlined" color="primary">
-        {textButton}
-        <ButtonIcon />
-      </Button>
+        <Button onClick={handleWhatsApp} variant="outlined" color="primary">
+          {textButton}
+          <ButtonIcon />
+        </Button>
       </RenderIf>
     </Frame>
   );

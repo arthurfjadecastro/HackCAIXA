@@ -1,5 +1,5 @@
-import { Neutralizable, useFiredHook } from 'react-control-hooks';
-import useRequest from './useRequest';
+import { Neutralizable, useFiredHook } from "react-control-hooks";
+import useRequest from "./useRequest";
 
 const useArglessFiredRequest = <R>(
   requestFunction: () => Promise<R>
