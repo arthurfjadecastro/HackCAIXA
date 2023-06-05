@@ -29,7 +29,7 @@ const ThirdPage = ({}) => {
             De quanto você precisa?
           </TitleText>
         </Grid>
-        <Grid item>
+        <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
           <Monetary/>
           </Item>

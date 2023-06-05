@@ -29,7 +29,7 @@ const ThirdPage = ({}) => {
             Em quantas vezes gostaria de pagar?
           </TitleText>
         </Grid>
-        <Grid item>
+        <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
           <Carousel/>
           </Item>

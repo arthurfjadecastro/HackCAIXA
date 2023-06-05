@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
-import { ButtonCEF, ButtonSimulateOther } from "../../Buttons";
+import { ButtonCEF, ButtonGroup, ButtonSimulateOther } from "../../Buttons";
+import { Frame, FramePaper } from "../../Frames";
 
 
 
@@ -47,9 +48,9 @@ const FourthPage = ({}) => {
             Agora escolha a modalidade que cabe em seu bolso
           </TitleText>
         </Grid>
-        <Grid item>
+        <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
-          {/* <Monetary/> */}
+          <ButtonGroup/> 
           </Item>
         </Grid>
         <Grid item>

@@ -30,7 +30,7 @@ function FirstPage() {
             Informe seu CPF e Telefone
           </TitleText>
         </Grid>
-        <Grid item>
+        <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
             <Cpf/>
           </Item>
