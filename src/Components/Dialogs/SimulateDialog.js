@@ -75,6 +75,9 @@ useEffect(() => {
   setEtlData(iterableData)
 },[response])
 
+console.log("dados tratados")
+console.log(ETLData)
+
 
 
   const handlePageChange = () => {
