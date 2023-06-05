@@ -6,9 +6,8 @@ import {
   BackButton,
   ButtonCEF,
   ButtonGroup,
-  ButtonSimulateOther,
 } from "../../Buttons";
-import { Frame, FramePaper, LoanDetails } from "../../Frames";
+import { LoanDetails } from "../../Frames";
 import TooltipInfo from "../../Frames/TooltipInfo";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";

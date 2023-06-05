@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
-import "./buttonGroup.css"; // Importe seu arquivo de estilos CSS
+import "./buttonGroup.css"; 
 
 export default function DisableElevation({ activeButton, handleType }) {
   return (

@@ -12,8 +12,6 @@ const Item = styled(Paper)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  // width: "100%",
-  // maxWidth: "400px",
 }));
 
 export default Item;

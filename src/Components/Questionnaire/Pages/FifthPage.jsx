@@ -32,7 +32,6 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             justifyContent: "center",
           }}
         >
-          {/* <Item > */}
           <RenderIf predicate={state.typeInstallments === "PRICE"}>
             <Frame
               installments={state.installments}
@@ -86,7 +85,6 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             text={"Fale com um gerente agora"}
             img={"/img/whatsappicon.png"}
           />
-          {/* </Item> */}
         </Grid>
         <Grid item>
           <Item>

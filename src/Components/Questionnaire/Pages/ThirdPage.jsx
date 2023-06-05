@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Monetary } from "../../Inputs";
-import { Grid, Paper, styled } from "@mui/material";
+import { Grid } from "@mui/material";
 import { TitleText } from "./Resources";
 import { BackButton, ButtonCEF, Carousel } from "../../Buttons";
 import Item from "../../Frames/Item";
@@ -12,7 +11,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
-    dispatch({ type: "installments", payload: option }); // Exemplo de ação para atualizar o estado das parcelas
+    dispatch({ type: "installments", payload: option }); 
   };
   return (
     <>

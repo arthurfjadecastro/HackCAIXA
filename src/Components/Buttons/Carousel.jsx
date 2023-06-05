@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./carousel.css";
 
 const Carousel = ({ state, dispatch, handleOptionClick, selectedOption }) => {

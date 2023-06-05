@@ -2,10 +2,7 @@ import {
   useState,
   useMemo,
   useEffect,
-  EffectCallback,
-  DependencyList,
 } from "react";
-// import { useDelayedEffect } from './useDelayedEffect.js';
 
 const useSkippableEffect = (
   effect,
@@ -26,13 +23,7 @@ const useSkippableEffect = (
     setPrevDependencies(mergedDependencies);
   }, [mergedDependencies]);
 
-  // useDelayedEffect(
-  //   () => {
-  //     return effect();
-  //   },
-  //   mergedDependencies,
-  //   times
-  // );
+
 };
 
 export default useSkippableEffect;

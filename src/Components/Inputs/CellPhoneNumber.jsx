@@ -1,7 +1,4 @@
 import React from "react";
-// import { CpfValidator, NonEmptyValidator } from "../Inputs/Validations";
-// import {UniformTextField} from "../Inputs";
-import { TextField } from "@mui/material";
 import InputMask from "react-input-mask";
 import UniformTextField from "./UniformTextField";
 import { NonEmptyValidator } from "./Validations";
@@ -38,4 +35,3 @@ const Wrapper = (props) => (
 );
 export default (props) => <NonEmptyValidator {...props} Children={Wrapper} />;
 
-// export default CellPhoneNumber;

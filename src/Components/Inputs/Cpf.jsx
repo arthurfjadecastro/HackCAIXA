@@ -1,6 +1,4 @@
-// Cpf.jsx
 import React from "react";
-import { TextField } from "@mui/material";
 import InputMask from "react-input-mask";
 import UniformTextField from "./UniformTextField";
 import { CpfValidator, NonEmptyValidator } from "./Validations";
@@ -30,6 +28,5 @@ const Cpf = ({ helperText, onBlur, value, onChange, type }) => {
   );
 };
 
-// export default Cpf;
 const Foo = (props) => <CpfValidator {...props} Children={Cpf} />;
 export default (props) => <NonEmptyValidator {...props} Children={Foo} />;

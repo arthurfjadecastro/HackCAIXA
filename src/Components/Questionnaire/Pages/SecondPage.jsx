@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Monetary } from "../../Inputs";
-import { Grid, Paper, styled } from "@mui/material";
+import { Grid } from "@mui/material";
 import { TitleText } from "./Resources";
-import { BackButton, ButtonCEF, ButtonSimulateOther } from "../../Buttons";
+import { BackButton, ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
-import { isPositiveNumber } from "../../Buttons/Validations";
 import { isNonEmptyString } from "../../Inputs/Validations/Base";
 
 const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
@@ -12,7 +11,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
   const numericValue = parseInt(
     state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
     10
-  ); // Remova o ponto antes de converter o valor
+  ); 
 
   useEffect(() => {
     if (numericValue < 200 || numericValue > 10000) {

@@ -3,14 +3,12 @@
   grid-template-columns: repeat(
     4,
     1fr
-  ); /* Divide em 4 colunas de largura igual */
-  gap: 10px; /* Espaçamento entre os botões */
+  ); 
+  gap: 10px; 
 }
 
 .active {
-  /* Estilos para o botão ativo */
   background: #f39200 !important;
-  /* Exemplo de cor de fundo azul */
-  color: white; /* Exemplo de cor do texto branco */
-  /* Outros estilos desejados */
+  color: white; 
+
 }

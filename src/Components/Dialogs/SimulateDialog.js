@@ -1,10 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -55,7 +50,6 @@ function SimulateDialog({ isOpen, setClose }) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(1);
-  // const [reset, setReset] = useState(false)
   const resetState = () => ({
     type: "resetState",
   });
@@ -63,8 +57,6 @@ function SimulateDialog({ isOpen, setClose }) {
   useEffect(() => {
     setPage(1);
     dispatch(resetState());
-    // setEtlData(null)
-    // setResponse(null)
   }, [isOpen === false]);
 
   useEffect(() => {
