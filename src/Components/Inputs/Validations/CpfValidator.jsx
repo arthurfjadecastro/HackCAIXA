@@ -1,6 +1,5 @@
 import React from "react";
-import ByTimeValidator from "./Base/ByTimeValidator";
-import { isCPFValid } from "../../../Validations";
+import { isCPFValid, ByTimeValidator } from "./Base";
 
 const TEXT_PRESENT_ERROR = "Inválido, informe um CPF válido";
 

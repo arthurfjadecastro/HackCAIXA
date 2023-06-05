@@ -5,16 +5,7 @@ import { TitleText } from "./Resources";
 import { ButtonCEF, ButtonGroup, ButtonSimulateOther } from "../../Buttons";
 import { Frame, FramePaper, LoanDetails } from "../../Frames";
 import TooltipInfo from "../../Frames/TooltipInfo";
-
-
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+import Item from "../../Frames/Item";
 
 
 
@@ -33,7 +24,6 @@ const FourthPage = ({}) => {
         console.error("ops! ocorreu um erro" + err);
       });
   }, []);
-  console.log(value)
 
   return (
     <>
@@ -42,7 +32,6 @@ const FourthPage = ({}) => {
         direction="column"
         justifyContent="space-between"
         alignItems="center"
-        spacin={4}
       >
         <Grid item>
           <TitleText>

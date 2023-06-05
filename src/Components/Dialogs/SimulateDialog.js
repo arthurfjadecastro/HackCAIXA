@@ -21,7 +21,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function SimulateDialog({isOpen, setClose}) {
   const [page, setPage] = useState(1);
-  console.log(page)
+
 
   return (
     <div>

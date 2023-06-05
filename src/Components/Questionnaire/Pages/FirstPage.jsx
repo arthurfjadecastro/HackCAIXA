@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Box, Button, Grid, Paper, Typography } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import React from "react";
+import { Grid } from "@mui/material";
 import { TitleText } from "./Resources";
-import {CellPhoneNumber, Cpf} from "../../Inputs";
-import {ButtonCEF, ButtonSimulateOther} from "../../Buttons";
-// import UniformTextField from "../../Inputs/InputCPF";
+import { CellPhoneNumber, Cpf } from "../../Inputs";
+import { ButtonCEF } from "../../Buttons";
+import Item from "../../Frames/Item";
 
-
-function FirstPage() {
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+function FirstPage({ state, dispatch }) {
   return (
     <>
       <Grid
@@ -23,32 +13,28 @@ function FirstPage() {
         direction="column"
         justifyContent="space-between"
         alignItems="center"
-        spacin={4}
       >
         <Grid item>
-          <TitleText>
-            Informe seu CPF e Telefone
-          </TitleText>
+          <TitleText>Informe seu CPF e Telefone</TitleText>
         </Grid>
-        <Grid item style={{flex: 2,width: "100%"}}>
+        <Grid item style={{ flex: 2, width: "100%" }}>
           <Item>
-            <Cpf/>
+          <Cpf
+            value={state.cpf}
+            onChange={(event) => dispatch({ type: "cpf", payload: event.target.value })}
+          />
           </Item>
-          <Item>
-            <CellPhoneNumber/>
+           <Item>
+          <CellPhoneNumber/>
           </Item>
         </Grid>
         <Grid item>
-        <Item>
-          <ButtonCEF/>
-
-        </Item>
-        <Item>
-          <ButtonCEF/>
-        </Item>
+          <Item>
+            <ButtonCEF />
+          </Item>
         </Grid>
       </Grid>
-     </>
+    </>
   );
 }
 

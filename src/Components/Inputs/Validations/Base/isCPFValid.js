@@ -1,40 +1,37 @@
-const isCPFValid = (cpf) => {
-  
-    if (typeof cpf !== "string") return false;
-  
-    cpf = cpf.replace(/[^\d]+/g, "");
-    if (process.env.REACT_APP_BUILD_ENV === "development" && cpf.length === 11) return true;
-    if (cpf == "") return false;
-    // Elimina CPFs invalidos conhecidos
+const isCpfValid = (value) => {
+    if (typeof value != "string") return false;
+    value = value.replace(/[^\d]+/g, "");
+    if (value === "") return false;
+    // Elimina values invalidos conhecidos
     if (
-      cpf.length != 11 ||
-      cpf == "00000000000" ||
-      cpf == "11111111111" ||
-      cpf == "22222222222" ||
-      cpf == "33333333333" ||
-      cpf == "44444444444" ||
-      cpf == "55555555555" ||
-      cpf == "66666666666" ||
-      cpf == "77777777777" ||
-      cpf == "88888888888" ||
-      cpf == "99999999999"
+      value.length !== 11 ||
+      value === "00000000000" ||
+      value === "11111111111" ||
+      value === "22222222222" ||
+      value === "33333333333" ||
+      value === "44444444444" ||
+      value === "55555555555" ||
+      value === "66666666666" ||
+      value === "77777777777" ||
+      value === "88888888888" ||
+      value === "99999999999"
     )
       return false;
     // Valida 1o digito
     let add = 0;
     let rev;
-    for (let i = 0; i < 9; i++) add += parseInt(cpf.charAt(i)) * (10 - i);
+    for (let i = 0; i < 9; i++) add += parseInt(value.charAt(i)) * (10 - i);
     rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11) rev = 0;
-    if (rev != parseInt(cpf.charAt(9))) return false;
+    if (rev === 10 || rev === 11) rev = 0;
+    if (rev !== parseInt(value.charAt(9))) return false;
     // Valida 2o digito
     add = 0;
-    for (let i = 0; i < 10; i++) add += parseInt(cpf.charAt(i)) * (11 - i);
+    for (let i = 0; i < 10; i++) add += parseInt(value.charAt(i)) * (11 - i);
     rev = 11 - (add % 11);
-    if (rev == 10 || rev == 11) rev = 0;
-    if (rev != parseInt(cpf.charAt(10))) return false;
+    if (rev === 10 || rev === 11) rev = 0;
+    if (rev !== parseInt(value.charAt(10))) return false;
     return true;
   };
   
-  export default isCPFValid;
+  export default isCpfValid;
   

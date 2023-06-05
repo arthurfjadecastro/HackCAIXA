@@ -18,7 +18,12 @@ const CellPhoneNumber = ({}) => {
             mask={MASK_CELPHONE}
           >
             {() => (
-              <UniformTextField/>
+              <UniformTextField 
+              id="standard-helperText"
+              label="Celular"
+              defaultValue="Default Value"
+              helperText="Some important text"
+              variant="standard"/>
             )}
           </InputMask>
         
