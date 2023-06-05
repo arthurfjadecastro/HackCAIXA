@@ -30,6 +30,9 @@ const Questionnaire = ({
   // const [state, dispatch] = useReducer(reducer, {cpf: 0, phoneNumber: "",monetaryValue: "",installments: ""})
   const initialState = {
     cpf: "",
+    phoneNumber: "",
+    monetaryValue: "",
+    installments: ""
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 

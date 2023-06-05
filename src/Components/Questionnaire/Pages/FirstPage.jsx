@@ -25,7 +25,10 @@ function FirstPage({ state, dispatch }) {
           />
           </Item>
            <Item>
-          <CellPhoneNumber/>
+          <CellPhoneNumber
+            value={state.phoneNumber}
+            onChange={(event) => dispatch({ type: "phoneNumber", payload: event.target.value })}
+          />
           </Item>
         </Grid>
         <Grid item>

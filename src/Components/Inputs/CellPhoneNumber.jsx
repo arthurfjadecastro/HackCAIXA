@@ -4,33 +4,44 @@ import React from "react";
 import { TextField } from "@mui/material";
 import InputMask from 'react-input-mask';
 import UniformTextField from "./UniformTextField";
+import { NonEmptyValidator } from "./Validations";
+import CellPhoneNumberValidator from "./Validations/CellPhoneNumberValidator";
+
 
 
 
 
 const MASK_CELPHONE = "(99) 9 9999-9999";
 
-const CellPhoneNumber = ({}) => {
+const CellPhoneNumber = ({ helperText, onBlur, value, onChange, type}) => {
   
   return (
     <React.Fragment>
      <InputMask
-            mask={MASK_CELPHONE}
-          >
+      type={type}
+      mask={MASK_CELPHONE}
+      value={value}
+      onChange={onChange}
+      onBlur={onBlur}
+    >
             {() => (
               <UniformTextField 
-              id="standard-helperText"
-              label="Celular"
-              defaultValue="Default Value"
-              helperText="Some important text"
-              variant="standard"/>
+                type={type}
+                error={helperText}
+                id="standard-helperText"
+                label="Celular"
+                helperText={helperText}
+                variant="standard"
+              />
             )}
           </InputMask>
         
     </React.Fragment>
   );
 };
+const Wrapper = (props) => (
+  <CellPhoneNumberValidator {...props} Children={CellPhoneNumber} />
+);
+export default (props) => <NonEmptyValidator {...props} Children={Wrapper} />;
 
-// const Foo = (props) => <CellPhoneNumberValidator {...props} Children={Cpf} />;
-// export default (props) => <NonEmptyValidator {...props} Children={Foo} />;
-export default CellPhoneNumber;
+// export default CellPhoneNumber;

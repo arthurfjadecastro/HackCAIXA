@@ -7,10 +7,10 @@ import { CpfValidator, NonEmptyValidator } from "./Validations";
 
 const CPFMask = "999.999.999-99";
 
-const Cpf = ({ helperText, onBlur, value, onChange }) => {
+const Cpf = ({ helperText, onBlur, value, onChange, type }) => {
   return (
     <InputMask
-      type={"cpf"}
+      type={type}
       mask={CPFMask}
       value={value}
       onChange={onChange}
@@ -18,11 +18,10 @@ const Cpf = ({ helperText, onBlur, value, onChange }) => {
     >
       {() => (
         <UniformTextField
-          type={"cpf"}
+          type={type}
           error={helperText}
           id="standard-helperText"
           label="CPF"
-          // value={value}
           helperText={helperText}
           variant="standard"
         />
