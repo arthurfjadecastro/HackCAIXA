@@ -40,41 +40,65 @@ const FourthPage = ({handleBack, ETLData,handlePageChange, dispatch}) => {
         <Grid
         container
         direction="column"
-        justifyContent="space-between"
         alignItems="center"
+        justifyContent="center"
       >
-        <Grid item>
+        <Grid item style={{display: "flex", justifyContent: "center"}}>
           <TitleText>
             Agora escolha a modalidade que cabe em seu bolso
           </TitleText>
         </Grid>
-        <Grid item style={{flex: 2,width: "100%"}}>
-          <Item>
+        <Grid item style={{width: "100%", display: "flex", justifyContent: "center"}}>
+       
           <TooltipInfo titleInfo={titleInfo}/>
+        </Grid>
+        <Grid item style={{marginBottom: 40}}>
           <ButtonGroup activeButton={activeButton} handleType={handleType}/> 
+
+        </Grid>
+        <Grid item style={{flex: 1, width: "100%", maxWidth: "400px"}}>
+
           <RenderIf predicate={activeButton === "PRICE"}>
             <RenderIf predicate={ETLData && ETLData.PRICE}>
+              <Grid container flexDirection={"column"} >
+                <Grid Item style={{width: "100%", height: "100%", marginBottom: "16px"}}>
+
               <LoanDetails
                   interesetAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.valorJuros : null}
                   installmentAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.valorPrestacao : null}
                   numberInstallment={ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.numero : null}
               />
+                </Grid>
+                <Grid Item style={{width: "100%", height: "100%"}}>
+                  
               <LoanDetails interesetAmount={ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].valorJuros: null} installmentAmount={          ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].valorPrestacao : null} numberInstallment={ETLData && ETLData.PRICE ? ETLData.PRICE[ETLData.PRICE.length - 1].numero : null}/>
+                  </Grid>
+              </Grid>
             </RenderIf>
           </RenderIf> 
           <RenderIf predicate={activeButton === "SAC"}>
           <RenderIf predicate={ETLData && ETLData.SAC}>
+          <Grid container flexDirection={"column"} >
 
+    
+                <Grid Item style={{width: "100%", height: "100%", marginBottom: "16px"}}>
+                  
             <LoanDetails
                 interesetAmount={ETLData && ETLData.SAC ? ETLData.SAC[0]?.valorJuros : null}
                 installmentAmount={ETLData && ETLData.SAC ? ETLData.SAC[0]?.valorPrestacao : null}
                 numberInstallment={ETLData && ETLData.SAC ? ETLData.SAC[0]?.numero : null}
             />
+                </Grid>
+                <Grid Item style={{width: "100%", height: "100%", marginBottom: "16px"}}>
+                  
             <LoanDetails interesetAmount={ETLData && ETLData.SAC ? ETLData.SAC[ETLData.SAC.length - 1].valorJuros: null} installmentAmount={          ETLData && ETLData.SAC ? ETLData.SAC[ETLData.SAC.length - 1].valorPrestacao : null} numberInstallment={ETLData && ETLData.SAC ? ETLData.SAC[ETLData.SAC.length - 1].numero : null}/>
+                </Grid>
+                </Grid>
           </RenderIf>
           </RenderIf> 
-          </Item>
+      
         </Grid>
+       
         <Grid item>
         <Item>
         <ButtonCEF  buttonTitle={"Continuar"} handlePageChange={handlePageChange} isContinueButtonEnabled={true} />

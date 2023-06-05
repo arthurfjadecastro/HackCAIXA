@@ -6,7 +6,7 @@
   
   .active {
     /* Estilos para o botão ativo */
-    background-color: #005CA9;
+    background: #F39200 !important;
     /* Exemplo de cor de fundo azul */
     color: white; /* Exemplo de cor do texto branco */
     /* Outros estilos desejados */

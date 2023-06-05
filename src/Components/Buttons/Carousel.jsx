@@ -9,6 +9,18 @@ const Carousel = ({state, dispatch, handleOptionClick, selectedOption}) => {
 
     return options.map((option) => (
       <button
+      style={{
+        background: '#005CA9',
+        color: 'white',
+        borderRadius: '4px',
+        padding: '8px 16px',
+        margin: '8px',
+        border: 'none',
+        cursor: 'pointer',
+        outline: 'none',
+        fontSize: '16px',
+        fontWeight: 'bold',
+      }}
         key={option}
         className={state.installments === option ? 'active' : ''}
         onClick={() => handleOptionClick(option)}

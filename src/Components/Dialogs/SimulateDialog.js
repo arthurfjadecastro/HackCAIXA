@@ -14,6 +14,7 @@ import Slide from '@mui/material/Slide';
 import { Box } from '@mui/material';
 import { Questionnaire } from '../Questionnaire';
 import axios from "axios";
+import { useMatchesSmartphone } from "../Breakpoints";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -82,7 +83,7 @@ useEffect(() => {
 
 
 
-
+const isMobile = useMatchesSmartphone()
 
   const handlePageChange = () => {
 
@@ -116,7 +117,7 @@ console.log(state)
         onClose={() => setClose(false)}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }}>
+        <AppBar sx={{ position: 'relative', backgroundColor: "#005CA9" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -131,7 +132,7 @@ console.log(state)
             </Typography>
           </Toolbar>
         </AppBar>
-        <Box style={{display: "flex", height: "100%", padding: 45}}>
+        <Box style={{display: "flex", height: "100%", padding: isMobile ? 16 : 45, justifyContent: "center"}}>
           <Questionnaire setClose={setClose} ETLData={ETLData} state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
         </Box>
       </Dialog>

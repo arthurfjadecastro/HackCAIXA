@@ -19,6 +19,7 @@ const ThirdPage = ({state, dispatch, handlePageChange, handleBack}) => {
   return (
     <>
     <Grid
+        style={{maxWidth: 600}}
         container
         direction="column"
         justifyContent="space-between"

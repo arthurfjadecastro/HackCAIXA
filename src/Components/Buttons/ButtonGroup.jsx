@@ -12,13 +12,13 @@ export default function DisableElevation({activeButton, handleType}) {
       aria-label="Disabled elevation buttons"
     >
       <Button
-        className={activeButton === 'PRICE' ? 'active' : 'disable'}
+        className={activeButton === 'PRICE' ? 'active2' : 'disable'}
         onClick={handleType}
       >
         PRICE
       </Button>
       <Button
-        className={activeButton === 'SAC' ? 'active' : 'disable'}
+        className={activeButton === 'SAC' ? 'active2' : 'disable'}
         onClick={handleType}
       >
         SAC
