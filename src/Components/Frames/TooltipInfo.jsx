@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Tooltip, IconButton } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-import "./TooltipInfo.css"; 
+import "./tooltipInfo.css"; 
 
 const TextWithInfo = ({ text, tooltipText }) => {
   return (
