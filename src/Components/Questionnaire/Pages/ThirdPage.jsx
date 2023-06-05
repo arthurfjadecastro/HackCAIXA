@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Monetary } from "../../Inputs";
 import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
-import { ButtonCEF, Carousel } from "../../Buttons";
+import { BackButton, ButtonCEF, Carousel } from "../../Buttons";
 import Item from "../../Frames/Item";
 import { isPositiveNumber } from "../../Buttons/Validations";
 
 
 
-const ThirdPage = ({state, dispatch, handlePageChange}) => {
+const ThirdPage = ({state, dispatch, handlePageChange, handleBack}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const isContinueButtonEnabled =  isPositiveNumber(state.installments);
   console.log("installments")
@@ -37,8 +37,10 @@ const ThirdPage = ({state, dispatch, handlePageChange}) => {
         </Grid>
         <Grid item>
         <Item>
-        {/* <ButtonCEF /> */}
         <ButtonCEF isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
+        </Item>
+        <Item>
+        <BackButton handleClick={handleBack} textButton={"Voltar"} />
         </Item>
         </Grid>
       </Grid>

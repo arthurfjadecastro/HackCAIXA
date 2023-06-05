@@ -35,6 +35,10 @@ function SimulateDialog({isOpen, setClose}) {
     setPage(page + 1);
   };
 
+  const handleBack = () => {
+   setPage(page - 1);
+  };
+
 
   return (
     <div>
@@ -63,7 +67,7 @@ function SimulateDialog({isOpen, setClose}) {
           </Toolbar>
         </AppBar>
         <Box style={{display: "flex", height: "100%", padding: 45}}>
-          <Questionnaire handlePageChange={handlePageChange} page={page}/>
+          <Questionnaire handleBack={handleBack} handlePageChange={handlePageChange} page={page}/>
         </Box>
       </Dialog>
     </div>

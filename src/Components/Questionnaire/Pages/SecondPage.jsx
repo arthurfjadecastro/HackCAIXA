@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Monetary } from "../../Inputs";
 import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
-import { ButtonCEF } from "../../Buttons";
+import { BackButton, ButtonCEF, ButtonSimulateOther } from "../../Buttons";
 import Item from "../../Frames/Item";
 import { isPositiveNumber } from "../../Buttons/Validations";
 import { isNonEmptyString } from "../../Inputs/Validations/Base";
@@ -10,7 +10,7 @@ import { isNonEmptyString } from "../../Inputs/Validations/Base";
 
 
 
-const ThirdPage = ({state, dispatch, handlePageChange}) => {
+const ThirdPage = ({state, dispatch, handlePageChange, handleBack}) => {
   const [isValid, setIsValid] = useState("")
   const numericValue = parseInt(state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""), 10); // Remova o ponto antes de converter o valor
 
@@ -54,6 +54,9 @@ useEffect(() => {
         <Item>
         <ButtonCEF isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
         </Item>
+        <Item>
+        <BackButton handleClick={handleBack} textButton={"Voltar"} />
+        </Item>
         </Grid>
       </Grid>
     </>
@@ -61,3 +64,4 @@ useEffect(() => {
 };
 
 export default ThirdPage;
+
