@@ -105,7 +105,7 @@ function Home() {
         </Slider>
         <Box
       sx={{
-        p: 2,
+        marginBottom: 2,
         textAlign: "center",
         backgroundColor: "transparent",
         position: "fixed",

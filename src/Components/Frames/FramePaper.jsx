@@ -58,10 +58,10 @@ const CustomFrame = ({img, text, link, textButton}) => {
       </FrameContent>
       <RenderIf predicate={img === "/img/logocaixa.png"}>
         <Grid container direction={"row"} justifyContent={"right"}>
-          <Grid onClick={handleOpenAppiOs} item style={{marginRight: 24}}>
+          <Grid onClick={handleOpenAppiOs} item style={{marginRight: 24, cursor: "pointer"}}>
           <img style={{width: 36, height: 36}} src={"/img/app-store.png"}></img>
           </Grid>
-          <Grid item onClick={handleOpenAppAndroid}>
+          <Grid item  style={{cursor: "pointer"}}onClick={handleOpenAppAndroid}>
         <img style={{width: 36, height: 36}} src={"/img/google-play.png"}></img>
           </Grid>
         </Grid>
