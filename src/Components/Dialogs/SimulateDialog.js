@@ -24,7 +24,8 @@ const initialState = {
   cpf: "",
   phoneNumber: "",
   monetaryValue: "",
-  installments: ""
+  installments: "",
+  typeInstallments: "PRICE"
 };
 
 const reducer = (state, action) => {
@@ -37,6 +38,8 @@ const reducer = (state, action) => {
       return { ...state, monetaryValue: action.payload };
     case "installments":
       return { ...state, installments: action.payload };
+      case "typeInstallments":
+        return { ...state, typeInstallments: action.payload };
     case "resetState":
       return initialState;
     default:
@@ -103,7 +106,7 @@ useEffect(() => {
    setPage(page - 1);
   };
 
-
+console.log(state)
 
   return (
     <div>
