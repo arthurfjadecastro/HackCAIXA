@@ -6,7 +6,7 @@ import { ButtonCEF } from "../../Buttons";
 import { Frame, FramePaper } from "../../Frames";
 import Item from "../../Frames/Item";
 
-const FifthPage = ({}) => {
+const FifthPage = ({setClose}) => {
 
 
   return (
@@ -41,7 +41,7 @@ const FifthPage = ({}) => {
         </Grid>
         <Grid item>
         <Item>
-          <ButtonCEF/>
+        <ButtonCEF buttonTitle={"Concluir"} isContinueButtonEnabled={true} handlePageChange={() => setClose(false)} />
         </Item>
         </Grid>
       </Grid>

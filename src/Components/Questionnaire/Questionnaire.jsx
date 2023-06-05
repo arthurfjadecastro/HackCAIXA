@@ -16,7 +16,8 @@ const Questionnaire = ({
   handleBack,
   state,
   dispatch,
-  ETLData
+  ETLData,
+  setClose
 }) => {
 
 
@@ -32,10 +33,10 @@ const Questionnaire = ({
         <ThirdPage handleBack={handleBack} handlePageChange={handlePageChange} state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 4}>
-        <FourthPage ETLData={ETLData} handleBack={handleBack} state={state} dispatch={dispatch}/>
+        <FourthPage ETLData={ETLData} handleBack={handleBack} state={state} dispatch={dispatch} handlePageChange={handlePageChange}/>
       </RenderIf>
       <RenderIf predicate={page === 5}>
-        <FifthPage state={state} dispatch={dispatch}/>
+        <FifthPage state={state} dispatch={dispatch} handlePageChange={handlePageChange} setClose={setClose} />
       </RenderIf>
     </>
   );

@@ -19,12 +19,12 @@ const ColorButton = styled(Button)(({ theme }) => ({
   }));
 
 
-const ButtonCEF = ({handlePageChange,isContinueButtonEnabled}) => {
+const ButtonCEF = ({handlePageChange,isContinueButtonEnabled,buttonTitle}) => {
   
   return (
     <React.Fragment>
         <ColorButton onClick={handlePageChange}  disabled={!isContinueButtonEnabled}>
-            Continuar
+            {buttonTitle}
         </ColorButton>    
     </React.Fragment>
   );

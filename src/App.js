@@ -66,7 +66,7 @@ function Home() {
           <h1>footer</h1> 
         </Box>
       </Box>
-      <SimulateDialog isOpen={isOpenDialog} setClose={setIsOpenDialog}/>
+      <SimulateDialog isOpen={isOpenDialog} setClose={setIsOpenDialog} />
     </>
   );
 }

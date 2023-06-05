@@ -37,7 +37,7 @@ function FirstPage({ state, dispatch, handlePageChange }) {
         </Grid>
         <Grid item>
           <Item>
-            <ButtonCEF isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
+            <ButtonCEF  buttonTitle={"Continuar"} isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
           </Item>
         </Grid>
       </Grid>

@@ -10,7 +10,7 @@ import Item from "../../Frames/Item";
 
 
 
-const FourthPage = ({handleBack, ETLData}) => {
+const FourthPage = ({handleBack, ETLData,handlePageChange}) => {
   const keyType = Object.keys(ETLData)[0];
   const [activeButton, setActiveButton] = useState(keyType);
   const [lastInstallment, setLastInstallment] = useState({numero: "", valorJuros: "", valorPrestacao: ""});
@@ -59,12 +59,11 @@ const FourthPage = ({handleBack, ETLData}) => {
           <ButtonGroup activeButton={activeButton} handleType={handleType}/> 
           <LoanDetails interesetAmount={ETLData.PRICE ? ETLData.PRICE[0].valorJuros : null} installmentAmount={ETLData.PRICE ? ETLData.PRICE[0].valorPrestacao : null} numberInstallment={ETLData.PRICE ? ETLData.PRICE[0].numero : null}/>
           <LoanDetails interesetAmount={lastInstallment.valorJuros} installmentAmount={lastInstallment.valorPrestacao} numberInstallment={lastInstallment.numero}/>
-          {/* <LoanDetails/> */}
           </Item>
         </Grid>
         <Grid item>
         <Item>
-          <ButtonCEF/>
+        <ButtonCEF  buttonTitle={"Continuar"} handlePageChange={handlePageChange} isContinueButtonEnabled={true} />
         </Item>
         <Item>
         <BackButton handleClick={handleBack} textButton={"Voltar"} />

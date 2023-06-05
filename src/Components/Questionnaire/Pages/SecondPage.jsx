@@ -52,7 +52,7 @@ useEffect(() => {
         </Grid>
         <Grid item>
         <Item>
-        <ButtonCEF isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
+        <ButtonCEF  buttonTitle={"Continuar"} isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
         </Item>
         <Item>
         <BackButton handleClick={handleBack} textButton={"Voltar"} />

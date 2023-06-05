@@ -90,6 +90,7 @@ useEffect(() => {
         console.error("ops! ocorreu um erro" + err);
       });
     }
+
     setPage(page + 1);
   };
 
@@ -124,7 +125,7 @@ useEffect(() => {
           </Toolbar>
         </AppBar>
         <Box style={{display: "flex", height: "100%", padding: 45}}>
-          <Questionnaire ETLData={ETLData} state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
+          <Questionnaire setClose={setClose} ETLData={ETLData} state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
         </Box>
       </Dialog>
     </div>
