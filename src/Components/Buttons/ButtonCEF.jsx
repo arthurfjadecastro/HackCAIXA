@@ -10,17 +10,20 @@ const ColorButton = styled(Button)(({ theme }) => ({
     borderRadius: 20,
     color: "white",
     // backgroundColor: purple[500],
+    '&:disabled': {
+      backgroundColor: "white"
+    },
     '&:hover': {
       backgroundColor: purple[700],
     },
   }));
 
 
-const ButtonCEF = ({}) => {
+const ButtonCEF = ({handlePageChange,isContinueButtonEnabled}) => {
   
   return (
     <React.Fragment>
-        <ColorButton>
+        <ColorButton onClick={handlePageChange}  disabled={!isContinueButtonEnabled}>
             Continuar
         </ColorButton>    
     </React.Fragment>

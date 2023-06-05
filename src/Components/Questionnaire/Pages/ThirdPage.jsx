@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Monetary } from "../../Inputs";
 import { Grid, Paper,styled } from "@mui/material";
 import { TitleText } from "./Resources";
 import { ButtonCEF, Carousel } from "../../Buttons";
 import Item from "../../Frames/Item";
+import { isPositiveNumber } from "../../Buttons/Validations";
 
 
 
-const ThirdPage = ({state, dispatch}) => {
+const ThirdPage = ({state, dispatch, handlePageChange}) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const isContinueButtonEnabled =  isPositiveNumber(state.installments);
+  console.log("installments")
+  console.log(state.installments)
+  const handleOptionClick = (option) => {
+    setSelectedOption(option);
+    dispatch({ type: 'installments', payload: option }); // Exemplo de ação para atualizar o estado das parcelas
+  };
   return (
     <>
     <Grid
@@ -23,12 +32,13 @@ const ThirdPage = ({state, dispatch}) => {
         </Grid>
         <Grid item style={{flex: 2,width: "100%"}}>
           <Item>
-          <Carousel state={state} dispatch={dispatch}/>
+          <Carousel state={state} dispatch={dispatch} selectedOption={selectedOption}  handleOptionClick={handleOptionClick}/>
           </Item>
         </Grid>
         <Grid item>
         <Item>
-          <ButtonCEF/>
+        {/* <ButtonCEF /> */}
+        <ButtonCEF isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
         </Item>
         </Grid>
       </Grid>

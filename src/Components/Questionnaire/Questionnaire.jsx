@@ -26,6 +26,7 @@ const reducer = (state, action) => {
 
 const Questionnaire = ({
   page,
+  handlePageChange
 }) => {
   const initialState = {
     cpf: "",
@@ -40,13 +41,13 @@ const Questionnaire = ({
   return (
     <>
       <RenderIf predicate={page === 1}>
-        <FirstPage state={state} dispatch={dispatch}/>
+        <FirstPage handlePageChange={handlePageChange} currentPage={page} state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 2}>
-        <SecondPage state={state} dispatch={dispatch}/>
+        <SecondPage handlePageChange={handlePageChange} state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 3}>
-        <ThirdPage state={state} dispatch={dispatch}/>
+        <ThirdPage handlePageChange={handlePageChange} state={state} dispatch={dispatch}/>
       </RenderIf>
       <RenderIf predicate={page === 4}>
         <FourthPage state={state} dispatch={dispatch}/>

@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import './carousel.css';
 
-const Carousel = ({state, dispatch}) => {
-  const [selectedOption, setSelectedOption] = useState(1);
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    dispatch({ type: 'installments', payload: option }); // Exemplo de ação para atualizar o estado das parcelas
-  };
+const Carousel = ({state, dispatch, handleOptionClick, selectedOption}) => {
+  
 
   const renderOptions = () => {
     const options = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];

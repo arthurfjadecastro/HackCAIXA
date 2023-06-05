@@ -22,6 +22,19 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function SimulateDialog({isOpen, setClose}) {
   const [page, setPage] = useState(1);
 
+  const handlePageChange = () => {
+    if (page === 4) {
+      // createClinic({
+      //   ...state,
+      //   networkID: url.query.network || url.path.networkID || state.networkID,
+      //   legalPerson: undefined,
+      //   documents: undefined,
+      //   clinicID: undefined,
+      // });
+    }
+    setPage(page + 1);
+  };
+
 
   return (
     <div>
@@ -44,13 +57,13 @@ function SimulateDialog({isOpen, setClose}) {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               SimuladorCred CAIXA
             </Typography>
-            <Button autoFocus color="inherit" onClick={() => setPage(page + 1)}>
+            {/* <Button autoFocus color="inherit" onClick={() => setPage(page + 1)}>
               continuar
-            </Button>
+            </Button> */}
           </Toolbar>
         </AppBar>
         <Box style={{display: "flex", height: "100%", padding: 45}}>
-          <Questionnaire page={page}/>
+          <Questionnaire handlePageChange={handlePageChange} page={page}/>
         </Box>
       </Dialog>
     </div>

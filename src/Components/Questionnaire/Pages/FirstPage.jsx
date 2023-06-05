@@ -4,8 +4,12 @@ import { TitleText } from "./Resources";
 import { CellPhoneNumber, Cpf } from "../../Inputs";
 import { ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
+import { isCPFValid, isNonEmptyString, isPhoneNumber } from "../../Inputs/Validations/Base";
 
-function FirstPage({ state, dispatch }) {
+function FirstPage({ state, dispatch, handlePageChange }) {
+
+
+  const isContinueButtonEnabled = (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) || isNonEmptyString(state);
   return (
     <>
       <Grid
@@ -33,7 +37,7 @@ function FirstPage({ state, dispatch }) {
         </Grid>
         <Grid item>
           <Item>
-            <ButtonCEF />
+            <ButtonCEF isContinueButtonEnabled={isContinueButtonEnabled} handlePageChange={handlePageChange} />
           </Item>
         </Grid>
       </Grid>
