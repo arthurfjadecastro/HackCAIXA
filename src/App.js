@@ -1,20 +1,16 @@
 import { useState } from 'react';
 import './App.css';
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import { useMatchesNotebooks, useMatchesSmartphone } from "./Components/Breakpoints"
-// import { Route, BrowserRouter, Routes, Outlet, useNavigate } from "react-router-dom";
-import { makeStyles, Theme, createStyles } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { AppBar, Grid, IconButton, Toolbar, Link } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Grid, Toolbar } from '@mui/material';
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import "./slick-list.css"
-import { Email, Facebook, Twitter, LinkedIn } from "@mui/icons-material";
 import {SimulateDialog} from "./Components/Dialogs"
+import { useMatchesSmartphone } from './Components/Breakpoints';
 
 
 
