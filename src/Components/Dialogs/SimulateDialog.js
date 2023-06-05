@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { Box } from '@mui/material';
 import { Questionnaire } from '../Questionnaire';
+import axios from "axios";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -48,10 +49,13 @@ const reducer = (state, action) => {
 
 function SimulateDialog({isOpen, setClose}) {
 
-
+  const [response, setResponse] = useState();
+  const [ETLData, setEtlData] = useState();
   
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const iterableData = {};
 
+
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(1);
   // const [reset, setReset] = useState(false)
   const resetState = () => ({
@@ -63,32 +67,37 @@ useEffect(() => {
   dispatch(resetState());
 },[isOpen === false])
 
-  // if(reset){
-  //   dispatch({
-  //     cpf: "",
-  //     phoneNumber: "",
-  //     monetaryValue: "",
-  //     installments: ""
-  //   })
-  // }
+useEffect(() => {
+  if(response !== null && response !== undefined)
+  response.resultadoSimulacao.forEach(item => {
+    iterableData[item.tipo] = item.parcelas;
+  });
+  setEtlData(iterableData)
+},[response])
+
 
 
   const handlePageChange = () => {
-    if (page === 4) {
-      // createClinic({
-      //   ...state,
-      //   networkID: url.query.network || url.path.networkID || state.networkID,
-      //   legalPerson: undefined,
-      //   documents: undefined,
-      //   clinicID: undefined,
-      // });
+
+    if (page === 3) {
+      const numericValue = parseInt(state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""), 10);
+      axios.post("https://apphackaixades.azurewebsites.net/api/Simulacao",{
+      valorDesejado: numericValue,
+      prazo: state.installments
+      })
+      .then((response) => setResponse(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
     }
     setPage(page + 1);
   };
 
+
   const handleBack = () => {
    setPage(page - 1);
   };
+
 
 
   return (
@@ -112,13 +121,10 @@ useEffect(() => {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               SimuladorCred CAIXA
             </Typography>
-            {/* <Button autoFocus color="inherit" onClick={() => setPage(page + 1)}>
-              continuar
-            </Button> */}
           </Toolbar>
         </AppBar>
         <Box style={{display: "flex", height: "100%", padding: 45}}>
-          <Questionnaire state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
+          <Questionnaire ETLData={ETLData} state={state} handleBack={handleBack} handlePageChange={handlePageChange} page={page} dispatch={dispatch}/>
         </Box>
       </Dialog>
     </div>

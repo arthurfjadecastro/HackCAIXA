@@ -1,16 +1,28 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
+import './buttonGroup.css'; // Importe seu arquivo de estilos CSS
 
-export default function DisableElevation() {
+export default function DisableElevation({activeButton, handleType}) {
+
   return (
     <ButtonGroup
       disableElevation
       variant="contained"
       aria-label="Disabled elevation buttons"
     >
-      <Button>PRICE</Button>
-      <Button>SAC</Button>
+      <Button
+        className={activeButton === 'PRICE' ? 'active' : 'disable'}
+        onClick={handleType}
+      >
+        PRICE
+      </Button>
+      <Button
+        className={activeButton === 'SAC' ? 'active' : 'disable'}
+        onClick={handleType}
+      >
+        SAC
+      </Button>
     </ButtonGroup>
   );
 }

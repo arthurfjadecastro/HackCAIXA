@@ -7,7 +7,7 @@ const Frame = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const CustomComponent = () => {
+const CustomComponent = ({numberInstallment, installmentAmount, interesetAmount}) => {
   return (
     <Frame>
       <Grid container spacing={2}>
@@ -19,13 +19,13 @@ const CustomComponent = () => {
         <Grid item xs={6}>
           <Grid container direction="column" spacing={1}>
             <Grid item>
-              <Typography variant="body1">1ª prestação</Typography>
+              <Typography variant="body1">{numberInstallment}ª prestação</Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">R$ 2.400,00</Typography>
+              <Typography variant="body1">R$ {installmentAmount}</Typography>
             </Grid>
             <Grid item>
-              <Typography variant="body1">3,70% ao mês</Typography>
+              <Typography variant="body1">{interesetAmount}% ao mês</Typography>
             </Grid>
           </Grid>
         </Grid>

@@ -11,8 +11,7 @@ import { isPositiveNumber } from "../../Buttons/Validations";
 const ThirdPage = ({state, dispatch, handlePageChange, handleBack}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const isContinueButtonEnabled =  isPositiveNumber(state.installments);
-  console.log("installments")
-  console.log(state.installments)
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     dispatch({ type: 'installments', payload: option }); // Exemplo de ação para atualizar o estado das parcelas
