@@ -19,13 +19,12 @@ Para começar a utilizar o projeto, siga as instruções abaixo:
 
 2. Abra o projeto em um editor de texto ou IDE de sua preferência.
 
-3. No terminal, navegue até o diretório do projeto.
+3. No terminal, navegue até o diretório do projeto (`cd .\simulacredcaixa\`).
 
-4. Execute o comando `npm run start-clean` para limpar o cache, resolver recursos depreciados parcialmente e instalar os módulos necessários para utilização. Aguarde até a conclusão do processo, pois pode demorar um pouco.
+4. Execute o comando `npm start` para executar o projeto.
+   obs: Como as dependências foram zipadas junto com o projeto, não é necessário rodar o script `npm run start-clean`, que limparia o cache, resolvendo incidentes com recursos depreciados parcialmente, além de instalar os módulos necessários para utilização.
 
 5. Após a conclusão, o projeto será automaticamente aberto em seu navegador padrão.
-
-A partir de agora, você pode executar o projeto novamente digitando o comando `npm start` nas próximas vezes.
 
 ## Experiência
 
