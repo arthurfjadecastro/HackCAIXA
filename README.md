@@ -1,4 +1,4 @@
-# Guia de Início Rápido
+# SIMULACRED CAIXA
 
 Este guia fornece instruções para começar a utilizar o projeto.
 
@@ -8,21 +8,6 @@ Certifique-se de ter os seguintes requisitos antes de iniciar:
 
 - Ambiente de desenvolvimento configurado.
 - Node.js e npm instalados.
-
-## Instalação
-
-Siga as etapas abaixo para configurar e executar o projeto:
-
-1. **Faça o download e extraia o projeto** em seu ambiente de desenvolvimento.
-
-2. Abra o projeto em um **editor de texto ou IDE de sua preferência**.
-
-3. No **terminal**, navegue até o diretório do projeto.
-
-4. Execute o comando abaixo para **instalar as dependências**:
-- npm run start-clean (limpar o cache e resolver recursos depreciados parcialmente)
-
-obs: Aguarde até a conclusão do processo, pois pode demorar um pouco.
 
 
 # Guia de Início Rápido
