@@ -52,7 +52,15 @@ function Home() {
               >
                 <Grid item>
                   <Typography variant="h6" component="div">
-                    SimulaCred CAIXA
+                  <img
+                      src="/img/logonavbar.png"
+                      alt="Slide 2"
+                      style={{
+                        height: "auto",
+                        objectFit: "cover",
+                        maxWidth: "96px",
+                      }}
+                    />
                   </Typography>
                 </Grid>
                 <Grid item>
