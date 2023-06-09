@@ -15,6 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
 const initialState = {
   cpf: "",
   phoneNumber: "",
@@ -23,6 +24,7 @@ const initialState = {
   typeInstallments: "PRICE",
 };
 
+// Manage states of user information in a more organized and modular way
 const reducer = (state, action) => {
   switch (action.type) {
     case "cpf":
@@ -42,23 +44,35 @@ const reducer = (state, action) => {
   }
 };
 
+
 function SimulateDialog({ isOpen, setClose }) {
+  // State that stores the request data
   const [response, setResponse] = useState();
+  
+  // State created to store processed data 
   const [ETLData, setEtlData] = useState();
 
+  // State that iterates the simulation result by type
   const iterableData = {};
-
+  
+  // Create reducer
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Create state page of Questionnaire
   const [page, setPage] = useState(1);
+
+  // Action to reset Questionnaire
   const resetState = () => ({
     type: "resetState",
   });
 
+  // Effect to Reset form
   useEffect(() => {
     setPage(1);
     dispatch(resetState());
   }, [isOpen === false]);
 
+  // Effect that iterates over request response
   useEffect(() => {
     if (response !== null && response !== undefined)
       response.resultadoSimulacao.forEach((item) => {
@@ -69,6 +83,7 @@ function SimulateDialog({ isOpen, setClose }) {
 
   const isMobile = useMatchesSmartphone();
 
+  // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
     if (page === 3) {
       const numericValue = parseInt(
@@ -89,11 +104,11 @@ function SimulateDialog({ isOpen, setClose }) {
     setPage(page + 1);
   };
 
+  // Back page of Questionnaire
   const handleBack = () => {
     setPage(page - 1);
   };
 
-  console.log(state);
 
   return (
     <div>
