@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Grid, Paper, styled } from "@mui/material";
 import { TitleText } from "./Resources";
 import {
@@ -13,8 +12,10 @@ import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 
-const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch }) => {
+const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch, response }) => {
   const [activeButton, setActiveButton] = useState("PRICE");
+
+
   const handleType = () => {
     if (activeButton === "PRICE") {
       setActiveButton(Object.keys(ETLData)[1]);
@@ -30,10 +31,6 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch }) => {
       ? "Ideal para quem busca parcelas fixas e planejamento financeiro."
       : "Ideal para quem busca previsibilidade nas parcelas.";
   console.log(activeButton);
-
-  if (ETLData.PRICE === undefined || ETLData.PRICE === null) {
-    return <FullScreenLoading />;
-  }
 
   return (
     <>
@@ -58,7 +55,11 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch }) => {
           <ButtonGroup activeButton={activeButton} handleType={handleType} />
         </Grid>
         <Grid item style={{ flex: 1, width: "100%", maxWidth: "400px" }}>
-          <RenderIf predicate={activeButton === "PRICE"}>
+        <RenderIf predicate={(ETLData && ETLData.PRICE) === undefined || (ETLData && ETLData.PRICE) === null}>
+          <FullScreenLoading />
+        </RenderIf>
+        <RenderIf predicate={ETLData !== undefined && ETLData !== null}>
+        <RenderIf predicate={activeButton === "PRICE"}>
             <RenderIf predicate={ETLData && ETLData.PRICE}>
               <Grid container flexDirection={"column"}>
                 <Grid
@@ -161,6 +162,8 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch }) => {
               </Grid>
             </RenderIf>
           </RenderIf>
+        </RenderIf>
+          
         </Grid>
 
         <Grid item>

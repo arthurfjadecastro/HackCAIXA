@@ -16,6 +16,7 @@ const Questionnaire = ({
   dispatch,
   ETLData,
   setClose,
+  response
 }) => {
   return (
     <>
@@ -45,6 +46,7 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 4}>
         <FourthPage
+          response={response}
           ETLData={ETLData}
           handleBack={handleBack}
           state={state}

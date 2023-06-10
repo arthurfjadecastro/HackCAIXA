@@ -84,6 +84,12 @@ function SimulateDialog({ isOpen, setClose }) {
     setEtlData(iterableData);
   }, [response]);
 
+  useEffect(() => {
+    setResponse(undefined)
+  }, [page === 4]);
+
+ 
+
   const isMobile = useMatchesSmartphone();
 
   // Method that makes the request when we switch from the third to the fourth page
@@ -112,8 +118,8 @@ function SimulateDialog({ isOpen, setClose }) {
     setPage(page - 1);
   };
 
-
-  console.log(state)
+  console.log(response)
+  // console.log(state)
 
   return (
     <div>
@@ -154,6 +160,7 @@ function SimulateDialog({ isOpen, setClose }) {
             handlePageChange={handlePageChange}
             page={page}
             dispatch={dispatch}
+            response={response}
           />
         </Box>
       </Dialog>

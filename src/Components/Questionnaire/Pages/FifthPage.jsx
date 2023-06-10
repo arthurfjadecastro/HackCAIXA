@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Monetary } from "../../Inputs";
 import { Grid, Paper, styled } from "@mui/material";
 import { TitleText } from "./Resources";
-import { ButtonCEF } from "../../Buttons";
+import { ButtonCEF, ButtonWhatsApp } from "../../Buttons";
 import { Frame, FramePaper } from "../../Frames";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 
 const FifthPage = ({ setClose, ETLData, state, page }) => {
+
+
+  
   return (
     <>
       <Grid
@@ -77,13 +80,16 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             um gerente.
           </p>
           <FramePaper
-            text={"Contrate no aplicativo CAIXA"}
-            img={"/img/logocaixa.png"}
+          variant="googlePlay"
+          textButton={"Android"}
           />
-          <FramePaper
-            textButton={"Clique aqui"}
-            text={"Fale com um gerente agora"}
-            img={"/img/whatsappicon.png"}
+           <FramePaper
+            variant="iOS"
+            textButton={"Apple"}
+          />
+           <FramePaper
+            variant="whatsapp"
+            textButton={"Fale com um gerente"}
           />
         </Grid>
         <Grid item>
