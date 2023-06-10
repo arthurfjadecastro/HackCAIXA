@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RenderIf } from "../Utils";
 import { useMatchesSmartphone } from "../Breakpoints";
 
-const ButtonWhatsApp = ({ textButton, variant}) => {
+const ButtonRS = ({ textButton, variant}) => {
     
     const isMobile = useMatchesSmartphone()
  
@@ -35,8 +35,6 @@ const ButtonWhatsApp = ({ textButton, variant}) => {
   };
 
   const textManager = {
-    // position: "absolute",
-    // top: "35%",
     fontSize: !isHovered ? "16px" : "0",
     margin: "0",
     padding: "8px",
@@ -169,4 +167,4 @@ const handleWhatsApp = () => {
   );
 };
 
-export default ButtonWhatsApp;
+export default ButtonRS;

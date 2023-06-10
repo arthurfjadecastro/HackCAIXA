@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Paper, Typography, Button, styled } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { RenderIf } from "../Utils";
-import ButtonWhatsApp from "../Buttons/ButtonWhatsApp";
+import ButtonRS from "../Buttons/ButtonRS";
 
 const Frame = styled(Paper)(({ theme }) => ({
   backgroundColor: "#ffffff",
@@ -19,7 +19,7 @@ const Frame = styled(Paper)(({ theme }) => ({
 const CustomFrame = ({  textButton, variant }) => {
   return (
     <Frame>
-        <ButtonWhatsApp variant={variant} textButton={textButton} />
+        <ButtonRS variant={variant} textButton={textButton} />
     </Frame>
   );
 };

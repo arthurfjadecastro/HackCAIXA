@@ -6,6 +6,7 @@ const Frame = styled(Paper)(({ theme }) => ({
   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
   padding: theme.spacing(2),
   borderRadius: theme.spacing(1),
+  // width: "100%"
 }));
 
 const CustomComponent = ({

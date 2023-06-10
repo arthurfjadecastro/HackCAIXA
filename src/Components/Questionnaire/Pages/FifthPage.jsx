@@ -70,15 +70,22 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             />
           </RenderIf>
           <p
-            style={{
-              fontSize: "14px",
-              textAlign: "center",
-              marginTop: "49px",
-            }}
-          >
-            Acesse o aplicativo e faça seu financiamento <br></br> ou fale com
-            um gerente.
-          </p>
+  style={{
+    fontSize: "16px",
+    textAlign: "center",
+    margin: 16,
+    fontWeight: "bold",
+    lineHeight: "1.5",
+  }}
+>
+ 
+ Acesse o aplicativo para fazer  <br />
+  <span style={{ color: "#FF6600" }}>seu financiamento </span>
+
+   ou <span style={{ color: "#FF6600" }}> fale com um gerente   </span>
+</p>
+
+
           <FramePaper
           variant="googlePlay"
           textButton={"Android"}
@@ -87,9 +94,22 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             variant="iOS"
             textButton={"Apple"}
           />
+                   {/* <p
+  style={{
+    fontSize: "16px",
+    textAlign: "center",
+    fontWeight: "bold",
+    color: "#333",
+    lineHeight: "1.5",
+    margin: 8
+  }}
+>
+  Fale com um Gerente <span style={{ color: "#FF6600" }}> <br />agora mesmo</span>
+</p> */}
+
            <FramePaper
             variant="whatsapp"
-            textButton={"Fale com um gerente"}
+            textButton={"Fale com um Gerente"}
           />
         </Grid>
         <Grid item>

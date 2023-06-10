@@ -150,6 +150,7 @@ function SimulateDialog({ isOpen, setClose }) {
             height: "100%",
             padding: isMobile ? 16 : 45,
             justifyContent: "center",
+            flexWrap: isMobile? "wrap" : "noWrap"
           }}
         >
           <Questionnaire
