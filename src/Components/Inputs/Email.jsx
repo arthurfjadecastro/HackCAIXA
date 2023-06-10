@@ -14,7 +14,7 @@ const Email = ({
           <UniformTextField
             variant="standard"
             label={"E-mail"}
-            autoComplete="false"
+            autoComplete="off"
             type={type}
             onChange={onChange}
             onBlur={onBlur}
@@ -35,7 +35,6 @@ Email.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default Email;
 
-// const Wrapper = (props) => <EmailValidator {...props} Children={Email} />;
-// export default (props) => <NonEmptyValidator {...props} Children={Wrapper} />;
+const Wrapper = (props) => <EmailValidator {...props} Children={Email} />;
+export default (props) => <NonEmptyValidator {...props} Children={Wrapper} />;
