@@ -15,10 +15,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
+// Initial state to user info
 const initialState = {
   cpf: "",
   phoneNumber: "",
+  email: "",
   monetaryValue: "",
   installments: "",
   typeInstallments: "PRICE",
@@ -31,6 +32,8 @@ const reducer = (state, action) => {
       return { ...state, cpf: action.payload };
     case "phoneNumber":
       return { ...state, phoneNumber: action.payload };
+    case "email":
+      return { ...state, email: action.payload };  
     case "monetaryValue":
       return { ...state, monetaryValue: action.payload };
     case "installments":
@@ -109,6 +112,8 @@ function SimulateDialog({ isOpen, setClose }) {
     setPage(page - 1);
   };
 
+
+  console.log(state)
 
   return (
     <div>

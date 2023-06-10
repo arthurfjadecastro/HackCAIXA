@@ -6,13 +6,15 @@ import { ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
 import {
   isCPFValid,
+  isEmail,
   isNonEmptyString,
   isPhoneNumber,
 } from "../../Inputs/Validations/Base";
+import Email from "../../Inputs/Email";
 
 function FirstPage({ state, dispatch, handlePageChange }) {
   const isContinueButtonEnabled =
-    (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) ||
+    (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) && isEmail(state.email) ||
     isNonEmptyString(state);
   return (
     <>
@@ -26,11 +28,11 @@ function FirstPage({ state, dispatch, handlePageChange }) {
           <TitleText>Informe seu CPF e Telefone</TitleText>
         </Grid>
         <Grid item style={{ flex: 2, width: "100%" }}>
-          <Item>
-            <Cpf
-              value={state.cpf}
+        <Item>
+            <Email
+              value={state.email}
               onChange={(event) =>
-                dispatch({ type: "cpf", payload: event.target.value })
+                dispatch({ type: "email", payload: event.target.value })
               }
             />
           </Item>
@@ -42,7 +44,16 @@ function FirstPage({ state, dispatch, handlePageChange }) {
               }
             />
           </Item>
+          <Item>
+            <Cpf
+              value={state.cpf}
+              onChange={(event) =>
+                dispatch({ type: "cpf", payload: event.target.value })
+              }
+            />
+          </Item>
         </Grid>
+
         <Grid item>
           <Item>
             <ButtonCEF
