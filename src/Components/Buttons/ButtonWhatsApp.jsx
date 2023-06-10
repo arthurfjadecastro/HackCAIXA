@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { RenderIf } from "../Utils";
+import { useMatchesSmartphone } from "../Breakpoints";
 
 const ButtonWhatsApp = ({ textButton, variant}) => {
+    
+    const isMobile = useMatchesSmartphone()
  
-    const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState(isMobile ? true : false);
 
   const buttonStyle = { 
     cursor: "pointer",
@@ -85,6 +88,7 @@ const ButtonWhatsApp = ({ textButton, variant}) => {
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    
   };
 
   const handleMouseLeave = () => {
@@ -122,8 +126,8 @@ const handleWhatsApp = () => {
                         variant === "googlePlay" ? { ...buttonStyle, ...googlePlayStyle } :
                         {}
                       }
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={isMobile ? null: handleMouseEnter}
+                    onMouseLeave={isMobile ? null: handleMouseLeave}
                 >
                     <RenderIf predicate={variant === "whatsapp"}>
                         <p style={textStyle}>WhatsApp CAIXA</p>
