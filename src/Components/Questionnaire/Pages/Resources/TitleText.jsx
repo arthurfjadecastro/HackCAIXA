@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 
 const TitleText = styled(Typography)(({ theme }) => ({
   color: "#005CA9",
-  height: 70,
+  height: 50,
   fontWeight: "bold !important",
   textTransform: "uppercase",
   letterSpacing: 2,

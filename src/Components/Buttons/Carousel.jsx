@@ -1,41 +1,66 @@
 import React from "react";
+import { ButtonGroup, Button, Grid, Typography } from "@mui/material";
 import "./carousel.css";
 
-const Carousel = ({ state, dispatch, handleOptionClick, selectedOption }) => {
+const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData, activeButton }) => {
   const renderOptions = () => {
-    const options = [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-      22, 23, 24,
-    ];
+    const options = [6, 12, 24];
+
+    console.log("ae");
+    console.log(ETLData && ETLData);
 
     return options.map((option) => (
-      <button
-        style={{
-          background: "#005CA9",
-          color: "white",
-          borderRadius: "4px",
-          padding: "8px 16px",
-          margin: "8px",
-          border: "none",
-          cursor: "pointer",
-          outline: "none",
-          fontSize: "16px",
-          fontWeight: "bold",
-        }}
-        key={option}
-        className={state.installments === option ? "active" : ""}
-        onClick={() => handleOptionClick(option)}
-      >
-        {option}x
-      </button>
+      <Grid key={option} style={{    maxWidth: 370}} item>
+        <Button
+          variant={state.installments === option ? "contained" : "outlined"}
+          color="primary"
+          onClick={() => handleOptionClick(option)}
+          style={{
+            borderRadius: "16px",
+            fontWeight: "bold",
+            width: "100%",
+            height: "100px",
+            padding: "16px",
+            marginBottom: "16px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: state.installments === option ? "#005CA9" : "transparent",
+          }}
+        >
+          <Typography
+            variant="h6"
+            style={{ fontWeight: "bold", marginBottom: "8px", fontSize: "20px" }}
+          >
+            <span style={{ color: "#FF6600" }}>{state.monetaryValue}</span> em {option}x
+          </Typography>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="body2" style={{ fontSize: "12px" }}>
+              Valor da 1ª prestação: <span style={{ color: "#FF6600" }}>R$ {ETLData && ETLData[activeButton]
+                ? ETLData[activeButton][0].valorPrestacao
+                : null}</span>
+            </Typography>
+            <Typography variant="body2" style={{ fontSize: "12px" }}>
+              Valor da última prestação: <span style={{ color: "#FF6600" }}>R$ {ETLData && ETLData[activeButton]
+                ? ETLData[activeButton][ETLData[activeButton].length - 1].valorPrestacao
+                : null}</span>
+            </Typography>
+          </div>
+        </Button>
+      </Grid>
     ));
   };
 
   return (
     <div className="carousel">
-      <h2>Selecione a quantidade de parcelas:</h2>
-      <div className="options-grid">{renderOptions()}</div>
-      <p>Opção selecionada: {state.installments}x</p>
+      <h2 style={{ fontSize: 18, textAlign: "center" }}>Selecione a quantidade de parcelas:</h2>
+      <Grid container spacing={2} justifyContent="center">
+        {renderOptions()}
+      </Grid>
+      {/* <p style={{ textAlign: "center" }}>
+        Opção selecionada: {state.installments}x
+      </p> */}
     </div>
   );
 };

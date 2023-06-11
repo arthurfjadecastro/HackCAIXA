@@ -86,7 +86,7 @@ function SimulateDialog({ isOpen, setClose }) {
 
   useEffect(() => {
     setResponse(undefined)
-  }, [page < 4]);
+  }, [page < 3]);
 
  
 
@@ -94,7 +94,7 @@ function SimulateDialog({ isOpen, setClose }) {
 
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
-    if (page === 3) {
+    if (page === 2) {
       const numericValue = parseInt(
         state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
         10
@@ -102,7 +102,7 @@ function SimulateDialog({ isOpen, setClose }) {
       axios
         .post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
           valorDesejado: numericValue,
-          prazo: state.installments,
+          prazo: 24,
         })
         .then((response) => setResponse(response.data))
         .catch((err) => {
@@ -150,6 +150,8 @@ function SimulateDialog({ isOpen, setClose }) {
             height: "100%",
             padding: isMobile ? 16 : 45,
             justifyContent: "center",
+            // alignItems: "center", 
+            // flexDirection: "column",
             flexWrap: isMobile? "wrap" : "noWrap"
           }}
         >

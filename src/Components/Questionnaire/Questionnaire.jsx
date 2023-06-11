@@ -38,10 +38,12 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 3}>
         <ThirdPage
-          handleBack={handleBack}
-          handlePageChange={handlePageChange}
-          state={state}
-          dispatch={dispatch}
+           response={response}
+           ETLData={ETLData}
+           handleBack={handleBack}
+           state={state}
+           dispatch={dispatch}
+           handlePageChange={handlePageChange}
         />
       </RenderIf>
       <RenderIf predicate={page === 4}>
