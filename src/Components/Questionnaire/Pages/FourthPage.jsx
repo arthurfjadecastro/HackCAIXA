@@ -15,14 +15,10 @@ import FullScreenLoading from "./Resources/FullScreenLoading";
 
 
 
-const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch, response }) => {
-  // const [activeButton, setActiveButton] = useState("PRICE");
-
-
-
-
-
-  return (
+const FourthPage = ({ handleBack, ETLData, handlePageChange, activeButton, state,selectedOption }) => {
+    console.log("act")
+    console.log(state)
+    return (
     <>
       <Grid
         container
@@ -32,25 +28,24 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch, response 
       >
         <Grid item style={{ display: "flex", justifyContent: "center" }}>
           <TitleText>
-            Agora escolha a modalidade que cabe em seu bolso
+            Resumo da solicitacao
           </TitleText>
         </Grid>
-        {/* <Grid
+        <Grid
           item
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          style={{ width: "100%", display: "flex", justifyContent: "center", }}
         >
-          <TooltipInfo titleInfo={titleInfo} />
-        </Grid> */}
+          <TooltipInfo titleInfo={"Resumo da primeira e última parcela"} />
+        </Grid>
         {/* <Grid item style={{ marginBottom: 40 }}>
           <ButtonGroup activeButton={activeButton} handleType={handleType} />
         </Grid> */}
         <Grid item style={{ flex: 1, width: "100%", maxWidth: "400px" }}>
-        <RenderIf predicate={(ETLData && ETLData.PRICE) === undefined || (ETLData && ETLData.PRICE) === null}>
+        {/* <RenderIf predicate={(ETLData && ETLData.PRICE) === undefined || (ETLData && ETLData.PRICE) === null}>
           <FullScreenLoading />
-        </RenderIf>
-        {/* <RenderIf predicate={ETLData !== undefined && ETLData !== null}>
-        <RenderIf predicate={activeButton === "PRICE"}>
-            <RenderIf predicate={ETLData && ETLData.PRICE}>
+        </RenderIf> */}
+        <RenderIf predicate={ETLData !== undefined && ETLData !== null}>
+            <RenderIf predicate={ETLData && ETLData[activeButton]}>
               <Grid container flexDirection={"column"}>
                 <Grid
                   Item
@@ -60,102 +55,28 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch, response 
                     marginBottom: "16px",
                   }}
                 >
-                  <LoanDetails
-                    interesetAmount={
-                      ETLData && ETLData.PRICE
-                        ? ETLData.PRICE[0]?.valorJuros
-                        : null
-                    }
-                    installmentAmount={
-                      ETLData && ETLData.PRICE
-                        ? ETLData.PRICE[0]?.valorPrestacao
-                        : null
-                    }
-                    numberInstallment={
-                      ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.numero : null
-                    }
-                  />
+                 <LoanDetails
+                  activeButton={activeButton}
+                  interesetAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][0].valorJuros : null}
+                  installmentAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][0].valorPrestacao : null}
+                  numberInstallment={ETLData && ETLData[activeButton] ? ETLData[activeButton][0].numero : null}
+                />
+
                 </Grid>
                 <Grid Item style={{ width: "100%", height: "100%" }}>
                   <LoanDetails
-                    interesetAmount={
-                      ETLData && ETLData.PRICE
-                        ? ETLData.PRICE[ETLData.PRICE.length - 1].valorJuros
-                        : null
-                    }
-                    installmentAmount={
-                      ETLData && ETLData.PRICE
-                        ? ETLData.PRICE[ETLData.PRICE.length - 1].valorPrestacao
-                        : null
-                    }
-                    numberInstallment={
-                      ETLData && ETLData.PRICE
-                        ? ETLData.PRICE[ETLData.PRICE.length - 1].numero
-                        : null
-                    }
+                  activeButton={activeButton}
+                  interesetAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][ETLData[activeButton].length - 1].valorJuros : null}
+                  installmentAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][ETLData[activeButton].length - 1].valorPrestacao : null}
+                  numberInstallment={ETLData && ETLData[activeButton] ? ETLData[activeButton][selectedOption-1].numero : null}
+                 
+                   
                   />
                 </Grid>
               </Grid>
             </RenderIf>
-          </RenderIf>
-          <RenderIf predicate={activeButton === "SAC"}>
-            <RenderIf predicate={ETLData && ETLData.SAC}>
-              <Grid container flexDirection={"column"}>
-                <Grid
-                  Item
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    marginBottom: "16px",
-                  }}
-                >
-                  <LoanDetails
-                    interesetAmount={
-                      ETLData && ETLData.SAC ? ETLData.SAC[0]?.valorJuros : null
-                    }
-                    installmentAmount={
-                      ETLData && ETLData.SAC
-                        ? ETLData.SAC[0]?.valorPrestacao
-                        : null
-                    }
-                    numberInstallment={
-                      ETLData && ETLData.SAC ? ETLData.SAC[0]?.numero : null
-                    }
-                  />
-                </Grid>
-                <Grid
-                  Item
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    marginBottom: "16px",
-                  }}
-                >
-                  <LoanDetails
-                    interesetAmount={
-                      ETLData && ETLData.SAC
-                        ? ETLData.SAC[ETLData.SAC.length - 1].valorJuros
-                        : null
-                    }
-                    installmentAmount={
-                      ETLData && ETLData.SAC
-                        ? ETLData.SAC[ETLData.SAC.length - 1].valorPrestacao
-                        : null
-                    }
-                    numberInstallment={
-                      ETLData && ETLData.SAC
-                        ? ETLData.SAC[ETLData.SAC.length - 1].numero
-                        : null
-                    }
-                  />
-                </Grid>
-              </Grid>
-            </RenderIf>
-          </RenderIf>
-        </RenderIf> */}
-       
+          </RenderIf>   
         </Grid>
-
         <Grid item>
           <Item>
             <ButtonCEF

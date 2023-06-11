@@ -1,13 +1,25 @@
 import React from "react";
-import { Paper, Grid, Typography, styled } from "@mui/material";
+import { Paper, Grid, Typography, styled, Divider } from "@mui/material";
+import PlusOneOutlinedIcon from '@mui/icons-material/PlusOneOutlined';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 
 const Frame = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#F5F5F5",
-  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+  backgroundColor: "transparent",
   padding: theme.spacing(2),
   borderRadius: theme.spacing(1),
-  // width: "100%"
 }));
+
+const IconWrapper = styled("div")({
+  position: "relative",
+  marginRight: "10px",
+  display: "flex",
+  alignItems: "center",
+});
+
+const TextWrapper = styled("div")({
+  display: "flex",
+  alignItems: "center",
+});
 
 const CustomComponent = ({
   numberInstallment,
@@ -17,53 +29,61 @@ const CustomComponent = ({
   return (
     <Frame>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={6}>
-          <Typography variant="h6" align="center">
-            <span
-              style={{
-                justifyContent: "center",
-                display: "inline-flex",
-                width: 40,
-                height: 40,
-                color: "#FF6600",
-                fontWeight: "bold",
-                fontSize: "24px",
-                backgroundColor: "#c3c3c5",
-                borderRadius: "50%",
-              }}
-            >
-              {numberInstallment}
-            </span>
-          </Typography>
+        <Grid style={{    display: "flex", alignItems: "center", justifyContent: "center"}} item  xs={6}>
+          <IconWrapper>
+            {numberInstallment === 1 ? (
+              <PlusOneOutlinedIcon
+                style={{
+                  width: 24,
+                  height: 24,
+                  color: "#005CA9",
+                  fontWeight: "bold",
+                  fontSize: "24px",
+                  borderRadius: "50%",
+                  border: "2px solid #005CA9",
+                }}
+              />
+            ) : (
+              <CheckOutlinedIcon
+                style={{
+                  width: 24,
+                  height: 24,
+                  color: "#005CA9",
+                  fontWeight: "bold",
+                  fontSize: "24px",
+                  borderRadius: "50%",
+                  border: "2px solid #005CA9",
+                }}
+              />
+            )}
+          </IconWrapper>
+          <TextWrapper>
+            <Typography variant="body1" align="center" style={{ fontWeight: "bold" }}>
+              {numberInstallment}ª prestação
+            </Typography>
+          </TextWrapper>
         </Grid>
-        <Grid item xs={6}>
-          <Grid container direction="column">
-            <Grid item>
-              <Typography variant="body1" align="center">
-                <span style={{ fontWeight: "bold" }}>
-                  {numberInstallment}ª prestação
-                </span>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                variant="body1"
-                align="center"
-                style={{ color: "#FF6600", fontSize: "32px" }}
-              >
-                R$ {installmentAmount}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                variant="body1"
-                align="center"
-                style={{ color: "rgba(0, 0, 0, 0.6)" }}
-              >
-                {interesetAmount}% ao mês
-              </Typography>
-            </Grid>
-          </Grid>
+        <Grid item xs={1}>
+          <Divider
+            orientation="vertical"
+            style={{ height: 50, width: "2px", backgroundColor: "#005CA9" }}
+          />
+        </Grid>
+        <Grid item xs={5}>
+          <Typography
+            variant="body1"
+            align="center"
+            style={{ color: "#FF6600", fontSize: "28px", textWrap: "nowrap" }}
+          >
+            R$ {installmentAmount}
+          </Typography>
+          <Typography
+            variant="body1"
+            align="center"
+            style={{ color: "rgba(0, 0, 0, 0.6)" }}
+          >
+            {interesetAmount}% ao mês
+          </Typography>
         </Grid>
       </Grid>
     </Frame>

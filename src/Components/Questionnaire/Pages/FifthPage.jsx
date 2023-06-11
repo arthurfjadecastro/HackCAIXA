@@ -9,8 +9,6 @@ import { RenderIf } from "../../Utils";
 
 const FifthPage = ({ setClose, ETLData, state, page }) => {
 
-  console.log("ae")
-  console.log(ETLData)
   
   return (
     <>

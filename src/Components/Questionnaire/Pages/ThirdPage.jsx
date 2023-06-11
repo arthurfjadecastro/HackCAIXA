@@ -8,69 +8,13 @@ import TooltipInfo from "../../Frames/TooltipInfo";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 
-const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData, response }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData,activeButton, handleType, titleInfo, handleOptionClick,selectedOption }) => {
+
   const isContinueButtonEnabled = isPositiveNumber(state.installments);
-  const [activeButton, setActiveButton] = useState("PRICE");
-  
-  const handleType = () => {
-    if (activeButton === "PRICE") {
-      setActiveButton(Object.keys(ETLData)[1]);
-      dispatch({ type: "typeInstallments", payload: "SAC" }); // Exemplo de ação para atualizar o estado das parcelas
-    } else {
-      setActiveButton(Object.keys(ETLData)[0]);
-      dispatch({ type: "typeInstallments", payload: "PRICE" }); // Exemplo de ação para atualizar o estado das parcelas
-    }
-  };
-
-  const titleInfo =
-    activeButton === "PRICE"
-      ? "Ideal para quem busca parcelas fixas e planejamento financeiro."
-      : "Ideal para quem busca previsibilidade nas parcelas.";
-  console.log(activeButton);
 
   
-  const TableContainer = styled(Grid)({
-    width: "100%",
-    maxWidth: "400px",
-    margin: "0 auto",
-    fontSize:12,
-    marginTop: 16
-  });
-  
-  const Table = styled("table")({
-    width: "100%",
-    borderCollapse: "collapse",
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-  });
-  
-  const Th = styled("th")({
-    padding: "12px",
-    textAlign: "left",
-    backgroundColor: "#ff6600",
-    color: "#fff",
-  });
-  
-  const EvenRow = styled("tr")({
-    backgroundColor: "#f5f5f5",
-  });
-  
-  const Td = styled("td")({
-    padding: "12px",
-    border: "1px solid #ccc",
-    color: "#333", // Cor do texto nas células
-  });
 
-  const HighlightedTd = styled(Td)({
-    backgroundColor: "#fff", // Cor de fundo destacada
-    fontWeight: "bold",
-  });
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    dispatch({ type: "installments", payload: option }); 
-  };
   return (
     <>
       <RenderIf predicate={(ETLData && ETLData.PRICE) === undefined || (ETLData && ETLData.PRICE) === null}>

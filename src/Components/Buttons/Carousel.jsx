@@ -1,21 +1,17 @@
 import React from "react";
 import { ButtonGroup, Button, Grid, Typography } from "@mui/material";
-import "./carousel.css";
 
 const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData, activeButton }) => {
   const renderOptions = () => {
     const options = [6, 12, 24];
 
-    console.log("ae");
-    console.log(ETLData && ETLData);
-
     return options.map((option) => (
-      <Grid key={option} style={{    maxWidth: 370}} item>
+      <Grid key={option} style={{ maxWidth: 370 }} item>
         <Button
           variant={state.installments === option ? "contained" : "outlined"}
           color="primary"
           onClick={() => handleOptionClick(option)}
-          style={{
+          sx={{
             borderRadius: "16px",
             fontWeight: "bold",
             width: "100%",
@@ -27,6 +23,10 @@ const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData,
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: state.installments === option ? "#005CA9" : "transparent",
+            transition: "transform 0.3s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
           }}
         >
           <Typography
@@ -36,7 +36,7 @@ const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData,
             <span style={{ color: "#FF6600" }}>{state.monetaryValue}</span> em {option}x
           </Typography>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="body2" style={{ fontSize: "12px", }}>
+            <Typography variant="body2" style={{ fontSize: "12px" }}>
               Valor da 1ª prestação: <span style={{ color: "#FF6600", fontWeight: "bold" }}>R$ {ETLData && ETLData[activeButton]
                 ? ETLData[activeButton][0].valorPrestacao
                 : null}</span>
@@ -54,13 +54,10 @@ const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData,
 
   return (
     <div className="carousel">
-      <h2 style={{ fontSize: 18, textAlign: "center" }}>Selecione a quantidade de parcelas:</h2>
+      <h2 style={{ fontSize: 18, textAlign: "center" }}>Selecione as parcelas disponíveis</h2>
       <Grid container spacing={2} justifyContent="center">
         {renderOptions()}
       </Grid>
-      {/* <p style={{ textAlign: "center" }}>
-        Opção selecionada: {state.installments}x
-      </p> */}
     </div>
   );
 };

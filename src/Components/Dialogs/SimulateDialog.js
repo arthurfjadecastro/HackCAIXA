@@ -118,8 +118,6 @@ function SimulateDialog({ isOpen, setClose }) {
     setPage(page - 1);
   };
 
-  console.log(response)
-  // console.log(state)
 
   return (
     <div>
