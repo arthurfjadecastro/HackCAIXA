@@ -9,7 +9,8 @@ import { RenderIf } from "../../Utils";
 
 const FifthPage = ({ setClose, ETLData, state, page }) => {
 
-
+  console.log("ae")
+  console.log(ETLData)
   
   return (
     <>
@@ -94,18 +95,6 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             variant="iOS"
             textButton={"Apple"}
           />
-                   {/* <p
-  style={{
-    fontSize: "16px",
-    textAlign: "center",
-    fontWeight: "bold",
-    color: "#333",
-    lineHeight: "1.5",
-    margin: 8
-  }}
->
-  Fale com um Gerente <span style={{ color: "#FF6600" }}> <br />agora mesmo</span>
-</p> */}
 
            <FramePaper
             variant="whatsapp"

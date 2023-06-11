@@ -5,6 +5,7 @@ import { TitleText } from "./Resources";
 import { BackButton, ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
 import { isNonEmptyString } from "../../Inputs/Validations/Base";
+import SliderMonetary from "../../Inputs/SliderMonetary";
 
 const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
   const [isValid, setIsValid] = useState("");
@@ -33,11 +34,19 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
         spacin={4}
       >
         <Grid item>
-          <TitleText>De quanto você precisa?</TitleText>
+          <TitleText>Informe a <span style={{ color: "#FF6600" }}>quantia desejada</span></TitleText>
         </Grid>
         <Grid item style={{ flex: 2, width: "100%" }}>
           <Item>
             <Monetary
+              value={state.monetaryValue}
+              onChange={(event) =>
+                dispatch({ type: "monetaryValue", payload: event.target.value })
+              }
+            />
+          </Item>
+          <Item>
+            <SliderMonetary
               value={state.monetaryValue}
               onChange={(event) =>
                 dispatch({ type: "monetaryValue", payload: event.target.value })

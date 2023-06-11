@@ -86,7 +86,7 @@ function SimulateDialog({ isOpen, setClose }) {
 
   useEffect(() => {
     setResponse(undefined)
-  }, [page === 4]);
+  }, [page < 4]);
 
  
 
@@ -140,7 +140,7 @@ function SimulateDialog({ isOpen, setClose }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              SimuladorCred CAIXA
+              SimulaCred CAIXA
             </Typography>
           </Toolbar>
         </AppBar>

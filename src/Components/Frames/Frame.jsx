@@ -14,12 +14,12 @@ const Frame = ({
       <div className="text-container">
         <p className="value">R$ {value}</p>
         <p className="installment">
-          1ª prestação: R$ {valueFirstInitialInstallment}
+          1ª prestação:<span style={{ color: "#FF6600" }}>R$ {valueFirstInitialInstallment}    </span> 
         </p>
         <p className="last-installment">
-          Última prestação: R$ {lastInstallment}
+          Última prestação:<span style={{ color: "#FF6600" }}>R$ {lastInstallment}    </span>
         </p>
-        <p className="installments">Parcelas: {installments}x</p>
+        <p className="installments">Parcelas:<span style={{ color: "#FF6600" }}>R$ {installments}x   </span>  </p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, styled } from "@mui/material";
+import { Grid, styled } from "@mui/material";
+
 import { TitleText } from "./Resources";
 import {
   BackButton,
@@ -12,9 +13,73 @@ import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 
+const TableContainer = styled(Grid)({
+  width: "100%",
+  maxWidth: "400px",
+  margin: "0 auto",
+});
+
+const Table = styled("table")({
+  width: "100%",
+  borderCollapse: "collapse",
+});
+
+const Th = styled("th")({
+  padding: "12px",
+  textAlign: "left",
+  backgroundColor: "#ff6600", // Laranja
+  color: "#fff", // Branco
+});
+
+const EvenRow = styled("tr")({
+  backgroundColor: "#f5f5f5", // Azul
+});
+
+const Td = styled("td")({
+  padding: "12px",
+});
+
 const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch, response }) => {
   const [activeButton, setActiveButton] = useState("PRICE");
 
+
+
+  const TableContainer = styled(Grid)({
+    width: "100%",
+    maxWidth: "400px",
+    margin: "0 auto",
+    fontSize:12,
+    marginTop: 16
+  });
+  
+  const Table = styled("table")({
+    width: "100%",
+    borderCollapse: "collapse",
+    border: "1px solid #ccc",
+    borderRadius: "8px",
+  });
+  
+  const Th = styled("th")({
+    padding: "12px",
+    textAlign: "left",
+    backgroundColor: "#ff6600",
+    color: "#fff",
+  });
+  
+  const EvenRow = styled("tr")({
+    backgroundColor: "#f5f5f5",
+  });
+  
+  const Td = styled("td")({
+    padding: "12px",
+    border: "1px solid #ccc",
+    color: "#333", // Cor do texto nas células
+  });
+
+  const HighlightedTd = styled(Td)({
+    backgroundColor: "#fff", // Cor de fundo destacada
+    fontWeight: "bold",
+  });
 
   const handleType = () => {
     if (activeButton === "PRICE") {
@@ -163,7 +228,32 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, dispatch, response 
             </RenderIf>
           </RenderIf>
         </RenderIf>
-          
+        <TableContainer container justifyContent="center">
+      <Table>
+        <tbody>
+          <tr>
+            <Th>Modelo</Th>
+            <Td>SAC</Td>
+            <Td>PRICE</Td>
+          </tr>
+          <EvenRow>
+            <Th>Amortização</Th>
+            <Td>Amortização constante</Td>
+            <Td>Amortização gradual</Td>
+          </EvenRow>
+          <tr>
+            <Th>Parcelas</Th>
+            <Td>Parcelas iniciais mais altas e redução progressiva</Td>
+            <Td>Parcelas constantes ao longo do tempo</Td>
+          </tr>
+          <tr>
+            <Th>Benefícios</Th>
+            <HighlightedTd>Menor custo total de financiamento</HighlightedTd>
+            <HighlightedTd>Maior previsibilidade das parcelas</HighlightedTd>
+          </tr>
+        </tbody>
+      </Table>
+    </TableContainer>
         </Grid>
 
         <Grid item>
