@@ -57,7 +57,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
         <Grid item>
           <Item>
             <ButtonCEF
-              buttonTitle={"Continuar"}
+              buttonTitle={"Simular"}
               isContinueButtonEnabled={isContinueButtonEnabled}
               handlePageChange={handlePageChange}
             />

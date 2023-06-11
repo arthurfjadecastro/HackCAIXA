@@ -36,13 +36,13 @@ const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData,
             <span style={{ color: "#FF6600" }}>{state.monetaryValue}</span> em {option}x
           </Typography>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="body2" style={{ fontSize: "12px" }}>
-              Valor da 1ª prestação: <span style={{ color: "#FF6600" }}>R$ {ETLData && ETLData[activeButton]
+            <Typography variant="body2" style={{ fontSize: "12px", }}>
+              Valor da 1ª prestação: <span style={{ color: "#FF6600", fontWeight: "bold" }}>R$ {ETLData && ETLData[activeButton]
                 ? ETLData[activeButton][0].valorPrestacao
                 : null}</span>
             </Typography>
             <Typography variant="body2" style={{ fontSize: "12px" }}>
-              Valor da última prestação: <span style={{ color: "#FF6600" }}>R$ {ETLData && ETLData[activeButton]
+              Valor da última prestação: <span style={{ color: "#FF6600", fontWeight: "bold" }}>R$ {ETLData && ETLData[activeButton]
                 ? ETLData[activeButton][ETLData[activeButton].length - 1].valorPrestacao
                 : null}</span>
             </Typography>
