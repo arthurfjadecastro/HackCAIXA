@@ -1,7 +1,9 @@
-# SIMULACRED CAIXA - C150713 Arthur de Castro
+# SIMULACRED CAIXA
 
-- Website - https://www.simulacredcaixa.com.br/
-- Github - https://github.com/arthurfjadecastro/HackCAIXA
+- Author: Arthur de Castro | C150713
+
+* Website - https://www.simulacredcaixa.com.br/
+* Github - https://github.com/arthurfjadecastro/HackCAIXA
 
 Este guia fornece instruções para começar a utilizar o projeto.
 
