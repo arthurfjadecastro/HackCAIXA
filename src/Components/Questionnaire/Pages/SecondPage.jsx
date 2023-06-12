@@ -8,7 +8,7 @@ import { isNonEmptyString } from "../../Inputs/Validations/Base";
 import SliderMonetary from "../../Inputs/SliderMonetary";
 import { ProgressStepper } from "../../Dialogs/Resources";
 
-const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, activeStep}) => {
+const SecondPage = ({ state, dispatch, handlePageChange, handleBack, activeStep}) => {
 
 
   // const isContinueButtonEnabled =
@@ -29,14 +29,14 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, activeStep})
               }
             />
           </Item>
-          <Item>
+          {/* <Item>
             <SliderMonetary
               value={state.monetaryValue}
               onChange={(event) =>
                 dispatch({ type: "monetaryValue", payload: event.target.value })
               }
             />
-          </Item>
+          </Item> */}
         </Grid>
         {/* <Grid item>
           <Item>
@@ -54,4 +54,4 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, activeStep})
   );
 };
 
-export default ThirdPage;
+export default SecondPage;

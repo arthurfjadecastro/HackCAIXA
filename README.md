@@ -1,6 +1,7 @@
 # SIMULACRED CAIXA - C150713 Arthur de Castro
 
-https://github.com/arthurfjadecastro/HackCAIXA
+Website - https://www.simulacredcaixa.com.br/
+Github - https://github.com/arthurfjadecastro/HackCAIXA
 
 Este guia fornece instruções para começar a utilizar o projeto.
 
@@ -21,10 +22,11 @@ Para começar a utilizar o projeto, siga as instruções abaixo:
 
 3. No terminal, navegue até o diretório do projeto (`cd .\simulacredcaixa\`).
 
-4. Execute o comando `npm start` para executar o projeto.
-   obs: Como as dependências foram zipadas junto com o projeto, não é necessário rodar o script `npm run start-clean`, que limparia o cache, resolvendo incidentes com recursos depreciados parcialmente, além de instalar os módulos necessários para utilização.
+4. Execute o comando `npm run start-clean` para executar o projeto pela primeira vez.
 
-5. Após a conclusão, o projeto será automaticamente aberto em seu navegador padrão.
+5. Para executar o projeto posteriormente, basta utilizar `npm start` no terminal nas próximas vezes.
+
+6. Após a conclusão, o projeto será automaticamente aberto em seu navegador padrão.
 
 ## Experiência
 
