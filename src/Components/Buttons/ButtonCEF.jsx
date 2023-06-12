@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, styled } from "@mui/material";
-import { orange, purple } from "@mui/material/colors";
+import { orange } from "@mui/material/colors";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   width: "70%",
@@ -27,6 +27,7 @@ const ButtonCEF = ({
   page,
   setClose,
 }) => {
+  
   const handleClick = () => {
     if (page === 5) {
       setClose(false);

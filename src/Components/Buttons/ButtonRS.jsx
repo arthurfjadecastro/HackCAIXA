@@ -27,7 +27,6 @@ const ButtonRS = ({ textButton, variant }) => {
     backgroundColor: !isHovered ? "#0070c9" : "#0060ad",
     border: "1px solid #0070c9",
     color: "#fff",
-    // textColor: "#0060ad"
   };
 
   const googlePlayStyle = {

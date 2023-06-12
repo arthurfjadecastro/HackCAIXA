@@ -12,7 +12,6 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: "black",
   borderColor: "black",
   border: 1,
-  // backgroundColor: purple[500],
   "&:hover": {
     backgroundColor: purple[700],
   },

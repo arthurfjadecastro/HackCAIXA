@@ -7,7 +7,6 @@ import {
   FifthPage,
 } from "./Pages";
 import { RenderIf } from "../Utils";
-import { ProgressStepper } from "../Dialogs/Resources";
 import { Grid } from "@mui/material";
 
 const Questionnaire = ({
@@ -34,10 +33,10 @@ const Questionnaire = ({
   const handleType = () => {
     if (activeButton === "PRICE") {
       setActiveButton("SAC");
-      dispatch({ type: "typeInstallments", payload: activeButton }); // Exemplo de ação para atualizar o estado das parcelas
+      dispatch({ type: "typeInstallments", payload: activeButton }); //Dispatch on Reducer
     } else {
       setActiveButton("PRICE");
-      dispatch({ type: "typeInstallments", payload: activeButton }); // Exemplo de ação para atualizar o estado das parcelas
+      dispatch({ type: "typeInstallments", payload: activeButton }); 
     }
   };
 

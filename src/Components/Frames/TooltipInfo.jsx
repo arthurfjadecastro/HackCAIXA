@@ -5,12 +5,9 @@ import "./tooltipInfo.css";
 
 const TextWithInfo = ({ text, tooltipText }) => {
   return (
-    // <Tooltip title={tooltipText}>
     <IconButton disableFocusRipple disableTouchRipple aria-label="info">
       <Typography>{text}</Typography>
-      {/* <InfoIcon /> */}
     </IconButton>
-    // </Tooltip>
   );
 };
 

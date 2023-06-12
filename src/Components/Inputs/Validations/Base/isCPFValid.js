@@ -2,7 +2,8 @@ const isCpfValid = (value) => {
   if (typeof value != "string") return false;
   value = value.replace(/[^\d]+/g, "");
   if (value === "") return false;
-  // Elimina values invalidos conhecidos
+  
+
   if (
     value.length !== 11 ||
     value === "00000000000" ||
@@ -17,14 +18,16 @@ const isCpfValid = (value) => {
     value === "99999999999"
   )
     return false;
-  // Valida 1o digito
+
+ 
   let add = 0;
   let rev;
   for (let i = 0; i < 9; i++) add += parseInt(value.charAt(i)) * (10 - i);
   rev = 11 - (add % 11);
   if (rev === 10 || rev === 11) rev = 0;
   if (rev !== parseInt(value.charAt(9))) return false;
-  // Valida 2o digito
+
+  
   add = 0;
   for (let i = 0; i < 10; i++) add += parseInt(value.charAt(i)) * (11 - i);
   rev = 11 - (add % 11);

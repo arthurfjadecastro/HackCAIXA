@@ -23,13 +23,9 @@ body {
   display: flex !important;
   align-items: center;
   width: 100vw !important;
-  /* justify-content: space-around; */
 }
 
 .slick-slide {
-  /* display: grid !important; */
-  /* justify-content: end; */
-  /* align-items: center; */
   height: 100vh;
 }
 
@@ -50,14 +46,12 @@ body {
   justify-content: center;
 }
 
-/* Media query para dispositivos móveis */
 @media only screen and (max-width: 1028px) {
   #root > div > div.MuiBox-root.css-ihs1h > header > div {
     flex-direction: column;
-    /* margin: 16px; */
   }
 
-  /* Primeiro seletor */
+
   #root
     > div
     > div.MuiBox-root.css-ihs1h

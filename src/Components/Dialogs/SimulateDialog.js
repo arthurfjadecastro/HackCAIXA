@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Questionnaire } from "../Questionnaire";
 import axios from "axios";
 import { useMatchesSmartphone } from "../Breakpoints";
@@ -92,7 +92,6 @@ function SimulateDialog({ isOpen, setClose }) {
     dispatch(resetState());
     setShowAllInstallments(false);
     setActiveStep(0);
-    // setShowButtons(false)
   }, [isOpen === false]);
 
   // Effect that iterates over request response

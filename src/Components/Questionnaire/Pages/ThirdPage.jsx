@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Grid, styled } from "@mui/material";
+import React from "react";
+import { Grid } from "@mui/material";
 import { TableContainerInfo, TitleText } from "./Resources";
-import { BackButton, ButtonCEF, ButtonGroup, Carousel } from "../../Buttons";
+import { ButtonGroup, Carousel } from "../../Buttons";
 import Item from "../../Frames/Item";
-import { isPositiveNumber } from "../../Buttons/Validations";
 import TooltipInfo from "../../Frames/TooltipInfo";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
@@ -13,8 +12,6 @@ const ThirdPage = ({
   activeStep,
   state,
   dispatch,
-  handlePageChange,
-  handleBack,
   ETLData,
   activeButton,
   handleType,

@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import UniformTextField from "./UniformTextField";
 import { EmailValidator, NonEmptyValidator } from "./Validations";
-// import { handleKeyPress } from "../Events";
 
 const Email = ({ helperText, onBlur, value, onChange, type }) => {
   return (
@@ -21,8 +20,6 @@ const Email = ({ helperText, onBlur, value, onChange, type }) => {
         id="Email"
       />
       <React.Fragment></React.Fragment>
-      {/* </MuiThemeProvider> */}
-      {/* </MuiThemeProvider> */}
     </React.Fragment>
   );
 };

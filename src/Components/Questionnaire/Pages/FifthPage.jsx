@@ -11,10 +11,8 @@ import { getRate } from "./Resources/SingletonRate";
 
 const FifthPage = ({
   activeStep,
-  setClose,
   ETLData,
   state,
-  page,
   activeButton,
   selectedOption,
 }) => {

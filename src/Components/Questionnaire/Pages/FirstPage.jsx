@@ -2,7 +2,6 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { TitleText } from "./Resources";
 import { CellPhoneNumber, Cpf } from "../../Inputs";
-import { ButtonCEF, ExpandButton } from "../../Buttons";
 import Item from "../../Frames/Item";
 import Email from "../../Inputs/Email";
 import { ProgressStepper } from "../../Dialogs/Resources";
@@ -12,7 +11,6 @@ function FirstPage({ state, dispatch, activeStep }) {
     <>
       <ProgressStepper activeStep={activeStep} />
       <Grid item>
-        {/* <Grid item  style={{ display: "flex", justifyContent: "center",width: "100%", flexDirection: "column"}}> */}
         <TitleText>
           Informe seu <br></br>{" "}
           <span style={{ color: "#FF6600" }}> E-mail, CPF</span> e{" "}

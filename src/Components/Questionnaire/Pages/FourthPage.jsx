@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Grid, styled } from "@mui/material";
-
+import React from "react";
+import { Grid } from "@mui/material";
 import { TitleText } from "./Resources";
 import { LoanDetails } from "../../Frames";
 import TooltipInfo from "../../Frames/TooltipInfo";
-import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
-import FullScreenLoading from "./Resources/FullScreenLoading";
 import { ProgressStepper } from "../../Dialogs/Resources";
 
-const GrayText = styled("span")({
-  color: "#808080",
-  fontSize: "2px",
-});
+
 
 const FourthPage = ({
   activeStep,
   handleBack,
   ETLData,
-  handlePageChange,
   activeButton,
-  state,
   selectedOption,
   showAllInstallments,
 }) => {
@@ -117,7 +109,6 @@ const FourthPage = ({
           maxWidth: "100%",
           justifyContent: "center",
           alignItems: "center",
-          justifyContent: "center",
           display: "flex",
         }}
       >

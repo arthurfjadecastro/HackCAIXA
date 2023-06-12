@@ -1,4 +1,4 @@
-let rate = 0; // Valor inicial da taxa de juros
+let rate = 0;
 
 export const setRate = (valor) => {
     rate = valor;
