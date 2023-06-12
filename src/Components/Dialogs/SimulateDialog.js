@@ -60,13 +60,13 @@ const reducer = (state, action) => {
 
 function SimulateDialog({ isOpen, setClose }) {
   // State that stores the request data
-  const [response, setResponse] = useState();
+  const [responses, setResponses] = useState();
 
   // State created to store processed data
   const [ETLData, setEtlData] = useState();
 
   // State that iterates the simulation result by type
-  const iterableData = {};
+  const newIterableData = {};
 
   // Create reducer
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -96,15 +96,26 @@ function SimulateDialog({ isOpen, setClose }) {
 
   // Effect that iterates over request response
   useEffect(() => {
-    if (response !== null && response !== undefined)
-      response.resultadoSimulacao.forEach((item) => {
-        iterableData[item.tipo] = item.parcelas;
+    if (responses !== null && responses !== undefined) {
+      const newEtlData = {};
+  
+      Object.keys(responses).forEach((prazo) => {
+        const resultadoSimulacao = responses[prazo].resultadoSimulacao;
+        resultadoSimulacao.forEach((item) => {
+          if (!newEtlData[item.tipo]) {
+            newEtlData[item.tipo] = {};
+          }
+          newEtlData[item.tipo][prazo] = item.parcelas;
+        });
       });
-    setEtlData(iterableData);
-  }, [response]);
+  
+      setEtlData(newEtlData);
+    }
+  }, [responses]);
+  
 
   useEffect(() => {
-    setResponse(undefined);
+    setResponses(undefined);
   }, [page < 3]);
 
   const [showAllInstallments, setShowAllInstallments] = useState(false);
@@ -117,6 +128,18 @@ function SimulateDialog({ isOpen, setClose }) {
 
   const isMobile = useMatchesSmartphone();
 
+  const makeRequest = (prazo) => {
+    const numericValue = parseInt(
+      state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
+      10
+    );
+  
+    return axios.post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
+      valorDesejado: numericValue,
+      prazo: prazo,
+    });
+  };
+
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
     if (page === 2) {
@@ -125,26 +148,52 @@ function SimulateDialog({ isOpen, setClose }) {
         state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
         10
       );
-      axios
-        .post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
-          valorDesejado: numericValue,
-          prazo: 24,
-        })
+  
+      // Requisição para 6 parcelas
+      makeRequest(6)
         .then((response) => {
-          setResponse(response.data);
+          setResponses((prevResponses) => ({
+            ...prevResponses,
+            parcelas6: response.data,
+          }));
         })
         .catch((err) => {
-          console.error("ops! ocorreu um erro" + err);
+          console.error("Ops! Ocorreu um erro: " + err);
+        });
+  
+      // Requisição para 12 parcelas
+      makeRequest(12)
+        .then((response) => {
+          setResponses((prevResponses) => ({
+            ...prevResponses,
+            parcelas12: response.data,
+          }));
+        })
+        .catch((err) => {
+          console.error("Ops! Ocorreu um erro: " + err);
+        });
+  
+      // Requisição para 24 parcelas
+      makeRequest(24)
+        .then((response) => {
+          setResponses((prevResponses) => ({
+            ...prevResponses,
+            parcelas24: response.data,
+          }));
+        })
+        .catch((err) => {
+          console.error("Ops! Ocorreu um erro: " + err);
         })
         .finally(() => {
           setTimeout(() => {
-            setShowButtons(true); // Activate the display of the buttons after the completion of the request
-          }, 150); // Delay of 1 second
+            setShowButtons(true); // Ative a exibição dos botões após a conclusão da requisição
+          }, 150); // Atraso de 1 segundo
         });
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setPage(page + 1);
   };
+  
 
   // Back page of Questionnaire
   const handleBack = () => {
@@ -180,6 +229,9 @@ function SimulateDialog({ isOpen, setClose }) {
     5: (state) => true,
     6: (state) => true,
   };
+  // console.log("ETL DATA")
+  // console.log(ETLData)
+
 
   return (
     <div>
@@ -224,7 +276,7 @@ function SimulateDialog({ isOpen, setClose }) {
             handlePageChange={handlePageChange}
             page={page}
             dispatch={dispatch}
-            response={response}
+            response={responses}
           />
           <Grid
             container

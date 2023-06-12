@@ -77,7 +77,7 @@ const SACTable = () => {
       </StyledTableRow>
       <StyledTableRow>
         <StyledTableCell>Benefícios</StyledTableCell>
-        <StyledTableCell>Maior previsibilidade das parcelas</StyledTableCell>
+        <StyledTableCell>Menor custo total de financiamento</StyledTableCell>
       </StyledTableRow>
     </>
   );
@@ -100,7 +100,7 @@ const PRICETable = () => {
       </StyledTableRow>
       <StyledTableRow>
         <StyledTableCell>Benefícios</StyledTableCell>
-        <StyledTableCell>Menor custo total de financiamento</StyledTableCell>
+        <StyledTableCell>Maior previsibilidade das parcelas</StyledTableCell>
       </StyledTableRow>
     </>
   );

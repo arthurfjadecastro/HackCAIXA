@@ -17,6 +17,13 @@ const FifthPage = ({
   activeButton,
   selectedOption,
 }) => {
+  // const parcelas = ETLData && ETLData[activeButton] && ETLData[activeButton][`parcelas${selectedOption}`];
+
+  const parcelasKey = `parcelas${selectedOption}`;
+      const firstInstallment = ETLData[activeButton]?.[parcelasKey]?.[0];
+      const lastInstallment =
+        ETLData[activeButton]?.[parcelasKey]?.[selectedOption - 1] || {};
+  // console.log(parcelas)
   return (
     <>
       <ProgressStepper activeStep={activeStep} />
@@ -47,19 +54,15 @@ const FifthPage = ({
           <Frame
             installments={state.installments}
             lastInstallment={
-              ETLData && ETLData[activeButton]
-                ? ETLData[activeButton][selectedOption - 1].valorPrestacao
-                : null
+              ETLData && lastInstallment.valorPrestacao
             }
             valueFirstInitialInstallment={
               ETLData[activeButton]
-                ? ETLData[activeButton][0].valorPrestacao
+                ? firstInstallment.valorPrestacao
                 : null
             }
             initialInstallment={
-              ETLData && ETLData[activeButton]
-                ? ETLData[activeButton][0]?.numero
-                : null
+              ETLData && firstInstallment.numero
             }
             value={state.monetaryValue}
           />
@@ -68,19 +71,15 @@ const FifthPage = ({
           <Frame
             installments={state.installments}
             lastInstallment={
-              ETLData && ETLData[activeButton]
-                ? ETLData[activeButton][selectedOption - 1].valorPrestacao
-                : null
+              ETLData && lastInstallment
             }
             valueFirstInitialInstallment={
               ETLData[activeButton]
-                ? ETLData[activeButton][0].valorPrestacao
+                ? firstInstallment.valorPrestacao
                 : null
             }
             initialInstallment={
-              ETLData && ETLData[activeButton]
-                ? ETLData[activeButton][0]?.numero
-                : null
+              ETLData && firstInstallment.numero
             }
             value={state.monetaryValue}
           />

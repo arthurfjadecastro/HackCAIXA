@@ -20,11 +20,11 @@ const FourthPage = ({
   showAllInstallments,
 }) => {
   const renderInstallments = () => {
-    console.log(activeButton);
-    console.log(selectedOption);
     if (showAllInstallments) {
+      const parcelas = ETLData && ETLData[activeButton] && ETLData[activeButton][`parcelas${selectedOption}`];
+      
       // Renderizar múltiplos de 4 até selectedOption
-      const installmentsToRender = ETLData[activeButton]
+      const installmentsToRender = parcelas
         .filter(
           (installment) =>
             installment.numero === 1 ||
@@ -46,34 +46,41 @@ const FourthPage = ({
           </>
         ));
 
-      return installmentsToRender;
+      return installmentsToRender;    
     } else {
-      // Renderizar apenas a primeira e a última prestação
-      const firstInstallment = ETLData[activeButton][0];
-      const lastInstallment = ETLData[activeButton][selectedOption - 1];
-
+      const parcelasKey = `parcelas${selectedOption}`;
+      const firstInstallment = ETLData[activeButton]?.[parcelasKey]?.[0];
+      const lastInstallment =
+        ETLData[activeButton]?.[parcelasKey]?.[selectedOption - 1] || {};
+  
       return (
         <>
-          <Grid item>
-            <LoanDetails
-              activeButton={activeButton}
-              interesetAmount={firstInstallment.valorJuros}
-              installmentAmount={firstInstallment.valorPrestacao}
-              numberInstallment={firstInstallment.numero}
-            />
-          </Grid>
-          <Grid item>
-            <LoanDetails
-              activeButton={activeButton}
-              interesetAmount={lastInstallment.valorJuros}
-              installmentAmount={lastInstallment.valorPrestacao}
-              numberInstallment={selectedOption}
-            />
-          </Grid>
+          {firstInstallment && (
+            <Grid item>
+              <LoanDetails
+                activeButton={activeButton}
+                interesetAmount={firstInstallment.valorJuros}
+                installmentAmount={firstInstallment.valorPrestacao}
+                numberInstallment={firstInstallment.numero}
+              />
+            </Grid>
+          )}
+          {lastInstallment && (
+            <Grid item>
+              <LoanDetails
+                activeButton={activeButton}
+                interesetAmount={lastInstallment.valorJuros}
+                installmentAmount={lastInstallment.valorPrestacao}
+                numberInstallment={selectedOption}
+              />
+            </Grid>
+          )}
         </>
       );
     }
   };
+  
+  
 
   return (
     <>

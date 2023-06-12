@@ -22,6 +22,8 @@ const ThirdPage = ({
   handleOptionClick,
   selectedOption,
 }) => {
+ 
+
   return (
     <>
       <RenderIf

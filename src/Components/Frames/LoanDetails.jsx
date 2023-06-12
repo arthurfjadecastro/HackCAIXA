@@ -89,6 +89,7 @@ const LoanDetails = ({
         </Grid>
         <Grid item xs={5}>
           <Typography
+            textWrap={"noWrap"}
             variant="body1"
             align="center"
             style={{
