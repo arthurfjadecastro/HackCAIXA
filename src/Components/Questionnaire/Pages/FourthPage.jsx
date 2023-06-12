@@ -27,8 +27,6 @@ const FourthPage = ({
   const renderInstallments = () => {
     if (showAllInstallments) {
       const parcelas = ETLData && ETLData[activeButton] && ETLData[activeButton][`parcelas${selectedOption}`];
-      console.log("etl data data")
-      console.log(ETLData)
       // Renderizar múltiplos de 4 até selectedOption
       const installmentsToRender = parcelas
         .filter(

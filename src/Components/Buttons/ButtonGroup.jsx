@@ -7,7 +7,6 @@ export default function DisableElevation({ activeButton, handleType }) {
   const handleClick = (type) => {
     handleType(type);
   };
-  console.log(activeButton)
 
   return (
     <ButtonGroup

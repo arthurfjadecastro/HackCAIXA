@@ -5,7 +5,6 @@ import UniformTextField from "./UniformTextField";
 
 const Monetary = ({ helperText, onBlur, value, onChange, type }) => {
   const [textValueByHelperText, setValue] = useState("");
-  console.log(value)
   useEffect(() => {
     const numericValue = parseInt(
       value.replace(/[^0-9.-]+/g, "").replace(".", ""),

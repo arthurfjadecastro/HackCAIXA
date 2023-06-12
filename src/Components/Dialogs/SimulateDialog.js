@@ -19,6 +19,7 @@ import {
   isPhoneNumber,
 } from "../Inputs/Validations/Base";
 import { RenderIf } from "../Utils";
+import { setRate } from "../Questionnaire/Pages/Resources/SingletonRate";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -110,9 +111,11 @@ function SimulateDialog({ isOpen, setClose }) {
       });
   
       setEtlData(newEtlData);
+
+  
+     
     }
   }, [responses]);
-  
 
   useEffect(() => {
     setResponses(undefined);
@@ -144,12 +147,8 @@ function SimulateDialog({ isOpen, setClose }) {
   const handlePageChange = () => {
     if (page === 2) {
       setShowButtons(false);
-      const numericValue = parseInt(
-        state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
-        10
-      );
-  
-      // Requisição para 6 parcelas
+     
+      // Request to 6x
       makeRequest(6)
         .then((response) => {
           setResponses((prevResponses) => ({
@@ -161,7 +160,7 @@ function SimulateDialog({ isOpen, setClose }) {
           console.error("Ops! Ocorreu um erro: " + err);
         });
   
-      // Requisição para 12 parcelas
+      // Request to 12x
       makeRequest(12)
         .then((response) => {
           setResponses((prevResponses) => ({
@@ -173,22 +172,28 @@ function SimulateDialog({ isOpen, setClose }) {
           console.error("Ops! Ocorreu um erro: " + err);
         });
   
-      // Requisição para 24 parcelas
+      // Request to 24x
       makeRequest(24)
-        .then((response) => {
-          setResponses((prevResponses) => ({
-            ...prevResponses,
-            parcelas24: response.data,
-          }));
-        })
-        .catch((err) => {
-          console.error("Ops! Ocorreu um erro: " + err);
-        })
-        .finally(() => {
-          setTimeout(() => {
-            setShowButtons(true); // Ative a exibição dos botões após a conclusão da requisição
-          }, 150); // Atraso de 1 segundo
-        });
+  .then((response) => {
+    setResponses((prevResponses) => ({
+      ...prevResponses,
+      parcelas24: response.data,
+    }));
+
+    // Extrair o valor da taxa de juros do objeto de resposta
+    const taxaJuros = response.data.taxaJuros;
+
+    // Armazenar a taxa de juros no singleton
+    setRate(taxaJuros);
+  })
+  .catch((err) => {
+    console.error("Ops! Ocorreu um erro: " + err);
+  })
+  .finally(() => {
+    setTimeout(() => {
+      setShowButtons(true);
+    }, 150);
+  });
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setPage(page + 1);
@@ -217,6 +222,7 @@ function SimulateDialog({ isOpen, setClose }) {
     }
   }, [numericValue]);
 
+  // Validate buttons enabled and disabled
   const isContinueButtonEnabled = {
     1: (state) =>
       (isCPFValid(state.cpf) &&
