@@ -1,5 +1,6 @@
 import React from "react";
 import "./frame.css";
+import { customFormatNumber } from "./Resources";
 
 const Frame = ({
   value,
@@ -15,12 +16,12 @@ const Frame = ({
         <p className="installment">
           1ª prestação:{" "}
           <span style={{ color: "#FF6600" }}>
-            R$ {valueFirstInitialInstallment}{" "}
+            R$ {customFormatNumber(valueFirstInitialInstallment)}
           </span>
         </p>
         <p className="last-installment">
           Última prestação:{" "}
-          <span style={{ color: "#FF6600" }}>R$ {lastInstallment} </span>
+          <span style={{ color: "#FF6600" }}>R$ {customFormatNumber(lastInstallment)} </span>
         </p>
         <p className="installments">
           Parcelas: <span style={{ color: "#FF6600" }}>{installments}x </span>{" "}

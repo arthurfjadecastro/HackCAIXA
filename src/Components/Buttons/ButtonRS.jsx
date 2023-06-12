@@ -49,6 +49,7 @@ const ButtonRS = ({ textButton, variant }) => {
     transition: ".5s",
     color: "#25D366",
     textWrap: "noWrap",
+    display: isMobile ? "none": {}
   };
   const textManageriOS = {
     color: "#0060ad",
@@ -64,7 +65,7 @@ const ButtonRS = ({ textButton, variant }) => {
 
   const textStyle = {
     fontSize: !isHovered ? "0px" : "16px",
-
+    display: isMobile ? "none" : {},
     transition: ".5s",
     color: isHovered ? "#fff" : "#fff",
     textWrap: "noWrap",

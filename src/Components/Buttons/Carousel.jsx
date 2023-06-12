@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Grid, Typography } from "@mui/material";
+import { customFormatNumber } from "../Frames/Resources";
 
 const Carousel = ({
   state,
@@ -56,13 +57,13 @@ const Carousel = ({
                 <Typography variant="body2" style={{ fontSize: "12px" }}>
                   Valor da 1ª prestação:{" "}
                   <span style={{ color: "#FF6600", fontWeight: "bold" }}>
-                    R$ {parcelas[0].valorPrestacao}
+                    R$ {customFormatNumber(parcelas[0].valorPrestacao)}
                   </span>
                 </Typography>
                 <Typography variant="body2" style={{ fontSize: "12px" }}>
                   Valor da última prestação:{" "}
                   <span style={{ color: "#FF6600", fontWeight: "bold" }}>
-                    R$ {parcelas[parcelas.length - 1].valorPrestacao}
+                    R$ {customFormatNumber(parcelas[parcelas.length - 1].valorPrestacao)}
                   </span>
                 </Typography>
               </div>

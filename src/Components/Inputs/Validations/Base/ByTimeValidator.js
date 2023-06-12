@@ -13,7 +13,7 @@ const ByTimeValidator = (props) => {
     if (props.value && !isValid) {
       const timeoutID = setTimeout(() => {
         setIsValid(false);
-      }, 2000);
+      }, 1000);
       setTimeoutID(timeoutID);
     } else {
       setIsValid(true);

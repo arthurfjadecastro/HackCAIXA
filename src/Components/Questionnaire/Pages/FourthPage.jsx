@@ -9,6 +9,11 @@ import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 import { ProgressStepper } from "../../Dialogs/Resources";
 
+const GrayText = styled("span")({
+  color: "#808080",
+  fontSize: "2px",
+});
+
 const FourthPage = ({
   activeStep,
   handleBack,
@@ -22,7 +27,8 @@ const FourthPage = ({
   const renderInstallments = () => {
     if (showAllInstallments) {
       const parcelas = ETLData && ETLData[activeButton] && ETLData[activeButton][`parcelas${selectedOption}`];
-      
+      console.log("etl data data")
+      console.log(ETLData)
       // Renderizar múltiplos de 4 até selectedOption
       const installmentsToRender = parcelas
         .filter(
@@ -38,6 +44,7 @@ const FourthPage = ({
               <LoanDetails
                 key={index}
                 activeButton={activeButton}
+                amortization={installment.valorAmortizacao}
                 interesetAmount={installment.valorJuros}
                 installmentAmount={installment.valorPrestacao}
                 numberInstallment={installment.numero}
@@ -58,6 +65,7 @@ const FourthPage = ({
           {firstInstallment && (
             <Grid item>
               <LoanDetails
+                amortization={firstInstallment.valorAmortizacao}
                 activeButton={activeButton}
                 interesetAmount={firstInstallment.valorJuros}
                 installmentAmount={firstInstallment.valorPrestacao}
@@ -68,6 +76,7 @@ const FourthPage = ({
           {lastInstallment && (
             <Grid item>
               <LoanDetails
+                amortization={lastInstallment.valorAmortizacao}
                 activeButton={activeButton}
                 interesetAmount={lastInstallment.valorJuros}
                 installmentAmount={lastInstallment.valorPrestacao}
@@ -93,7 +102,7 @@ const FourthPage = ({
           flexDirection: "column",
         }}
       >
-        <TitleText>Detalhes da solicitação</TitleText>
+        <TitleText>Detalhes da  <span style={{ color: "#FF6600" }}>solicitação</span></TitleText>
       </Grid>
       <Grid
         item

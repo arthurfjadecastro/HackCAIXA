@@ -9,6 +9,8 @@ const TitleText = styled(Typography)(({ theme }) => ({
   letterSpacing: 2,
   textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
   textAlign: "center",
+  marginBottom: 32,
+  marginTop: 32
 }));
 
 export default TitleText;

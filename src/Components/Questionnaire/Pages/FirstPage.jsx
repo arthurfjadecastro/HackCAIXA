@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { TitleText } from "./Resources";
 import { CellPhoneNumber, Cpf } from "../../Inputs";
-import { ButtonCEF } from "../../Buttons";
+import { ButtonCEF, ExpandButton } from "../../Buttons";
 import Item from "../../Frames/Item";
 import Email from "../../Inputs/Email";
 import { ProgressStepper } from "../../Dialogs/Resources";

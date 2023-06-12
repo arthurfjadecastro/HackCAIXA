@@ -3,7 +3,9 @@ import { Button, styled } from "@mui/material";
 import { orange, purple } from "@mui/material/colors";
 
 const ColorButton = styled(Button)(({ theme }) => ({
-  width: 312,
+  width: "70%",
+  maxWidth: 296,
+  textTransform: "capitalize",
   height: 48,
   background: "#F39200",
   boxShadow:

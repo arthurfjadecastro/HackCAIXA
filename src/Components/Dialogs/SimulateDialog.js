@@ -11,7 +11,7 @@ import { Questionnaire } from "../Questionnaire";
 import axios from "axios";
 import { useMatchesSmartphone } from "../Breakpoints";
 import { Item } from "../Frames";
-import { ButtonCEF } from "../Buttons";
+import { ButtonCEF, ExpandButton } from "../Buttons";
 import {
   isCPFValid,
   isEmail,
@@ -229,9 +229,7 @@ function SimulateDialog({ isOpen, setClose }) {
     5: (state) => true,
     6: (state) => true,
   };
-  console.log("STATE")
-  console.log(state)
-  // console.log(ETLData)
+
 
 
   return (
@@ -289,9 +287,13 @@ function SimulateDialog({ isOpen, setClose }) {
             <RenderIf predicate={page === 4}>
               <Grid item>
                 <Item>
-                  <Button onClick={handleShowAllInstallments}>
-                    {showAllInstallments ? "Ver menos" : "Ver mais"}
-                  </Button>
+                <ExpandButton variant="text" onClick={handleShowAllInstallments}>
+            
+
+               </ExpandButton>
+                  {/* <Button variant="outlined" onClick={handleShowAllInstallments}>
+                    {showAllInstallments ? "Resumo" : "Mais informações"}
+                  </Button> */}
                 </Item>
               </Grid>
             </RenderIf>

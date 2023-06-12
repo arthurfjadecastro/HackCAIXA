@@ -1,7 +1,6 @@
 import React from "react";
 import { Paper, Grid, Typography, styled, Divider } from "@mui/material";
-import PlusOneOutlinedIcon from "@mui/icons-material/PlusOneOutlined";
-import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import { customFormatNumber, formatinteresetAmount } from "./Resources";
 
 const Frame = styled(Paper)(({ theme }) => ({
   backgroundColor: "transparent",
@@ -21,61 +20,35 @@ const TextWrapper = styled("div")({
   alignItems: "center",
 });
 
+const GrayText = styled(Typography)({
+  fontSize: "14px",
+});
+
 const LoanDetails = ({
   numberInstallment,
   installmentAmount,
   interesetAmount,
+  amortization,
 }) => {
   return (
     <Frame>
       <Grid
-        justifyContent={"center"}
+        justifyContent="space-between"
         container
         spacing={2}
         alignItems="center"
         style={{ width: "100%", margin: 0 }}
       >
-        <Grid
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          item
-          xs={6}
-        >
-          <IconWrapper>
-            {numberInstallment === 1 ? (
-              <PlusOneOutlinedIcon
-                style={{
-                  width: 24,
-                  height: 24,
-                  color: "#005CA9",
-                  fontWeight: "bold",
-                  fontSize: "24px",
-                  borderRadius: "50%",
-                  border: "2px solid #005CA9",
-                }}
-              />
-            ) : (
-              <CheckOutlinedIcon
-                style={{
-                  width: 24,
-                  height: 24,
-                  color: "#005CA9",
-                  fontWeight: "bold",
-                  fontSize: "24px",
-                  borderRadius: "50%",
-                  border: "2px solid #005CA9",
-                }}
-              />
-            )}
-          </IconWrapper>
+        <Grid item xs={4} style={{ paddingRight: "8px" }}>
           <TextWrapper>
             <Typography
               variant="body1"
               align="center"
-              style={{ fontWeight: "bold", textWrap: "nowrap" }}
+              style={{
+                fontWeight: "bold",
+                whiteSpace: "nowrap",
+                fontSize: "16px",
+              }}
             >
               {numberInstallment}ª prestação
             </Typography>
@@ -84,30 +57,72 @@ const LoanDetails = ({
         <Grid item xs={1}>
           <Divider
             orientation="vertical"
-            style={{ height: 50, width: "2px", backgroundColor: "#005CA9" }}
+            style={{
+              height: 50,
+              width: "2px",
+              backgroundColor: "#005CA9",
+            }}
           />
         </Grid>
-        <Grid item xs={5}>
-          <Typography
-            textWrap={"noWrap"}
-            variant="body1"
-            align="center"
-            style={{
-              fontWeight: "bold",
-              color: "#FF6600",
-              fontSize: "24px",
-              textWrap: "nowrap",
-            }}
-          >
-            R$ {installmentAmount}
-          </Typography>
-          <Typography
-            variant="body1"
-            align="center"
-            style={{ textWrap: "nowrap", color: "rgba(0, 0, 0, 0.6)" }}
-          >
-            {interesetAmount}% ao mês
-          </Typography>
+        <Grid item xs={7} style={{ marginBottom: "8px" }}>
+          <Grid container direction="column" spacing={1}>
+            <Grid item>
+              <Typography
+                variant="h6"
+                align="center"
+                style={{
+                  fontWeight: "bold",
+                  whiteSpace: "nowrap",
+                  color: "#005CA9",
+                }}
+              >
+                Valor da prestação
+              </Typography>
+              <Typography
+                variant="h5"
+                align="center"
+                style={{
+                  whiteSpace: "nowrap",
+                  color: "#FF7200",
+                  fontSize: "28px",
+                }}
+              >
+                R$ {customFormatNumber(installmentAmount)}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="body1"
+                align="center"
+                style={{ fontWeight: "bold", whiteSpace: "nowrap" }}
+              >
+                Valor da Amortização
+              </Typography>
+              <Typography
+                variant="body1"
+                align="center"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                R$ {customFormatNumber(amortization)}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <GrayText
+                variant="body1"
+                align="center"
+                style={{ fontWeight: "bold", whiteSpace: "nowrap" }}
+              >
+                Valor do juros
+              </GrayText>
+              <GrayText
+                variant="body1"
+                align="center"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                R$ {formatinteresetAmount(interesetAmount)}
+              </GrayText>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Frame>

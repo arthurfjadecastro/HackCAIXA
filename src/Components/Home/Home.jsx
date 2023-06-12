@@ -125,14 +125,14 @@ function Home() {
                       style={{
                         height: "auto",
                         objectFit: "cover",
-                        maxWidth: "40%",
+                        maxWidth: "30%",
                       }}
                     />
                   </Box>
                 </Grid>
               </Grid>
             </div>
-            <div>
+            {/* <div>
               <Grid
                 container
                 style={{ height: isMobile ? "50%" : "100%" }}
@@ -175,7 +175,7 @@ function Home() {
                   />
                 </Grid>
               </Grid>
-            </div>
+            </div> */}
           </Slider>
           {/* Footer */}
           <Box

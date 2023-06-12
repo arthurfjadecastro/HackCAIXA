@@ -5,6 +5,7 @@ import UniformTextField from "./UniformTextField";
 
 const Monetary = ({ helperText, onBlur, value, onChange, type }) => {
   const [textValueByHelperText, setValue] = useState("");
+  console.log(value)
   useEffect(() => {
     const numericValue = parseInt(
       value.replace(/[^0-9.-]+/g, "").replace(".", ""),
@@ -33,7 +34,7 @@ const Monetary = ({ helperText, onBlur, value, onChange, type }) => {
           placeholder="R$ 00.000"
           label={"Valor Solicitado"}
           helperText={
-            textValueByHelperText ? textValueByHelperText : helperText
+            value === "R$ 10.000" ? "Limite máximo de R$ 10.000,00" : textValueByHelperText ? textValueByHelperText : helperText
           }
           error={textValueByHelperText ? textValueByHelperText : helperText}
           type={type}
