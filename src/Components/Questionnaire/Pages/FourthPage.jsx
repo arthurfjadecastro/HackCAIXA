@@ -7,8 +7,9 @@ import TooltipInfo from "../../Frames/TooltipInfo";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
+import { ProgressStepper } from "../../Dialogs/Resources";
 
-const FourthPage = ({ handleBack, ETLData, handlePageChange, activeButton, state, selectedOption, showAllInstallments }) => {
+const FourthPage = ({ activeStep,handleBack, ETLData, handlePageChange, activeButton, state, selectedOption, showAllInstallments }) => {
   const renderInstallments = () => {
     console.log(activeButton)
     console.log(selectedOption)
@@ -64,22 +65,11 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, activeButton, state
 
   return (
     <>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-          margin: 0,
-          padding: 0,
-          alignItems: "center"
-        }}
-      >
-        <Grid item style={{ display: "flex", justifyContent: "center" }}>
-          <TitleText>Resumo da solicitação</TitleText>
+      
+        <ProgressStepper activeStep={activeStep}/>
+        <Grid item style={{ display: "flex", justifyContent: "center",flexDirection: "column" }}>
+        
+          <TitleText>Detalhes da solicitação</TitleText>
         </Grid>
         <Grid
           item
@@ -114,7 +104,7 @@ const FourthPage = ({ handleBack, ETLData, handlePageChange, activeButton, state
             </RenderIf>
           </RenderIf>
         </Grid>
-      </Grid>
+
     </>
   );
 };

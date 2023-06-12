@@ -7,6 +7,8 @@ import {
   FifthPage,
 } from "./Pages";
 import { RenderIf } from "../Utils";
+import { ProgressStepper } from "../Dialogs/Resources";
+import { Grid } from "@mui/material";
 
 const Questionnaire = ({
   page,
@@ -17,11 +19,12 @@ const Questionnaire = ({
   ETLData,
   setClose,
   response,
-  showAllInstallments
+  showAllInstallments,
+  activeStep
 }) => {
   const [activeButton, setActiveButton] = useState("PRICE");
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState();
  
   const handleOptionClick = (option) => {
     setSelectedOption(option);
@@ -48,8 +51,16 @@ const Questionnaire = ({
   return (
     
     <>
+    <Grid
+        container
+        direction="column"
+        justifyContent="space-between"
+        alignItems="center"
+        style={{maxWidth: 600}}
+      >
       <RenderIf predicate={page === 1}>
         <FirstPage
+          activeStep={activeStep}
           handlePageChange={handlePageChange}
           currentPage={page}
           state={state}
@@ -58,6 +69,7 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 2}>
         <SecondPage
+        activeStep={activeStep}
           handleBack={handleBack}
           handlePageChange={handlePageChange}
           state={state}
@@ -66,6 +78,7 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 3}>
         <ThirdPage
+        activeStep={activeStep}
         selectedOption={selectedOption}
         handleOptionClick={handleOptionClick}
         activeButton={activeButton}
@@ -81,6 +94,7 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 4}>
         <FourthPage
+        activeStep={activeStep}
         showAllInstallments={showAllInstallments}
         selectedOption={selectedOption}
           setActiveButton={setActiveButton}
@@ -94,6 +108,7 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 5}>
         <FifthPage
+        activeStep={activeStep}
             selectedOption={selectedOption}
             activeButton={activeButton}
           ETLData={ETLData}
@@ -102,6 +117,7 @@ const Questionnaire = ({
           setClose={setClose}
         />
       </RenderIf>
+      </Grid>
     </>
   );
 };

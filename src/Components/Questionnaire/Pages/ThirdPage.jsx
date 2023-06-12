@@ -7,8 +7,9 @@ import { isPositiveNumber } from "../../Buttons/Validations";
 import TooltipInfo from "../../Frames/TooltipInfo";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
+import { ProgressStepper } from "../../Dialogs/Resources";
 
-const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData,activeButton, handleType, titleInfo, handleOptionClick,selectedOption }) => {
+const ThirdPage = ({ activeStep, state, dispatch, handlePageChange, handleBack, ETLData,activeButton, handleType, titleInfo, handleOptionClick,selectedOption }) => {
   
   return (
     <>
@@ -16,13 +17,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData,acti
         <FullScreenLoading />
       </RenderIf>
       <RenderIf predicate={ETLData && ETLData[activeButton]}>
-      <Grid
-        style={{ maxWidth: 600 }}
-        container
-        direction="column"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+        <ProgressStepper activeStep={activeStep}/>
         <Grid item>
           <TitleText>Escolha sua <span style={{ color: "#FF6600" }}>modalidade</span>  e <span style={{ color: "#FF6600" }}>parcelas</span> ideais.</TitleText>
         </Grid>
@@ -48,7 +43,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData,acti
               selectedOption={selectedOption}
               handleOptionClick={handleOptionClick}
             />
-      </Grid>
+
       </RenderIf>
     </>
   );

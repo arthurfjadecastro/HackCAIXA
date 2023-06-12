@@ -6,34 +6,18 @@ import { BackButton, ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
 import { isNonEmptyString } from "../../Inputs/Validations/Base";
 import SliderMonetary from "../../Inputs/SliderMonetary";
+import { ProgressStepper } from "../../Dialogs/Resources";
 
-const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
-  const [isValid, setIsValid] = useState("");
-  const numericValue = parseInt(
-    state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
-    10
-  ); 
+const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, activeStep}) => {
 
-  useEffect(() => {
-    if (numericValue < 200 || numericValue > 10000) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-  }, [numericValue]);
 
-  const isContinueButtonEnabled =
-    !isValid && isNonEmptyString(state.monetaryValue);
+  // const isContinueButtonEnabled =
+  //   !isValid && isNonEmptyString(state.monetaryValue);
   return (
     <>
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-between"
-        alignItems="center"
-        spacin={4}
-      >
+       <ProgressStepper activeStep={activeStep}/>
         <Grid item>
+       
           <TitleText>Informe a <span style={{ color: "#FF6600" }}>quantia desejada</span></TitleText>
         </Grid>
         <Grid item style={{ flex: 2, width: "100%" }}>
@@ -66,7 +50,6 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
             <BackButton handleClick={handleBack} textButton={"Voltar"} />
           </Item>
         </Grid> */}
-      </Grid>
     </>
   );
 };

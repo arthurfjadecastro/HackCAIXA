@@ -6,19 +6,15 @@ import { ButtonCEF, ButtonWhatsApp } from "../../Buttons";
 import { Frame, FramePaper } from "../../Frames";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
+import { ProgressStepper } from "../../Dialogs/Resources";
 
-const FifthPage = ({ setClose, ETLData, state, page, activeButton, selectedOption }) => {
+const FifthPage = ({ activeStep,setClose, ETLData, state, page, activeButton, selectedOption }) => {
 
   
   return (
     <>
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Grid item>
+        <ProgressStepper activeStep={activeStep}/>
+       <Grid item style={{ display: "flex", justifyContent: "center",flexDirection: "column" }}>
           <TitleText>
             Pronto! <br></br>Simulação feita com sucesso.
           </TitleText>
@@ -99,18 +95,6 @@ const FifthPage = ({ setClose, ETLData, state, page, activeButton, selectedOptio
             textButton={"Fale com um Gerente"}
           />
         </Grid>
-        {/* <Grid item>
-          <Item>
-            <ButtonCEF
-              page={page}
-              setClose={setClose}
-              buttonTitle={"Concluir"}
-              isContinueButtonEnabled={true}
-              handlePageChange={setClose}
-            />
-          </Item> */}
-        {/* </Grid> */}
-      </Grid>
     </>
   );
 };

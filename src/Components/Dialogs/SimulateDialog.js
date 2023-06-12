@@ -14,7 +14,6 @@ import { Item } from "../Frames";
 import { ButtonCEF } from "../Buttons";
 import { isCPFValid, isEmail, isNonEmptyString, isPhoneNumber } from "../Inputs/Validations/Base";
 import { RenderIf } from "../Utils";
-import styled from "@emotion/styled";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -45,6 +44,8 @@ const reducer = (state, action) => {
       return { ...state, installments: action.payload };
     case "typeInstallments":
       return { ...state, typeInstallments: action.payload };
+    case "resetInstallments":
+        return { ...state, installments: null };
     case "resetState":
       return initialState;
     default:
@@ -76,11 +77,19 @@ function SimulateDialog({ isOpen, setClose }) {
     type: "resetState",
   });
 
+  const [activeStep, setActiveStep] = React.useState(0);
+
+
+  const resetInstallments = () => ({
+    type: "resetInstallments",
+  });
+
   // Effect to Reset form
   useEffect(() => {
     setPage(1);
     dispatch(resetState());
     setShowAllInstallments(false)
+    setActiveStep(0)
     // setShowButtons(false)
   }, [isOpen === false]);
 
@@ -132,21 +141,49 @@ function SimulateDialog({ isOpen, setClose }) {
           }, 150); // Delay of 1 second
         });
     }
-
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setPage(page + 1);
   };
+
 
   
 
   // Back page of Questionnaire
   const handleBack = () => {
-    setPage(page - 1);
+    setPage(page - 1)
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
     setShowAllInstallments(false)
+    dispatch(resetInstallments());
   };
-  const isContinueButtonEnabled =
-  (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) && isEmail(state.email) ||
-  isNonEmptyString(state);
 
+
+ 
+  const [isValid, setIsValid] = useState("");
+  const numericValue = parseInt(
+    state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
+    10
+  ); 
+
+  useEffect(() => {
+    if (numericValue < 200 || numericValue > 10000) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [numericValue]);
+
+
+
+  const isContinueButtonEnabled = {
+    1: (state) => (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) && isEmail(state.email) ||
+    isNonEmptyString(state),
+    2: (state) =>   !isValid && isNonEmptyString(state.monetaryValue),
+    3: (state) => state.installments,
+    4: (state) => true,
+    5: (state) => true,
+    6: (state) => true
+   
+  };
 
 
   return (
@@ -180,12 +217,11 @@ function SimulateDialog({ isOpen, setClose }) {
             justifyContent: "space-between",
             flexDirection: "column",
             alignItems: "center",
-            // flexWrap: isMobile? "wrap" : "noWrap",
-            // marginBottom: 40
           }}
         >
           <Questionnaire
-          showAllInstallments={showAllInstallments}
+            activeStep={activeStep}
+            showAllInstallments={showAllInstallments}
             setClose={setClose}
             ETLData={ETLData}
             state={state}
@@ -211,7 +247,7 @@ function SimulateDialog({ isOpen, setClose }) {
           <Item>
             <ButtonCEF
               buttonTitle={page === 5 ? "Concluir" : "Continuar"}
-              isContinueButtonEnabled={isContinueButtonEnabled}
+              isContinueButtonEnabled={isContinueButtonEnabled[page](state)}
               handlePageChange={page <= 5 ? handlePageChange : setClose(false)}
             />
           </Item>
@@ -221,12 +257,12 @@ function SimulateDialog({ isOpen, setClose }) {
           <RenderIf predicate={(page > 1 && page < 5) && showButtons === true }>
           <Item>
             <ButtonCEF
+              isContinueButtonEnabled={true}
               buttonTitle={"Voltar"}
               handlePageChange={handleBack}
             />
           </Item>
           </RenderIf>
-        
         </Grid>
         </Box>
         

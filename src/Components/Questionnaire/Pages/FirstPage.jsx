@@ -5,18 +5,15 @@ import { CellPhoneNumber, Cpf } from "../../Inputs";
 import { ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
 import Email from "../../Inputs/Email";
+import { ProgressStepper } from "../../Dialogs/Resources";
 
-function FirstPage({ state, dispatch }) {
+function FirstPage({ state, dispatch,activeStep }) {
  
   return (
     <>
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Grid item>
+     <ProgressStepper activeStep={activeStep}/>
+      <Grid item>
+        {/* <Grid item  style={{ display: "flex", justifyContent: "center",width: "100%", flexDirection: "column"}}> */}
           <TitleText>Informe seu <br></br> <span style={{ color: "#FF6600" }}> E-mail, CPF</span> e <span style={{ color: "#FF6600" }}>Telefone</span>  </TitleText>
         </Grid>
         <Grid item style={{ flex: 2, width: "100%" }}>
@@ -45,7 +42,6 @@ function FirstPage({ state, dispatch }) {
             />
           </Item>
         </Grid>
-      </Grid>
     </>
   );
 }

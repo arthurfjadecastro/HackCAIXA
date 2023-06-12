@@ -49,7 +49,7 @@ const ButtonCEF = ({
 
   return (
     <React.Fragment>
-      <ColorButton onClick={handleClick} disabled={false}>
+      <ColorButton onClick={handleClick} disabled={!isContinueButtonEnabled}>
         {buttonTitle}
       </ColorButton>
     </React.Fragment>
