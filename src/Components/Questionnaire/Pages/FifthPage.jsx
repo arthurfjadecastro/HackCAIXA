@@ -18,7 +18,9 @@ const FifthPage = ({
   selectedOption,
 }) => {
   // const parcelas = ETLData && ETLData[activeButton] && ETLData[activeButton][`parcelas${selectedOption}`];
-
+  console.log("ultima pagina")
+  console.log(ETLData)
+  console.log(activeButton)
   const parcelasKey = `parcelas${selectedOption}`;
       const firstInstallment = ETLData[activeButton]?.[parcelasKey]?.[0];
       const lastInstallment =
@@ -50,24 +52,23 @@ const FifthPage = ({
           justifyContent: "center",
         }}
       >
-        <RenderIf predicate={state.typeInstallments === "PRICE"}>
-          <Frame
+        {/* <RenderIf predicate={activeButton === "PRICE"}> */}
+                  <Frame
             installments={state.installments}
             lastInstallment={
               ETLData && lastInstallment.valorPrestacao
             }
             valueFirstInitialInstallment={
-              ETLData[activeButton]
-                ? firstInstallment.valorPrestacao
-                : null
+              ETLData[activeButton] ? firstInstallment.valorPrestacao : null
             }
             initialInstallment={
               ETLData && firstInstallment.numero
             }
             value={state.monetaryValue}
           />
-        </RenderIf>
-        <RenderIf predicate={state.typeInstallments === "SAC"}>
+
+        {/* </RenderIf> */}
+        {/* <RenderIf predicate={activeButton === "SAC"}>
           <Frame
             installments={state.installments}
             lastInstallment={
@@ -83,7 +84,7 @@ const FifthPage = ({
             }
             value={state.monetaryValue}
           />
-        </RenderIf>
+        </RenderIf> */}
         <p
           style={{
             fontSize: "16px",

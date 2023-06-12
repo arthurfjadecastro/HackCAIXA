@@ -229,7 +229,8 @@ function SimulateDialog({ isOpen, setClose }) {
     5: (state) => true,
     6: (state) => true,
   };
-  // console.log("ETL DATA")
+  console.log("STATE")
+  console.log(state)
   // console.log(ETLData)
 
 
