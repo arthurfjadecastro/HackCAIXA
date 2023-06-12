@@ -54,7 +54,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
             />
           </Item>
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <Item>
             <ButtonCEF
               buttonTitle={"Simular"}
@@ -65,7 +65,7 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack }) => {
           <Item>
             <BackButton handleClick={handleBack} textButton={"Voltar"} />
           </Item>
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

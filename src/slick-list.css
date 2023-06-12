@@ -54,7 +54,7 @@ body {
 @media only screen and (max-width: 1028px) {
   #root > div > div.MuiBox-root.css-ihs1h > header > div {
     flex-direction: column;
-    margin: 16px;
+    /* margin: 16px; */
   }
 
   /* Primeiro seletor */

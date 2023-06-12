@@ -4,18 +4,10 @@ import { TitleText } from "./Resources";
 import { CellPhoneNumber, Cpf } from "../../Inputs";
 import { ButtonCEF } from "../../Buttons";
 import Item from "../../Frames/Item";
-import {
-  isCPFValid,
-  isEmail,
-  isNonEmptyString,
-  isPhoneNumber,
-} from "../../Inputs/Validations/Base";
 import Email from "../../Inputs/Email";
 
-function FirstPage({ state, dispatch, handlePageChange }) {
-  const isContinueButtonEnabled =
-    (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) && isEmail(state.email) ||
-    isNonEmptyString(state);
+function FirstPage({ state, dispatch }) {
+ 
   return (
     <>
       <Grid
@@ -50,16 +42,6 @@ function FirstPage({ state, dispatch, handlePageChange }) {
               onChange={(event) =>
                 dispatch({ type: "phoneNumber", payload: event.target.value })
               }
-            />
-          </Item>
-        </Grid>
-
-        <Grid item>
-          <Item>
-            <ButtonCEF
-              buttonTitle={"Continuar"}
-              isContinueButtonEnabled={isContinueButtonEnabled}
-              handlePageChange={handlePageChange}
             />
           </Item>
         </Grid>

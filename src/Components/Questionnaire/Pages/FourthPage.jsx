@@ -2,92 +2,117 @@ import React, { useEffect, useState } from "react";
 import { Grid, styled } from "@mui/material";
 
 import { TitleText } from "./Resources";
-import {
-  BackButton,
-  ButtonCEF,
-  ButtonGroup,
-} from "../../Buttons";
 import { LoanDetails } from "../../Frames";
 import TooltipInfo from "../../Frames/TooltipInfo";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 
+const FourthPage = ({ handleBack, ETLData, handlePageChange, activeButton, state, selectedOption, showAllInstallments }) => {
+  const renderInstallments = () => {
+    console.log(activeButton)
+    console.log(selectedOption)
+    if (showAllInstallments) {
+      // Renderizar múltiplos de 4 até selectedOption
+      const installmentsToRender = ETLData[activeButton]
+        .filter((installment) => installment.numero === 1 || installment.numero === selectedOption || (installment.numero % 4 === 0 && installment.numero <= selectedOption))
+        .map((installment, index) => (
+          <>
+          <Grid item>
+          <LoanDetails
+            key={index}
+            activeButton={activeButton}
+            interesetAmount={installment.valorJuros}
+            installmentAmount={installment.valorPrestacao}
+            numberInstallment={installment.numero}
+          />
+          </Grid>
+          </>
+        ));
 
+      return installmentsToRender;
+    } else {
+      // Renderizar apenas a primeira e a última prestação
+      const firstInstallment = ETLData[activeButton][0];
+      const lastInstallment = ETLData[activeButton][selectedOption - 1];
 
-const FourthPage = ({ handleBack, ETLData, handlePageChange, activeButton, state,selectedOption }) => {
-    console.log("act")
-    console.log(state)
-    return (
+      return (
+        <>
+        <Grid item>
+
+          <LoanDetails
+            activeButton={activeButton}
+            interesetAmount={firstInstallment.valorJuros}
+            installmentAmount={firstInstallment.valorPrestacao}
+            numberInstallment={firstInstallment.numero}
+          />
+        </Grid>
+        <Grid item>
+          
+          <LoanDetails
+            activeButton={activeButton}
+            interesetAmount={lastInstallment.valorJuros}
+            installmentAmount={lastInstallment.valorPrestacao}
+            numberInstallment={selectedOption}
+          />
+          </Grid>
+
+        </>
+      );
+    }
+  };
+
+  return (
     <>
       <Grid
         container
         direction="column"
         alignItems="center"
         justifyContent="center"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+          margin: 0,
+          padding: 0,
+          alignItems: "center"
+        }}
       >
         <Grid item style={{ display: "flex", justifyContent: "center" }}>
-          <TitleText>
-            Resumo da solicitacao
-          </TitleText>
+          <TitleText>Resumo da solicitação</TitleText>
         </Grid>
         <Grid
           item
-          style={{ width: "100%", display: "flex", justifyContent: "center", }}
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
           <TooltipInfo titleInfo={"Resumo da primeira e última parcela"} />
         </Grid>
-        {/* <Grid item style={{ marginBottom: 40 }}>
-          <ButtonGroup activeButton={activeButton} handleType={handleType} />
-        </Grid> */}
-        <Grid item style={{ flex: 1, width: "100%", maxWidth: "400px" }}>
-        {/* <RenderIf predicate={(ETLData && ETLData.PRICE) === undefined || (ETLData && ETLData.PRICE) === null}>
-          <FullScreenLoading />
-        </RenderIf> */}
-        <RenderIf predicate={ETLData !== undefined && ETLData !== null}>
-            <RenderIf predicate={ETLData && ETLData[activeButton]}>
-              <Grid container flexDirection={"column"}>
-                <Grid
-                  Item
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    marginBottom: "16px",
-                  }}
-                >
-                 <LoanDetails
-                  activeButton={activeButton}
-                  interesetAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][0].valorJuros : null}
-                  installmentAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][0].valorPrestacao : null}
-                  numberInstallment={ETLData && ETLData[activeButton] ? ETLData[activeButton][0].numero : null}
-                />
 
-                </Grid>
-                <Grid Item style={{ width: "100%", height: "100%" }}>
-                  <LoanDetails
-                  activeButton={activeButton}
-                  interesetAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][ETLData[activeButton].length - 1].valorJuros : null}
-                  installmentAmount={ETLData && ETLData[activeButton] ? ETLData[activeButton][ETLData[activeButton].length - 1].valorPrestacao : null}
-                  numberInstallment={ETLData && ETLData[activeButton] ? ETLData[activeButton][selectedOption-1].numero : null}
-                 
-                   
-                  />
-                </Grid>
+        <Grid
+          item
+          style={{
+            flex: 1,
+            width: "100%",
+            maxWidth: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+          }}
+        >
+          <RenderIf predicate={ETLData !== undefined && ETLData !== null}>
+            <RenderIf predicate={ETLData && ETLData[activeButton]}>
+              <Grid
+                justifyContent={"center"}
+                container
+                alignItems="center"
+                spacing={2}
+                flexDirection="column"
+              >
+                {renderInstallments()}
               </Grid>
             </RenderIf>
-          </RenderIf>   
-        </Grid>
-        <Grid item>
-          <Item>
-            <ButtonCEF
-              buttonTitle={"Continuar"}
-              handlePageChange={handlePageChange}
-              isContinueButtonEnabled={true}
-            />
-          </Item>
-          <Item>
-            <BackButton handleClick={handleBack} textButton={"Voltar"} />
-          </Item>
+          </RenderIf>
         </Grid>
       </Grid>
     </>

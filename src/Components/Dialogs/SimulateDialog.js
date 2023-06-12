@@ -6,10 +6,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import { Box } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import { Questionnaire } from "../Questionnaire";
 import axios from "axios";
 import { useMatchesSmartphone } from "../Breakpoints";
+import { Item } from "../Frames";
+import { ButtonCEF } from "../Buttons";
+import { isCPFValid, isEmail, isNonEmptyString, isPhoneNumber } from "../Inputs/Validations/Base";
+import { RenderIf } from "../Utils";
+import styled from "@emotion/styled";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -48,6 +53,8 @@ const reducer = (state, action) => {
 };
 
 
+
+
 function SimulateDialog({ isOpen, setClose }) {
   // State that stores the request data
   const [response, setResponse] = useState();
@@ -73,6 +80,8 @@ function SimulateDialog({ isOpen, setClose }) {
   useEffect(() => {
     setPage(1);
     dispatch(resetState());
+    setShowAllInstallments(false)
+    // setShowButtons(false)
   }, [isOpen === false]);
 
   // Effect that iterates over request response
@@ -88,6 +97,13 @@ function SimulateDialog({ isOpen, setClose }) {
     setResponse(undefined)
   }, [page < 3]);
 
+  const [showAllInstallments, setShowAllInstallments] = useState(false);
+
+  const handleShowAllInstallments = () => {
+    setShowAllInstallments(!showAllInstallments);
+  };
+
+  const [showButtons, setShowButtons] = useState(true)
  
 
   const isMobile = useMatchesSmartphone();
@@ -95,6 +111,7 @@ function SimulateDialog({ isOpen, setClose }) {
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
     if (page === 2) {
+      setShowButtons(false)
       const numericValue = parseInt(
         state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
         10
@@ -103,20 +120,33 @@ function SimulateDialog({ isOpen, setClose }) {
         .post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
           valorDesejado: numericValue,
           prazo: 24,
+        },)
+        .then((response) => {
+          setResponse(response.data);
         })
-        .then((response) => setResponse(response.data))
         .catch((err) => {
           console.error("ops! ocorreu um erro" + err);
+        }).finally(() => {
+          setTimeout(() => {
+            setShowButtons(true); // Activate the display of the buttons after the completion of the request
+          }, 150); // Delay of 1 second
         });
     }
 
     setPage(page + 1);
   };
 
+  
+
   // Back page of Questionnaire
   const handleBack = () => {
     setPage(page - 1);
+    setShowAllInstallments(false)
   };
+  const isContinueButtonEnabled =
+  (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) && isEmail(state.email) ||
+  isNonEmptyString(state);
+
 
 
   return (
@@ -147,13 +177,15 @@ function SimulateDialog({ isOpen, setClose }) {
             display: "flex",
             height: "100%",
             padding: isMobile ? 16 : 45,
-            justifyContent: "center",
-            // alignItems: "center", 
-            // flexDirection: "column",
-            flexWrap: isMobile? "wrap" : "noWrap"
+            justifyContent: "space-between",
+            flexDirection: "column",
+            alignItems: "center",
+            // flexWrap: isMobile? "wrap" : "noWrap",
+            // marginBottom: 40
           }}
         >
           <Questionnaire
+          showAllInstallments={showAllInstallments}
             setClose={setClose}
             ETLData={ETLData}
             state={state}
@@ -163,7 +195,41 @@ function SimulateDialog({ isOpen, setClose }) {
             dispatch={dispatch}
             response={response}
           />
+          <Grid container style={{margin: 0}} flexDirection={"column"} spacing={1} justifyContent={"center"}>
+          <RenderIf predicate={page === 4}>
+        <Grid item>
+          <Item>
+            <Button onClick={handleShowAllInstallments}>
+              {showAllInstallments ? "Ver menos" : "Ver mais"}
+              
+            </Button>
+          </Item>
+          </Grid>
+          </RenderIf>
+          <RenderIf predicate={(page > 0 && page < 6) && showButtons === true  }>
+          <Grid item>
+          <Item>
+            <ButtonCEF
+              buttonTitle={page === 5 ? "Concluir" : "Continuar"}
+              isContinueButtonEnabled={isContinueButtonEnabled}
+              handlePageChange={page <= 5 ? handlePageChange : setClose(false)}
+            />
+          </Item>
+          </Grid>
+          </RenderIf>
+
+          <RenderIf predicate={(page > 1 && page < 5) && showButtons === true }>
+          <Item>
+            <ButtonCEF
+              buttonTitle={"Voltar"}
+              handlePageChange={handleBack}
+            />
+          </Item>
+          </RenderIf>
+        
+        </Grid>
         </Box>
+        
       </Dialog>
     </div>
   );

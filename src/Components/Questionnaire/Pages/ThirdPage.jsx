@@ -9,18 +9,13 @@ import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 
 const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData,activeButton, handleType, titleInfo, handleOptionClick,selectedOption }) => {
-
-  const isContinueButtonEnabled = isPositiveNumber(state.installments);
-
   
-
-
   return (
     <>
-      <RenderIf predicate={(ETLData && ETLData.PRICE) === undefined || (ETLData && ETLData.PRICE) === null}>
+      <RenderIf predicate={(ETLData && ETLData[activeButton]) === undefined || (ETLData && ETLData[activeButton]) === null}>
         <FullScreenLoading />
       </RenderIf>
-      <RenderIf predicate={ETLData && ETLData.PRICE}>
+      <RenderIf predicate={ETLData && ETLData[activeButton]}>
       <Grid
         style={{ maxWidth: 600 }}
         container
@@ -53,18 +48,6 @@ const ThirdPage = ({ state, dispatch, handlePageChange, handleBack, ETLData,acti
               selectedOption={selectedOption}
               handleOptionClick={handleOptionClick}
             />
-        <Grid item>
-          <Item>
-            <ButtonCEF
-              buttonTitle={"Continuar"}
-              isContinueButtonEnabled={isContinueButtonEnabled}
-              handlePageChange={handlePageChange}
-            />
-          </Item>
-          <Item>
-            <BackButton handleClick={handleBack} textButton={"Voltar"} />
-          </Item>
-        </Grid>
       </Grid>
       </RenderIf>
     </>

@@ -54,7 +54,7 @@ const Carousel = ({ state, dispatch, handleOptionClick, selectedOption, ETLData,
 
   return (
     <div className="carousel">
-      <h2 style={{ fontSize: 18, textAlign: "center" }}>Selecione as parcelas disponíveis</h2>
+      <h2 style={{ fontSize: 18, textAlign: "center" }}>Selecione as parcelas disponíveis:</h2>
       <Grid container spacing={2} justifyContent="center">
         {renderOptions()}
       </Grid>

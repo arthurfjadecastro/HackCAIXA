@@ -8,7 +8,7 @@ const TextWithInfo = ({ text, tooltipText }) => {
     <Tooltip title={tooltipText}>
       <IconButton disableFocusRipple disableTouchRipple aria-label="info">
         <Typography>{text}</Typography>
-        <InfoIcon />
+        {/* <InfoIcon /> */}
       </IconButton>
     </Tooltip>
   );
@@ -17,7 +17,7 @@ const TextWithInfo = ({ text, tooltipText }) => {
 const TooltipInfo = ({ titleInfo }) => {
   return (
     <>
-      <TextWithInfo text="Informações" tooltipText={titleInfo} />
+      <TextWithInfo text="Resumo das parcelas" tooltipText={titleInfo} />
     </>
   );
 };

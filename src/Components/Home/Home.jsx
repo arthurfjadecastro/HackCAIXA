@@ -43,10 +43,10 @@ function Home() {
               <Typography
                 variant="h6"
                 component="div"
-                sx={{ flexGrow: 1, display: "flex" }}
+                sx={{ flexGrow: 1, display: "flex", width: "100%" }}
               >
                 <Grid
-                  flexDirection={isMobile ? "column" : "row"}
+                  flexDirection={ "row"}
                   container
                   direction="row"
                   justifyContent="space-between"

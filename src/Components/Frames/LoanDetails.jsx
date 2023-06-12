@@ -21,15 +21,16 @@ const TextWrapper = styled("div")({
   alignItems: "center",
 });
 
-const CustomComponent = ({
+const LoanDetails = ({
   numberInstallment,
   installmentAmount,
   interesetAmount,
 }) => {
   return (
     <Frame>
-      <Grid container spacing={2} alignItems="center">
-        <Grid style={{    display: "flex", alignItems: "center", justifyContent: "center"}} item  xs={6}>
+      <Grid justifyContent={"center"} container spacing={2} alignItems="center" style={{width: "100%",
+    margin: 0}}>
+        <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }} item xs={6}>
           <IconWrapper>
             {numberInstallment === 1 ? (
               <PlusOneOutlinedIcon
@@ -58,7 +59,7 @@ const CustomComponent = ({
             )}
           </IconWrapper>
           <TextWrapper>
-            <Typography variant="body1" align="center" style={{ fontWeight: "bold" }}>
+            <Typography variant="body1" align="center" style={{ fontWeight: "bold",     textWrap: "nowrap" }}>
               {numberInstallment}ª prestação
             </Typography>
           </TextWrapper>
@@ -90,4 +91,4 @@ const CustomComponent = ({
   );
 };
 
-export default CustomComponent;
+export default LoanDetails;

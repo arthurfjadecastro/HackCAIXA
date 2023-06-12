@@ -16,7 +16,8 @@ const Questionnaire = ({
   dispatch,
   ETLData,
   setClose,
-  response
+  response,
+  showAllInstallments
 }) => {
   const [activeButton, setActiveButton] = useState("PRICE");
 
@@ -80,6 +81,7 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 4}>
         <FourthPage
+        showAllInstallments={showAllInstallments}
         selectedOption={selectedOption}
           setActiveButton={setActiveButton}
           activeButton={activeButton}
@@ -92,6 +94,8 @@ const Questionnaire = ({
       </RenderIf>
       <RenderIf predicate={page === 5}>
         <FifthPage
+            selectedOption={selectedOption}
+            activeButton={activeButton}
           ETLData={ETLData}
           state={state}
           page={page}

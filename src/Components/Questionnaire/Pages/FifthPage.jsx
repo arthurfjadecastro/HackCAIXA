@@ -7,7 +7,7 @@ import { Frame, FramePaper } from "../../Frames";
 import Item from "../../Frames/Item";
 import { RenderIf } from "../../Utils";
 
-const FifthPage = ({ setClose, ETLData, state, page }) => {
+const FifthPage = ({ setClose, ETLData, state, page, activeButton, selectedOption }) => {
 
   
   return (
@@ -38,15 +38,15 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             <Frame
               installments={state.installments}
               lastInstallment={
-                ETLData && ETLData.PRICE
-                  ? ETLData.PRICE[ETLData.PRICE.length - 1].valorPrestacao
+                ETLData && ETLData[activeButton]
+                  ? ETLData[activeButton][selectedOption - 1].valorPrestacao
                   : null
               }
               valueFirstInitialInstallment={
-                ETLData.PRICE ? ETLData.PRICE[0].valorPrestacao : null
+                ETLData[activeButton] ? ETLData[activeButton][0].valorPrestacao : null
               }
               initialInstallment={
-                ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.numero : null
+                ETLData && ETLData[activeButton] ? ETLData[activeButton][0]?.numero : null
               }
               value={state.monetaryValue}
             />
@@ -55,15 +55,15 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             <Frame
               installments={state.installments}
               lastInstallment={
-                ETLData && ETLData.SAC
-                  ? ETLData.SAC[ETLData.SAC.length - 1].valorPrestacao
+                ETLData && ETLData[activeButton]
+                  ? ETLData[activeButton][selectedOption- 1].valorPrestacao
                   : null
               }
               valueFirstInitialInstallment={
-                ETLData.SAC ? ETLData.SAC[0].valorPrestacao : null
+                ETLData[activeButton] ? ETLData[activeButton][0].valorPrestacao : null
               }
               initialInstallment={
-                ETLData && ETLData.PRICE ? ETLData.PRICE[0]?.numero : null
+                ETLData && ETLData[activeButton] ? ETLData[activeButton][0]?.numero : null
               }
               value={state.monetaryValue}
             />
@@ -99,7 +99,7 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
             textButton={"Fale com um Gerente"}
           />
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <Item>
             <ButtonCEF
               page={page}
@@ -108,8 +108,8 @@ const FifthPage = ({ setClose, ETLData, state, page }) => {
               isContinueButtonEnabled={true}
               handlePageChange={setClose}
             />
-          </Item>
-        </Grid>
+          </Item> */}
+        {/* </Grid> */}
       </Grid>
     </>
   );
