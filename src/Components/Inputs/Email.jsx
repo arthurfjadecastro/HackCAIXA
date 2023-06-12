@@ -4,28 +4,24 @@ import UniformTextField from "./UniformTextField";
 import { EmailValidator, NonEmptyValidator } from "./Validations";
 // import { handleKeyPress } from "../Events";
 
-const Email = ({
-    helperText, onBlur, value, onChange, type
-}) => {
- 
-
+const Email = ({ helperText, onBlur, value, onChange, type }) => {
   return (
     <React.Fragment>
-          <UniformTextField
-            variant="standard"
-            label={"E-mail"}
-            autoComplete="off"
-            type={type}
-            onChange={onChange}
-            onBlur={onBlur}
-            autoFocus={false}
-            value={value}
-            error={helperText}
-            helperText={helperText}
-            id="Email"
-          />
-          <React.Fragment></React.Fragment>
-        {/* </MuiThemeProvider> */}
+      <UniformTextField
+        variant="standard"
+        label={"E-mail"}
+        autoComplete="off"
+        type={type}
+        onChange={onChange}
+        onBlur={onBlur}
+        autoFocus={false}
+        value={value}
+        error={helperText}
+        helperText={helperText}
+        id="Email"
+      />
+      <React.Fragment></React.Fragment>
+      {/* </MuiThemeProvider> */}
       {/* </MuiThemeProvider> */}
     </React.Fragment>
   );
@@ -34,7 +30,6 @@ const Email = ({
 Email.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 
 const Wrapper = (props) => <EmailValidator {...props} Children={Email} />;
 export default (props) => <NonEmptyValidator {...props} Children={Wrapper} />;

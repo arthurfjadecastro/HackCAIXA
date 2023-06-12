@@ -12,7 +12,7 @@
   font-weight: bold;
   margin-bottom: 10px;
   text-align: center;
-  margin: 0
+  margin: 0;
 }
 
 .text-container {
@@ -29,7 +29,7 @@
   border: 2px solid #333;
   padding: 10px;
   border-radius: 5px;
-  margin: 8px
+  margin: 8px;
 }
 
 .installment,
@@ -39,5 +39,5 @@
   color: #333; /* Preto */
   font-weight: bold;
   margin-bottom: 5px;
-  margin: 8px
+  margin: 8px;
 }

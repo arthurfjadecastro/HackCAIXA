@@ -17,5 +17,3 @@ const EmailValidator = (props) => {
 };
 
 export default EmailValidator;
-
-

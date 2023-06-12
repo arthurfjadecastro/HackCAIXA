@@ -15,11 +15,10 @@ const Frame = styled(Paper)(({ theme }) => ({
   marginBottom: 16,
 }));
 
-
-const CustomFrame = ({  textButton, variant }) => {
+const CustomFrame = ({ textButton, variant }) => {
   return (
     <Frame>
-        <ButtonRS variant={variant} textButton={textButton} />
+      <ButtonRS variant={variant} textButton={textButton} />
     </Frame>
   );
 };

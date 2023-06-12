@@ -1,14 +1,12 @@
 .options-grid {
   display: grid;
-  grid-template-columns: repeat(
-    3,  ); 
-  gap: 10px; 
+  grid-template-columns: repeat(3);
+  gap: 10px;
 }
 
 .active {
   background: #f39200 !important;
-  color: white; 
-
+  color: white;
 }
 
 .button-transition {

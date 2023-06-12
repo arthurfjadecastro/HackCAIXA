@@ -20,17 +20,16 @@ const Questionnaire = ({
   setClose,
   response,
   showAllInstallments,
-  activeStep
+  activeStep,
 }) => {
   const [activeButton, setActiveButton] = useState("PRICE");
 
   const [selectedOption, setSelectedOption] = useState();
- 
+
   const handleOptionClick = (option) => {
     setSelectedOption(option);
-    dispatch({ type: "installments", payload: option }); 
+    dispatch({ type: "installments", payload: option });
   };
-  
 
   const handleType = () => {
     if (activeButton === "PRICE") {
@@ -47,76 +46,74 @@ const Questionnaire = ({
       ? "Ideal para quem busca parcelas fixas e planejamento financeiro."
       : "Ideal para quem busca previsibilidade nas parcelas.";
 
-
   return (
-    
     <>
-    <Grid
+      <Grid
         container
         direction="column"
         justifyContent="space-between"
         alignItems="center"
-        style={{maxWidth: 600}}
+        style={{ maxWidth: 600 }}
       >
-      <RenderIf predicate={page === 1}>
-        <FirstPage
-          activeStep={activeStep}
-          handlePageChange={handlePageChange}
-          currentPage={page}
-          state={state}
-          dispatch={dispatch}
-        />
-      </RenderIf>
-      <RenderIf predicate={page === 2}>
-        <SecondPage
-        activeStep={activeStep}
-          handleBack={handleBack}
-          handlePageChange={handlePageChange}
-          state={state}
-          dispatch={dispatch}
-        />
-      </RenderIf>
-      <RenderIf predicate={page === 3}>
-        <ThirdPage
-        activeStep={activeStep}
-        selectedOption={selectedOption}
-        handleOptionClick={handleOptionClick}
-        activeButton={activeButton}
-        titleInfo={titleInfo}
+        <RenderIf predicate={page === 1}>
+          <FirstPage
+            activeStep={activeStep}
+            handlePageChange={handlePageChange}
+            currentPage={page}
+            state={state}
+            dispatch={dispatch}
+          />
+        </RenderIf>
+        <RenderIf predicate={page === 2}>
+          <SecondPage
+            activeStep={activeStep}
+            handleBack={handleBack}
+            handlePageChange={handlePageChange}
+            state={state}
+            dispatch={dispatch}
+          />
+        </RenderIf>
+        <RenderIf predicate={page === 3}>
+          <ThirdPage
+            activeStep={activeStep}
+            selectedOption={selectedOption}
+            handleOptionClick={handleOptionClick}
+            activeButton={activeButton}
+            titleInfo={titleInfo}
             handleType={handleType}
-           response={response}
-           ETLData={ETLData}
-           handleBack={handleBack}
-           state={state}
-           dispatch={dispatch}
-           handlePageChange={handlePageChange}
-        />
-      </RenderIf>
-      <RenderIf predicate={page === 4}>
-        <FourthPage
-        activeStep={activeStep}
-        showAllInstallments={showAllInstallments}
-        selectedOption={selectedOption}
-          setActiveButton={setActiveButton}
-          activeButton={activeButton}
-          ETLData={ETLData}
-          handleBack={handleBack}
-          state={state}
-          dispatch={dispatch}
-          handlePageChange={handlePageChange}
-        />
-      </RenderIf>
-      <RenderIf predicate={page === 5}>
-        <FifthPage
-        activeStep={activeStep}
+            response={response}
+            ETLData={ETLData}
+            handleBack={handleBack}
+            state={state}
+            dispatch={dispatch}
+            handlePageChange={handlePageChange}
+          />
+        </RenderIf>
+        <RenderIf predicate={page === 4}>
+          <FourthPage
+            activeStep={activeStep}
+            showAllInstallments={showAllInstallments}
+            selectedOption={selectedOption}
+            setActiveButton={setActiveButton}
+            activeButton={activeButton}
+            ETLData={ETLData}
+            handleBack={handleBack}
+            state={state}
+            dispatch={dispatch}
+            handlePageChange={handlePageChange}
+          />
+        </RenderIf>
+        <RenderIf predicate={page === 5}>
+          <FifthPage
+            activeStep={activeStep}
             selectedOption={selectedOption}
             activeButton={activeButton}
-          ETLData={ETLData}
-          state={state}
-          page={page}
-          setClose={setClose}
-        />
-      </RenderIf>
+            ETLData={ETLData}
+            state={state}
+            page={page}
+            setClose={setClose}
+          />
+        </RenderIf>
       </Grid>
     </>
   );

@@ -1,8 +1,4 @@
-import {
-  useState,
-  useMemo,
-  useEffect,
-} from "react";
+import { useState, useMemo, useEffect } from "react";
 
 const useSkippableEffect = (
   effect,
@@ -22,8 +18,6 @@ const useSkippableEffect = (
   useEffect(() => {
     setPrevDependencies(mergedDependencies);
   }, [mergedDependencies]);
-
-
 };
 
 export default useSkippableEffect;

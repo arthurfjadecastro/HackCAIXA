@@ -12,7 +12,12 @@ import axios from "axios";
 import { useMatchesSmartphone } from "../Breakpoints";
 import { Item } from "../Frames";
 import { ButtonCEF } from "../Buttons";
-import { isCPFValid, isEmail, isNonEmptyString, isPhoneNumber } from "../Inputs/Validations/Base";
+import {
+  isCPFValid,
+  isEmail,
+  isNonEmptyString,
+  isPhoneNumber,
+} from "../Inputs/Validations/Base";
 import { RenderIf } from "../Utils";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -37,7 +42,7 @@ const reducer = (state, action) => {
     case "phoneNumber":
       return { ...state, phoneNumber: action.payload };
     case "email":
-      return { ...state, email: action.payload };  
+      return { ...state, email: action.payload };
     case "monetaryValue":
       return { ...state, monetaryValue: action.payload };
     case "installments":
@@ -45,7 +50,7 @@ const reducer = (state, action) => {
     case "typeInstallments":
       return { ...state, typeInstallments: action.payload };
     case "resetInstallments":
-        return { ...state, installments: null };
+      return { ...state, installments: null };
     case "resetState":
       return initialState;
     default:
@@ -53,19 +58,16 @@ const reducer = (state, action) => {
   }
 };
 
-
-
-
 function SimulateDialog({ isOpen, setClose }) {
   // State that stores the request data
   const [response, setResponse] = useState();
-  
-  // State created to store processed data 
+
+  // State created to store processed data
   const [ETLData, setEtlData] = useState();
 
   // State that iterates the simulation result by type
   const iterableData = {};
-  
+
   // Create reducer
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -79,7 +81,6 @@ function SimulateDialog({ isOpen, setClose }) {
 
   const [activeStep, setActiveStep] = React.useState(0);
 
-
   const resetInstallments = () => ({
     type: "resetInstallments",
   });
@@ -88,8 +89,8 @@ function SimulateDialog({ isOpen, setClose }) {
   useEffect(() => {
     setPage(1);
     dispatch(resetState());
-    setShowAllInstallments(false)
-    setActiveStep(0)
+    setShowAllInstallments(false);
+    setActiveStep(0);
     // setShowButtons(false)
   }, [isOpen === false]);
 
@@ -103,7 +104,7 @@ function SimulateDialog({ isOpen, setClose }) {
   }, [response]);
 
   useEffect(() => {
-    setResponse(undefined)
+    setResponse(undefined);
   }, [page < 3]);
 
   const [showAllInstallments, setShowAllInstallments] = useState(false);
@@ -112,15 +113,14 @@ function SimulateDialog({ isOpen, setClose }) {
     setShowAllInstallments(!showAllInstallments);
   };
 
-  const [showButtons, setShowButtons] = useState(true)
- 
+  const [showButtons, setShowButtons] = useState(true);
 
   const isMobile = useMatchesSmartphone();
 
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
     if (page === 2) {
-      setShowButtons(false)
+      setShowButtons(false);
       const numericValue = parseInt(
         state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
         10
@@ -129,13 +129,14 @@ function SimulateDialog({ isOpen, setClose }) {
         .post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
           valorDesejado: numericValue,
           prazo: 24,
-        },)
+        })
         .then((response) => {
           setResponse(response.data);
         })
         .catch((err) => {
           console.error("ops! ocorreu um erro" + err);
-        }).finally(() => {
+        })
+        .finally(() => {
           setTimeout(() => {
             setShowButtons(true); // Activate the display of the buttons after the completion of the request
           }, 150); // Delay of 1 second
@@ -145,24 +146,19 @@ function SimulateDialog({ isOpen, setClose }) {
     setPage(page + 1);
   };
 
-
-  
-
   // Back page of Questionnaire
   const handleBack = () => {
-    setPage(page - 1)
+    setPage(page - 1);
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    setShowAllInstallments(false)
+    setShowAllInstallments(false);
     dispatch(resetInstallments());
   };
 
-
- 
   const [isValid, setIsValid] = useState("");
   const numericValue = parseInt(
     state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
     10
-  ); 
+  );
 
   useEffect(() => {
     if (numericValue < 200 || numericValue > 10000) {
@@ -172,19 +168,18 @@ function SimulateDialog({ isOpen, setClose }) {
     }
   }, [numericValue]);
 
-
-
   const isContinueButtonEnabled = {
-    1: (state) => (isCPFValid(state.cpf) && isPhoneNumber(state.phoneNumber)) && isEmail(state.email) ||
-    isNonEmptyString(state),
-    2: (state) =>   !isValid && isNonEmptyString(state.monetaryValue),
+    1: (state) =>
+      (isCPFValid(state.cpf) &&
+        isPhoneNumber(state.phoneNumber) &&
+        isEmail(state.email)) ||
+      isNonEmptyString(state),
+    2: (state) => !isValid && isNonEmptyString(state.monetaryValue),
     3: (state) => state.installments,
     4: (state) => true,
     5: (state) => true,
-    6: (state) => true
-   
+    6: (state) => true,
   };
-
 
   return (
     <div>
@@ -231,41 +226,49 @@ function SimulateDialog({ isOpen, setClose }) {
             dispatch={dispatch}
             response={response}
           />
-          <Grid container style={{margin: 0}} flexDirection={"column"} spacing={1} justifyContent={"center"}>
-          <RenderIf predicate={page === 4}>
-        <Grid item>
-          <Item>
-            <Button onClick={handleShowAllInstallments}>
-              {showAllInstallments ? "Ver menos" : "Ver mais"}
-              
-            </Button>
-          </Item>
-          </Grid>
-          </RenderIf>
-          <RenderIf predicate={(page > 0 && page < 6) && showButtons === true  }>
-          <Grid item>
-          <Item>
-            <ButtonCEF
-              buttonTitle={page === 5 ? "Concluir" : "Continuar"}
-              isContinueButtonEnabled={isContinueButtonEnabled[page](state)}
-              handlePageChange={page <= 5 ? handlePageChange : setClose(false)}
-            />
-          </Item>
-          </Grid>
-          </RenderIf>
+          <Grid
+            container
+            style={{ margin: 0 }}
+            flexDirection={"column"}
+            spacing={1}
+            justifyContent={"center"}
+          >
+            <RenderIf predicate={page === 4}>
+              <Grid item>
+                <Item>
+                  <Button onClick={handleShowAllInstallments}>
+                    {showAllInstallments ? "Ver menos" : "Ver mais"}
+                  </Button>
+                </Item>
+              </Grid>
+            </RenderIf>
+            <RenderIf predicate={page > 0 && page < 6 && showButtons === true}>
+              <Grid item>
+                <Item>
+                  <ButtonCEF
+                    buttonTitle={page === 5 ? "Concluir" : "Continuar"}
+                    isContinueButtonEnabled={isContinueButtonEnabled[page](
+                      state
+                    )}
+                    handlePageChange={
+                      page <= 5 ? handlePageChange : setClose(false)
+                    }
+                  />
+                </Item>
+              </Grid>
+            </RenderIf>
 
-          <RenderIf predicate={(page > 1 && page < 5) && showButtons === true }>
-          <Item>
-            <ButtonCEF
-              isContinueButtonEnabled={true}
-              buttonTitle={"Voltar"}
-              handlePageChange={handleBack}
-            />
-          </Item>
-          </RenderIf>
-        </Grid>
+            <RenderIf predicate={page > 1 && page < 5 && showButtons === true}>
+              <Item>
+                <ButtonCEF
+                  isContinueButtonEnabled={true}
+                  buttonTitle={"Voltar"}
+                  handlePageChange={handleBack}
+                />
+              </Item>
+            </RenderIf>
+          </Grid>
         </Box>
-        
       </Dialog>
     </div>
   );

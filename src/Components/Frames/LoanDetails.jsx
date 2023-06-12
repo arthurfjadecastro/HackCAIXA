@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, Grid, Typography, styled, Divider } from "@mui/material";
-import PlusOneOutlinedIcon from '@mui/icons-material/PlusOneOutlined';
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import PlusOneOutlinedIcon from "@mui/icons-material/PlusOneOutlined";
+import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 
 const Frame = styled(Paper)(({ theme }) => ({
   backgroundColor: "transparent",
@@ -28,9 +28,22 @@ const LoanDetails = ({
 }) => {
   return (
     <Frame>
-      <Grid justifyContent={"center"} container spacing={2} alignItems="center" style={{width: "100%",
-    margin: 0}}>
-        <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }} item xs={6}>
+      <Grid
+        justifyContent={"center"}
+        container
+        spacing={2}
+        alignItems="center"
+        style={{ width: "100%", margin: 0 }}
+      >
+        <Grid
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          item
+          xs={6}
+        >
           <IconWrapper>
             {numberInstallment === 1 ? (
               <PlusOneOutlinedIcon
@@ -59,7 +72,11 @@ const LoanDetails = ({
             )}
           </IconWrapper>
           <TextWrapper>
-            <Typography variant="body1" align="center" style={{ fontWeight: "bold",     textWrap: "nowrap" }}>
+            <Typography
+              variant="body1"
+              align="center"
+              style={{ fontWeight: "bold", textWrap: "nowrap" }}
+            >
               {numberInstallment}ª prestação
             </Typography>
           </TextWrapper>
@@ -74,14 +91,19 @@ const LoanDetails = ({
           <Typography
             variant="body1"
             align="center"
-            style={{ fontWeight: "bold", color: "#FF6600", fontSize: "24px", textWrap: "nowrap" }}
+            style={{
+              fontWeight: "bold",
+              color: "#FF6600",
+              fontSize: "24px",
+              textWrap: "nowrap",
+            }}
           >
             R$ {installmentAmount}
           </Typography>
           <Typography
             variant="body1"
             align="center"
-            style={{ textWrap: "nowrap",color: "rgba(0, 0, 0, 0.6)" }}
+            style={{ textWrap: "nowrap", color: "rgba(0, 0, 0, 0.6)" }}
           >
             {interesetAmount}% ao mês
           </Typography>

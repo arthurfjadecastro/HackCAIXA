@@ -3,5 +3,3 @@ const isEmail = (text) =>
     text
   );
 export default isEmail;
-
-

@@ -1,14 +1,23 @@
-import React from 'react';
-import { TableContainer, Table, TableBody, TableRow, TableCell, Typography, styled, Paper } from '@mui/material';
-import { RenderIf } from '../../../Utils';
+import React from "react";
+import {
+  TableContainer,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+  Typography,
+  styled,
+  Paper,
+} from "@mui/material";
+import { RenderIf } from "../../../Utils";
 
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  borderRadius: '8px',
+  borderRadius: "8px",
   boxShadow: theme.shadows[2],
-  backgroundColor: '#ffffff',
-    width: 331,
-  margin: '0 auto',
-  marginTop: 16
+  backgroundColor: "#ffffff",
+  width: 331,
+  margin: "0 auto",
+  marginTop: 16,
 }));
 
 // const StyledTable = styled(Table)({
@@ -16,7 +25,7 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
 // });
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(even)': {
+  "&:nth-of-type(even)": {
     backgroundColor: theme.palette.grey[100],
   },
 }));
@@ -31,23 +40,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 // });
 
 const StyledTable = styled(Table)({
-    borderCollapse: 'collapse',
-    width: '100%',
-    tableLayout: 'fixed',
-  });
-  
-  const StyledTableCell = styled(TableCell)({
-    padding: '12px',
-    border: 'none',
-    color: '#333',
-    fontSize: 10,
-    textAlign: 'left',
-    width: '50%',
-  });
+  borderCollapse: "collapse",
+  width: "100%",
+  tableLayout: "fixed",
+});
 
+const StyledTableCell = styled(TableCell)({
+  padding: "12px",
+  border: "none",
+  color: "#333",
+  fontSize: 10,
+  textAlign: "left",
+  width: "50%",
+});
 
 const StyledBoldTableCell = styled(StyledTableCell)({
-  fontWeight: 'bold',
+  fontWeight: "bold",
 });
 
 const SACTable = () => {
@@ -63,7 +71,9 @@ const SACTable = () => {
       </StyledTableRow>
       <StyledTableRow>
         <StyledTableCell>Parcelas</StyledTableCell>
-        <StyledTableCell>Parcelas iniciais mais altas e redução progressiva</StyledTableCell>
+        <StyledTableCell>
+          Parcelas iniciais mais altas e redução progressiva
+        </StyledTableCell>
       </StyledTableRow>
       <StyledTableRow>
         <StyledTableCell>Benefícios</StyledTableCell>
@@ -98,13 +108,13 @@ const PRICETable = () => {
 
 const TableContainerInfo = ({ activeButton }) => {
   return (
-    <StyledTableContainer >
+    <StyledTableContainer>
       <StyledTable>
         <TableBody>
-          <RenderIf predicate={activeButton === 'PRICE'}>
+          <RenderIf predicate={activeButton === "PRICE"}>
             <PRICETable />
           </RenderIf>
-          <RenderIf predicate={activeButton === 'SAC'}>
+          <RenderIf predicate={activeButton === "SAC"}>
             <SACTable />
           </RenderIf>
         </TableBody>

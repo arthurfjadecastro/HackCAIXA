@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid,styled } from "@mui/material";
+import { Grid, styled } from "@mui/material";
 import { TableContainerInfo, TitleText } from "./Resources";
 import { BackButton, ButtonCEF, ButtonGroup, Carousel } from "../../Buttons";
 import Item from "../../Frames/Item";
@@ -9,17 +9,36 @@ import { RenderIf } from "../../Utils";
 import FullScreenLoading from "./Resources/FullScreenLoading";
 import { ProgressStepper } from "../../Dialogs/Resources";
 
-const ThirdPage = ({ activeStep, state, dispatch, handlePageChange, handleBack, ETLData,activeButton, handleType, titleInfo, handleOptionClick,selectedOption }) => {
-  
+const ThirdPage = ({
+  activeStep,
+  state,
+  dispatch,
+  handlePageChange,
+  handleBack,
+  ETLData,
+  activeButton,
+  handleType,
+  titleInfo,
+  handleOptionClick,
+  selectedOption,
+}) => {
   return (
     <>
-      <RenderIf predicate={(ETLData && ETLData[activeButton]) === undefined || (ETLData && ETLData[activeButton]) === null}>
+      <RenderIf
+        predicate={
+          (ETLData && ETLData[activeButton]) === undefined ||
+          (ETLData && ETLData[activeButton]) === null
+        }
+      >
         <FullScreenLoading />
       </RenderIf>
       <RenderIf predicate={ETLData && ETLData[activeButton]}>
-        <ProgressStepper activeStep={activeStep}/>
+        <ProgressStepper activeStep={activeStep} />
         <Grid item>
-          <TitleText>Escolha sua <span style={{ color: "#FF6600" }}>modalidade</span>  e <span style={{ color: "#FF6600" }}>parcelas</span> ideais.</TitleText>
+          <TitleText>
+            Escolha sua <span style={{ color: "#FF6600" }}>modalidade</span> e{" "}
+            <span style={{ color: "#FF6600" }}>parcelas</span> ideais.
+          </TitleText>
         </Grid>
         <Grid
           item
@@ -29,21 +48,23 @@ const ThirdPage = ({ activeStep, state, dispatch, handlePageChange, handleBack, 
         </Grid>
         <Grid item style={{ flex: 2, width: "100%" }}>
           <Item>
-          <Grid item style={{ marginBottom: 0}}>
-            <ButtonGroup activeButton={activeButton} handleType={handleType} />
-            <TableContainerInfo  activeButton={activeButton}/>
-          </Grid>
+            <Grid item style={{ marginBottom: 0 }}>
+              <ButtonGroup
+                activeButton={activeButton}
+                handleType={handleType}
+              />
+              <TableContainerInfo activeButton={activeButton} />
+            </Grid>
           </Item>
         </Grid>
-            <Carousel
-              activeButton={activeButton}
-              ETLData={ETLData}
-              state={state}
-              dispatch={dispatch}
-              selectedOption={selectedOption}
-              handleOptionClick={handleOptionClick}
-            />
-
+        <Carousel
+          activeButton={activeButton}
+          ETLData={ETLData}
+          state={state}
+          dispatch={dispatch}
+          selectedOption={selectedOption}
+          handleOptionClick={handleOptionClick}
+        />
       </RenderIf>
     </>
   );

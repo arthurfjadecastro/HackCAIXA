@@ -1,1 +1,1 @@
-export { default as ProgressStepper} from "./ProgressStepper"
+export { default as ProgressStepper } from "./ProgressStepper";

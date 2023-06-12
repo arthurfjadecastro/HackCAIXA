@@ -34,4 +34,3 @@ const Wrapper = (props) => (
   <CellPhoneNumberValidator {...props} Children={CellPhoneNumber} />
 );
 export default (props) => <NonEmptyValidator {...props} Children={Wrapper} />;
-

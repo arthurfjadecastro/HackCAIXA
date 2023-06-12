@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Draggable from 'react-draggable';
-import { FaAngleDoubleRight } from 'react-icons/fa';
+import React, { useState } from "react";
+import Draggable from "react-draggable";
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 const SliderMonetary = () => {
   const [value, setValue] = useState(0);
@@ -15,12 +15,12 @@ const SliderMonetary = () => {
   return (
     <div
       style={{
-        width: '288px',
-        height: '24px',
-        position: 'relative',
-        touchAction: 'none',
+        width: "288px",
+        height: "24px",
+        position: "relative",
+        touchAction: "none",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
       <Draggable
@@ -31,33 +31,32 @@ const SliderMonetary = () => {
       >
         <div
           style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            transform: 'translate(-50%, -50%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '24px',
-            height: '24px',
-            borderRadius: '50%',
-            backgroundColor: '#F39200',
-            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+            position: "absolute",
+            top: "0",
+            left: "0",
+            transform: "translate(-50%, -50%)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "24px",
+            height: "24px",
+            borderRadius: "50%",
+            backgroundColor: "#F39200",
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
             zIndex: 1,
-            cursor: 'grab',
+            cursor: "grab",
           }}
         >
-          <FaAngleDoubleRight style={{ fontSize: '14px', color: '#fff' }} />
+          <FaAngleDoubleRight style={{ fontSize: "14px", color: "#fff" }} />
         </div>
       </Draggable>
       <div
         style={{
-          width: '288px',
-          height: '8px',
+          width: "288px",
+          height: "8px",
           background: `linear-gradient(to right, #F39200 0%, #F39200 ${value}%, #B6B7B8 ${value}%, #B6B7B8 100%)`,
-          borderRadius: '5px',
-          cursor: 'pointer',
-     
+          borderRadius: "5px",
+          cursor: "pointer",
         }}
       />
     </div>
