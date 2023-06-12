@@ -74,14 +74,14 @@ const LoanDetails = ({
           <Typography
             variant="body1"
             align="center"
-            style={{ color: "#FF6600", fontSize: "28px", textWrap: "nowrap" }}
+            style={{ fontWeight: "bold", color: "#FF6600", fontSize: "24px", textWrap: "nowrap" }}
           >
             R$ {installmentAmount}
           </Typography>
           <Typography
             variant="body1"
             align="center"
-            style={{ color: "rgba(0, 0, 0, 0.6)" }}
+            style={{ textWrap: "nowrap",color: "rgba(0, 0, 0, 0.6)" }}
           >
             {interesetAmount}% ao mês
           </Typography>

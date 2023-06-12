@@ -11,7 +11,7 @@ const Frame = styled(Paper)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   minWidth: 230,
-  maxWidth: 400,
+  maxWidth: 100,
   marginBottom: 16,
 }));
 

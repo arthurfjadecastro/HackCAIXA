@@ -5,7 +5,6 @@ import Slider from "react-slick";
 import { SimulateDialog } from "../Dialogs";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import "../../"
 
 function Home() {
     // State to open Questionnaire

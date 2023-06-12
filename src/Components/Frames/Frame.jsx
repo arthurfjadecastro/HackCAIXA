@@ -10,9 +10,9 @@ const Frame = ({
 }) => {
   return (
     <div className="frame">
-      <h2 className="title">Valor Total Solicitado</h2>
+      <h2 className="title">Valor Total Solicitado </h2> 
       <div className="text-container">
-        <p className="value">R$ {value}</p>
+        <p className="value">{value},00</p>
         <p className="installment">
           1ª prestação:<span style={{ color: "#FF6600" }}>R$ {valueFirstInitialInstallment}    </span> 
         </p>

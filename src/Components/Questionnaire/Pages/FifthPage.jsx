@@ -94,6 +94,10 @@ const FifthPage = ({ activeStep,setClose, ETLData, state, page, activeButton, se
             variant="whatsapp"
             textButton={"Fale com um Gerente"}
           />
+           <FramePaper
+            variant="openFinance"
+            textButton={"Compartilhe seus dados"}
+          />
         </Grid>
     </>
   );
