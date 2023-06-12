@@ -36,7 +36,7 @@ const FifthPage = ({
         }}
       >
         <TitleText>
-          Pronto! <br></br>Simulação feita com sucesso.
+          Pronto! <br></br>Simulação feita com<span style={{ color: "#FF6600" }}> sucesso</span>
         </TitleText>
       </Grid>
       <Grid

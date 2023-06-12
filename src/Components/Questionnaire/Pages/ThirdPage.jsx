@@ -39,7 +39,7 @@ const ThirdPage = ({
         <Grid item>
           <TitleText>
             Escolha sua <span style={{ color: "#FF6600" }}>modalidade</span> e{" "}
-            <span style={{ color: "#FF6600" }}>parcelas</span> ideais.
+            <span style={{ color: "#FF6600" }}>parcelas</span> ideais
           </TitleText>
         </Grid>
         <Grid
