@@ -114,7 +114,7 @@ const ButtonRS = ({ textButton, variant }) => {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://api.whatsapp.com/send?phone=8001040104", "_blank");
+    window.open("https://api.whatsapp.com/send?phone=558001040104", "_blank");
   };
 
   const handleOpenFinance = () => {
