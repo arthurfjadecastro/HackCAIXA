@@ -303,7 +303,7 @@ function SimulateDialog({ isOpen, setClose }) {
               </Grid>
             </RenderIf>
             <RenderIf predicate={page > 0 && page < 6 && showButtons === true}>
-              <Grid item>
+              
                 <Item>
                   <ButtonCEF
                     buttonTitle={page === 5 ? "Concluir" : "Continuar"}
@@ -315,7 +315,7 @@ function SimulateDialog({ isOpen, setClose }) {
                     }
                   />
                 </Item>
-              </Grid>
+              
             </RenderIf>
 
             <RenderIf predicate={page > 1 && page < 5 && showButtons === true}>
