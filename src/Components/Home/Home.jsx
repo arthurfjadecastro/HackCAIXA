@@ -132,7 +132,7 @@ function Home() {
                 </Grid>
               </Grid>
             </div>
-            {/* <div>
+            <div>
               <Grid
                 container
                 style={{ height: isMobile ? "50%" : "100%" }}
@@ -175,7 +175,7 @@ function Home() {
                   />
                 </Grid>
               </Grid>
-            </div> */}
+            </div>
           </Slider>
           {/* Footer */}
           <Box

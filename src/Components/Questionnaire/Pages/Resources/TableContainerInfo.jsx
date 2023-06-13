@@ -5,9 +5,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Typography,
+
   styled,
-  Paper,
+
 } from "@mui/material";
 import { RenderIf } from "../../../Utils";
 
@@ -20,24 +20,11 @@ const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   marginTop: 16,
 }));
 
-// const StyledTable = styled(Table)({
-//   borderCollapse: 'collapse',
-// });
-
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(even)": {
     backgroundColor: theme.palette.grey[100],
   },
 }));
-
-// const StyledTableCell = styled(TableCell)({
-//   padding: '12px',
-//   border: 'none',
-//   color: '#333',
-//   fontSize: 10,
-//   textWrap: "nowrap",
-//   width: "100%"
-// });
 
 const StyledTable = styled(Table)({
   borderCollapse: "collapse",
