@@ -98,7 +98,7 @@ function SimulateDialog({ isOpen, setClose }) {
   useEffect(() => {
     if (responses !== null && responses !== undefined) {
       const newEtlData = {};
-  
+
       Object.keys(responses).forEach((prazo) => {
         const resultadoSimulacao = responses[prazo].resultadoSimulacao;
         resultadoSimulacao.forEach((item) => {
@@ -108,11 +108,8 @@ function SimulateDialog({ isOpen, setClose }) {
           newEtlData[item.tipo][prazo] = item.parcelas;
         });
       });
-  
-      setEtlData(newEtlData);
 
-  
-     
+      setEtlData(newEtlData);
     }
   }, [responses]);
 
@@ -135,18 +132,21 @@ function SimulateDialog({ isOpen, setClose }) {
       state.monetaryValue.replace(/[^0-9.-]+/g, "").replace(".", ""),
       10
     );
-  
-    return axios.post("https://apphackaixades.azurewebsites.net/api/Simulacao", {
-      valorDesejado: numericValue,
-      prazo: prazo,
-    });
+
+    return axios.post(
+      "https://apphackaixades.azurewebsites.net/api/Simulacao",
+      {
+        valorDesejado: numericValue,
+        prazo: prazo,
+      }
+    );
   };
 
   // Method that makes the request when we switch from the third to the fourth page
   const handlePageChange = () => {
     if (page === 2) {
       setShowButtons(false);
-     
+
       // Request to 6x
       makeRequest(6)
         .then((response) => {
@@ -158,7 +158,7 @@ function SimulateDialog({ isOpen, setClose }) {
         .catch((err) => {
           console.error("Ops! Ocorreu um erro: " + err);
         });
-  
+
       // Request to 12x
       makeRequest(12)
         .then((response) => {
@@ -170,34 +170,33 @@ function SimulateDialog({ isOpen, setClose }) {
         .catch((err) => {
           console.error("Ops! Ocorreu um erro: " + err);
         });
-  
+
       // Request to 24x
       makeRequest(24)
-  .then((response) => {
-    setResponses((prevResponses) => ({
-      ...prevResponses,
-      parcelas24: response.data,
-    }));
+        .then((response) => {
+          setResponses((prevResponses) => ({
+            ...prevResponses,
+            parcelas24: response.data,
+          }));
 
-    // Extrair o valor da taxa de juros do objeto de resposta
-    const taxaJuros = response.data.taxaJuros;
+          // Extrair o valor da taxa de juros do objeto de resposta
+          const taxaJuros = response.data.taxaJuros;
 
-    // Armazenar a taxa de juros no singleton
-    setRate(taxaJuros);
-  })
-  .catch((err) => {
-    console.error("Ops! Ocorreu um erro: " + err);
-  })
-  .finally(() => {
-    setTimeout(() => {
-      setShowButtons(true);
-    }, 150);
-  });
+          // Armazenar a taxa de juros no singleton
+          setRate(taxaJuros);
+        })
+        .catch((err) => {
+          console.error("Ops! Ocorreu um erro: " + err);
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setShowButtons(true);
+          }, 150);
+        });
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setPage(page + 1);
   };
-  
 
   // Back page of Questionnaire
   const handleBack = () => {
@@ -235,8 +234,6 @@ function SimulateDialog({ isOpen, setClose }) {
     6: (state) => true,
   };
 
-
-
   return (
     <div>
       <Dialog
@@ -245,7 +242,12 @@ function SimulateDialog({ isOpen, setClose }) {
         onClose={() => setClose(false)}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: "relative", backgroundColor: "#005CA9" }}>
+        <AppBar
+          sx={{
+            position: "relative",
+            background: "#d31145",
+          }}
+        >
           <Toolbar>
             <IconButton
               edge="start"
@@ -256,7 +258,7 @@ function SimulateDialog({ isOpen, setClose }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              SimulaCred CAIXA
+              Dr.Laser DF
             </Typography>
           </Toolbar>
         </AppBar>
@@ -292,10 +294,10 @@ function SimulateDialog({ isOpen, setClose }) {
             <RenderIf predicate={page === 4}>
               <Grid item>
                 <Item>
-                <ExpandButton variant="text" onClick={handleShowAllInstallments}>
-            
-
-               </ExpandButton>
+                  <ExpandButton
+                    variant="text"
+                    onClick={handleShowAllInstallments}
+                  ></ExpandButton>
                   {/* <Button variant="outlined" onClick={handleShowAllInstallments}>
                     {showAllInstallments ? "Resumo" : "Mais informações"}
                   </Button> */}
@@ -303,19 +305,15 @@ function SimulateDialog({ isOpen, setClose }) {
               </Grid>
             </RenderIf>
             <RenderIf predicate={page > 0 && page < 6 && showButtons === true}>
-              
-                <Item>
-                  <ButtonCEF
-                    buttonTitle={page === 5 ? "Concluir" : "Continuar"}
-                    isContinueButtonEnabled={isContinueButtonEnabled[page](
-                      state
-                    )}
-                    handlePageChange={
-                      page <= 5 ? handlePageChange : setClose(false)
-                    }
-                  />
-                </Item>
-              
+              <Item>
+                <ButtonCEF
+                  buttonTitle={page === 5 ? "Concluir" : "Continuar"}
+                  isContinueButtonEnabled={isContinueButtonEnabled[page](state)}
+                  handlePageChange={
+                    page <= 5 ? handlePageChange : setClose(false)
+                  }
+                />
+              </Item>
             </RenderIf>
 
             <RenderIf predicate={page > 1 && page < 5 && showButtons === true}>

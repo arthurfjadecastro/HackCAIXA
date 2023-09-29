@@ -117,6 +117,8 @@ const ButtonRS = ({ textButton, variant }) => {
     window.open("https://api.whatsapp.com/send?phone=558001040104", "_blank");
   };
 
+  
+
   const handleOpenFinance = () => {
     window.open(
       "https://www.caixa.gov.br/open-finance/Paginas/default.aspx",
@@ -153,7 +155,7 @@ const ButtonRS = ({ textButton, variant }) => {
         onMouseLeave={isMobile ? null : handleMouseLeave}
       >
         <RenderIf predicate={variant === "whatsapp"}>
-          <p style={textStyle}>WhatsApp CAIXA</p>
+          <p style={textStyle}>WhatsApp</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"

@@ -92,7 +92,7 @@ const FourthPage = ({
           flexDirection: "column",
         }}
       >
-        <TitleText>Detalhes da  <span style={{ color: "#FF6600" }}>solicitação</span></TitleText>
+        <TitleText>Detalhes da  <span style={{ color: "#d31145" }}>solicitação</span></TitleText>
       </Grid>
       <Grid
         item

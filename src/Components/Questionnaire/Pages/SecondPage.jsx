@@ -17,7 +17,7 @@ const SecondPage = ({
       <ProgressStepper activeStep={activeStep} />
       <Grid item>
         <TitleText>
-          Informe a <span style={{ color: "#FF6600" }}>quantia desejada</span>
+          Informe a <span style={{ color: "#d31145" }}>quantia desejada</span>
         </TitleText>
       </Grid>
       <Grid item style={{ flex: 2, width: "100%" }}>

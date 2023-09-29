@@ -12,7 +12,7 @@ const ThirdPage = ({
   activeStep,
   state,
   dispatch,
-  ETLData,
+  ETLData = true,
   activeButton,
   handleType,
   titleInfo,
@@ -35,8 +35,8 @@ const ThirdPage = ({
         <ProgressStepper activeStep={activeStep} />
         <Grid item>
           <TitleText>
-            Escolha sua <span style={{ color: "#FF6600" }}>modalidade</span> e{" "}
-            <span style={{ color: "#FF6600" }}>parcelas</span> ideais
+            Escolha sua <span style={{ color: "#d31145" }}>modalidade</span> e{" "}
+            <span style={{ color: "#d31145" }}>parcelas</span> ideais
           </TitleText>
         </Grid>
         <Grid

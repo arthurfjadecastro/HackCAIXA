@@ -32,7 +32,7 @@ function ProgressStepper({ page, handleNext, activeStep }) {
               marginBottom: "16px",
               fontSize: isMobile ? 10 : 14,
               fontWeight: activeStep === index ? "bold" : "normal",
-              color: activeStep === index ? "#FF6600" : "inherit",
+              color: activeStep === index ? "#d31145" : "inherit",
             }}
           >
             {step}

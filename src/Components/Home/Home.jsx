@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useMatchesSmartphone } from "../Breakpoints";
-import { AppBar, Box, Button, Grid, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import Slider from "react-slick";
 import { SimulateDialog } from "../Dialogs";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import CloseIcon from "@mui/icons-material/Close";
+import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
+
 
 function Home() {
   // State to open Questionnaire
@@ -36,7 +39,8 @@ function Home() {
         {/* Navbar */}
         <AppBar
           position="absolute"
-          style={{ background: "linear-gradient(to right, #005CA9, #54BBAB)" }}
+          style={{ background: "linear-gradient(261deg, #FFC1CD 12.59%, #FDD2C1 24.88%, #FEC983 39%, #FFC59F 51.29%, #FFC4B6 64.49%, #FBA0BB 82.25%, #F99294 100%)"
+          }}
         >
           <Toolbar style={{ minHeight: "65px !important" }}>
             <Typography
@@ -54,12 +58,12 @@ function Home() {
                 <Grid item>
                   <Typography variant="h6" component="div">
                     <img
-                      src="/img/logonavbar.png"
+                      src="/img/logo4.png"
                       alt="Slide 2"
                       style={{
                         height: "auto",
                         objectFit: "cover",
-                        maxWidth: "96px",
+                        maxWidth: "124px",
                       }}
                     />
                   </Typography>
@@ -68,19 +72,21 @@ function Home() {
                   <Button
                     variant="outlined"
                     sx={{
-                      background: "#F39200",
+                      background: "#d31145",
                       color: "white",
                       borderRadius: "8px",
                       padding: "8px 16px",
                       fontWeight: "bold",
                       fontSize: "16px",
+                      border: "none",
                       "&:hover": {
-                        background: "#FFA726",
+                        border: "none",
+                        background: "#d31149",
                       },
                     }}
                     onClick={() => setIsOpenDialog(true)}
                   >
-                    Simular
+                    Contratar
                   </Button>
                 </Grid>
               </Grid>
@@ -99,16 +105,18 @@ function Home() {
               >
                 <Grid item xs={12} md={6}>
                   <Box sx={{ background: settings.gradientColor, p: 2 }}>
-                    <Typography
-                      style={{ fontSize: isMobile ? 22 : 36 }}
-                      className="classText"
-                      textAlign="center"
-                      variant="body1"
-                      component="div"
-                    >
-                      Experimente o Aplicativo CAIXA e aproveite o{" "}
-                      <span className="orange-text">crédito rápido</span>.
-                    </Typography>
+                  <Typography
+  style={{ fontSize: isMobile ? 22 : 36 }}
+  className="classText"
+  textAlign="center"
+  variant="body1"
+  component="div"
+>
+Faça seu procedimento estético <br></br> com a{" "}
+  <span className="orange-text">Dr. Laser</span>
+ 
+</Typography>
+
                   </Box>
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -120,12 +128,12 @@ function Home() {
                     }}
                   >
                     <img
-                      src="/img/logo1.png"
+                      src="/img/bggg.png"
                       alt="Slide 2"
                       style={{
                         height: "auto",
                         objectFit: "cover",
-                        maxWidth: "30%",
+                        maxWidth: "100%",
                       }}
                     />
                   </Box>
@@ -145,17 +153,19 @@ function Home() {
                   md={6}
                   style={{ background: settings.gradientColor }}
                 >
-                  <Typography
-                    style={{ fontSize: isMobile ? 22 : 36 }}
-                    className="classText"
-                    textAlign="center"
-                    variant="body1"
-                    component="div"
-                  >
-                    Solicite seu crédito na CAIXA com{" "}
-                    <span className="orange-text"> facilidade e segurança</span>
-                    .
-                  </Typography>
+               <Typography
+  style={{ fontSize: isMobile ? 22 : 36 }}
+  className="classText"
+  textAlign="center"
+  variant="body1"
+  component="div"
+>
+Experimente o Aplicativo da{" "}
+  <span className="orange-text">Dr.Laser</span>
+  {" "} <br></br>
+  e descubra a beleza em um clique.
+</Typography>
+
                 </Grid>
                 <Grid
                   item
@@ -164,13 +174,13 @@ function Home() {
                   style={{ display: "flex", justifyContent: "center" }}
                 >
                   <img
-                    src="/img/logo3.svg"
+                    src="/img/cellphone.png"
                     alt="Slide 2"
                     style={{
                       height: "auto",
                       width: "100%",
                       objectFit: "cover",
-                      maxWidth: "60%",
+                      maxWidth: "40%",
                     }}
                   />
                 </Grid>
@@ -190,9 +200,43 @@ function Home() {
               color: "white",
             }}
           >
-            <Typography variant="body2" color="white">
-              C150713 | Arthur de Castro
-            </Typography>
+           <Typography variant="body2" color="white">
+      
+          <IconButton
+          style={{margin: 8}}
+              edge="start"
+              color="inherit"
+              // onClick={() => setClose(false)}
+              aria-label="close"
+            >
+              <Facebook />
+              Facebook
+            </IconButton>
+            <IconButton
+             style={{margin: 8}}
+              edge="start"
+              color="inherit"
+              // onClick={() => setClose(false)}
+              aria-label="close"
+            >
+              <Instagram />
+              Instagram
+            </IconButton>
+            <IconButton
+             style={{margin: 8}}
+              edge="start"
+              color="inherit"
+              // onClick={() => setClose(false)}
+              aria-label="close"
+            >
+              <WhatsApp />
+              WhatsApp
+            </IconButton>
+        </Typography>
+        
+        <Typography variant="body2" color="white">
+          Dr.Laser © copyright 2023 
+        </Typography>
           </Box>
         </Box>
       </Box>

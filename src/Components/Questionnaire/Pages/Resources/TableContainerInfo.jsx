@@ -50,7 +50,7 @@ const SACTable = () => {
     <>
       <StyledTableRow>
         <StyledBoldTableCell>Modelo</StyledBoldTableCell>
-        <StyledBoldTableCell>SAC</StyledBoldTableCell>
+        <StyledBoldTableCell>BELEZA CERTA</StyledBoldTableCell>
       </StyledTableRow>
       <StyledTableRow>
         <StyledTableCell>Amortização</StyledTableCell>
@@ -75,7 +75,7 @@ const PRICETable = () => {
     <>
       <StyledTableRow>
         <StyledBoldTableCell>Modelo</StyledBoldTableCell>
-        <StyledBoldTableCell>PRICE</StyledBoldTableCell>
+        <StyledBoldTableCell>FLEX PRICE</StyledBoldTableCell>
       </StyledTableRow>
       <StyledTableRow>
         <StyledTableCell>Amortização</StyledTableCell>

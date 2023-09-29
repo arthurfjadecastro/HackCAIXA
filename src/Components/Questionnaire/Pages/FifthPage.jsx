@@ -34,7 +34,7 @@ const FifthPage = ({
         }}
       >
         <TitleText>
-          Pronto! <br></br>Simulação feita com<span style={{ color: "#FF6600" }}> sucesso</span>
+          Pronto! <br></br>Contratação feita com<span style={{ color: "#d31145" }}> sucesso</span>
         </TitleText>
       </Grid>
       <Grid
@@ -80,11 +80,11 @@ const FifthPage = ({
         <FramePaper variant="googlePlay" textButton={"Android"} />
         <FramePaper variant="iOS" textButton={"Apple"} />
 
-        <FramePaper variant="whatsapp" textButton={"Fale com um Gerente"} />
-        <FramePaper
+        <FramePaper variant="whatsapp" textButton={"Contato"} />
+        {/* <FramePaper
           variant="openFinance"
-          textButton={"Compartilhe seus dados"}
-        />
+          textButton={"Open Finance"}
+        /> */}
       </Grid>
     </>
   );

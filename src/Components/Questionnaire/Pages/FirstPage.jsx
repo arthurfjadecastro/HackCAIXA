@@ -13,8 +13,8 @@ function FirstPage({ state, dispatch, activeStep }) {
       <Grid item>
         <TitleText>
           Informe seu <br></br>{" "}
-          <span style={{ color: "#FF6600" }}> E-mail, CPF</span> e{" "}
-          <span style={{ color: "#FF6600" }}>Telefone</span>{" "}
+          <span style={{ color: "#d31145" }}> E-mail, CPF</span> e{" "}
+          <span style={{ color: "#d31145" }}>Telefone</span>{" "}
         </TitleText>
       </Grid>
       <Grid item style={{ flex: 2, width: "100%" }}>

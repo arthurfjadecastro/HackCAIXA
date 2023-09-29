@@ -18,13 +18,13 @@ export default function DisableElevation({ activeButton, handleType }) {
         className={activeButton === "PRICE" ? "active2" : "disable"}
         onClick={() => handleClick("PRICE")}
       >
-        PRICE
+        Estético FlexPrice
       </Button>
       <Button
         className={activeButton === "SAC" ? "active2" : "disable"}
         onClick={() => handleClick("SAC")}
       >
-        SAC
+        Beleza Certa
       </Button>
     </ButtonGroup>
   );
